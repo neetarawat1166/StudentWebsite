@@ -19,7 +19,7 @@ const Footer = () => {
             <img src={LogoBlack} alt="logo" className='sm:mx-0' width="180px" height="auto" />
             <p className='w-[100%] sm:w-[80%] py-6'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi fugit illum error in vitae? Quisquam aspernatur consequatur dolorum asperiores accusamus!</p>
             <div className="flex items-center">
-              <div className="flex space-x-[60px] sm:space-x-4">
+              <div className="flex space-x-6 sm:space-x-4">
                 <div className="bg-[#65bc7b] rounded-full p-2">
                   <FaInstagram className="text-black" size={24} />
                 </div>
