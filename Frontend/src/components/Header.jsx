@@ -3,8 +3,6 @@ import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import logo from "../images/Logo.png";
-import Modal from "./common/Modal";
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -14,15 +12,16 @@ const Header = () => {
   };
 
   return (
-    <Modal>
-      <nav className="bg-[#eeeeee] px-3 py-3 flex justify-between relative">
+    <>
+
+<nav className="bg-[#eeeeee] px-3 py-3 flex justify-between relative">
         <div className="flex items-center gap-[3rem]">
           <IoMenu
             className="text-3xl text-black cursor-pointer lg:hidden"
             onClick={toggleSidebar}
           />
           <div className="text-black">
-            <img src={logo} className="md:w-[100px] w-[80px]" alt="logo" />
+            <img src={logo} className="md:w-[100px] w-[80px] pr-3" alt="logo" />
           </div>
           <div className="hidden lg:block relative">
             <ul className="flex gap-[2rem] text-black">
@@ -54,13 +53,13 @@ const Header = () => {
         </div>
         <div className="flex items-center">
           <div className="overflow-hidden">
-            <ul className="flex gap-3">
+            <ul className="flex md:gap-3 gap-2">
               <li>
                 {/* <FaInstagram className="bg-[#FF9416] md:h-[40px] w-[30px] h-[30px] p-[5px] md:p-[10px] border-2 border-[#FF9416] hover:bg-transparent rounded-md text-white" />  */}
-                <p className="bg-[#65bc7b] py-1 px-2 text-white text-lg rounded-md hover:bg-[#252525]">Signup</p>
+                <p className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg  text-[16px] rounded-md hover:bg-[#252525]">Signup</p>
               </li>
               <li>
-              <p className="bg-[#252525] py-1 px-2 text-white text-lg rounded-md hover:bg-[#65bc7b]">Login</p>
+              <p className="bg-[#252525] py-1 px-2 text-white md:text-lg text-[16px]  rounded-md hover:bg-[#65bc7b]">Login</p>
               </li>
             </ul>
           </div>
@@ -114,7 +113,10 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </Modal>
+
+    </>
+      
+    
   );
 };
 
