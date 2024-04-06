@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full text-center">
-            <p className='text-lg pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#65bc7b]'>EduEmpower</span> || All Rights Reserved</p>
+            <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#65bc7b]'>EduEmpower</span> || All Rights Reserved</p>
         </div>
       </div>
     </footer>
