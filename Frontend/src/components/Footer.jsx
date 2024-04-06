@@ -11,8 +11,8 @@ import { FaPinterestP } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 const Footer = () => {
   return (
-    <footer className="bg-[#252525] text-gray-300 py-4 px-10">
-      <div className="container mx-auto px-4 py-[50px]">
+    <footer className="bg-[#252525] text-gray-300 pt-4 px-10">
+      <div className="container mx-auto px-4 pt-[50px]">
         <div className="flex flex-wrap justify-center">
           {/* First column (wider) */}
           <div className="w-full sm:w-1/2 md:w-1/2 lg:w-2/5 xl:w-2/5 px-4 pb-4 sm:pb-[15px] md:pb-0">
@@ -108,6 +108,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="w-full text-center">
+            <p className='text-lg pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#65bc7b]'>EduEmpower</span> || All Rights Reserved</p>
         </div>
       </div>
     </footer>
