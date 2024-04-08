@@ -14,14 +14,14 @@ const LearnGrowSection = () => {
         <div className="lg:w-1/2 flex">
           <div className="w-[100%] sm:w-1/2 md:w-1/2 lg:w-1/2 flex flex-col justify-center gap-5">
             {/* <img src={LearnGrowImg1} alt="LearnGrowImg1" className='mx-auto block sm:hidden md:hidden lg:hidden' width="100%" height="auto" /> */}
-            <img src={LearnGrowImg2} alt="LearnGrowImg1" className='learnAndGrowImg1 mx-auto w-[100%] sm:w-[200px] md:w-[200px] lg:w-[240px] block sm:block md:block lg:block' width="240px" height="auto" />
-            <img src={LearnGrowImg1} alt="LearnGrowImg2" className='learnAndGrowImg2 mx-auto hidden sm:block md:block lg:block sm:w-[200px] md:w-[200px] lg:w-[240px]' width="240px" height="auto" />
+            <img src={LearnGrowImg2} alt="LearnGrowImg1" className='learnAndGrowImg1 mx-auto w-[100%] sm:w-[200px] md:w-[200px] lg:w-[200px] lg:mr-[50px] block sm:block md:block lg:block' width="200px" height="auto" />
+            <img src={LearnGrowImg1} alt="LearnGrowImg2" className='learnAndGrowImg2 mx-auto hidden sm:block md:block lg:block sm:w-[200px] md:w-[200px] lg:w-[200px] lg:mr-[50px]' width="200px" height="auto" />
             <div className="absolute inset-0 z-[-1] hidden md:block lg:hidden" style={{ backgroundImage: `url(${LearnGrowBackImg})`, backgroundRepeat: 'no-repeat', animation: 'moveBackground2 3s infinite alternate', width:'200px' ,height:'200px'}}></div>
-            <div className="absolute  inset-0 z-[-1] animate-moveBackground hidden lg:block" style={{ backgroundImage: `url(${LearnGrowBackImg})`, backgroundRepeat: 'no-repeat', animation: 'moveBackground 3s infinite alternate', width:'250px' ,height:'250px'}}></div>
-            <div className='absolute top-[7%] left-[80%] animate-spin linear duration-1000 delay-0 running normal none infinite hidden lg:block'>
+            <div className="absolute  inset-0 z-[-1] lg:left-[5%] lg:top-[8%] animate-moveBackground hidden lg:block" style={{ backgroundImage: `url(${LearnGrowBackImg})`, backgroundRepeat: 'no-repeat', animation: 'moveBackground 3s infinite alternate', width:'200px' ,height:'200px'}}></div>
+            <div className='absolute top-[60%] left-[85%] animate-spin linear duration-1000 delay-0 running normal none infinite hidden lg:block'>
                     <img src={LearnGrowBackImg2} alt="CTA" />
             </div>
-            <div className='absolute top-[85%] left-[35%] rotate-45 linear duration-1000 delay-0 hidden lg:block'>
+            <div className='absolute top-[87%] left-[35%] rotate-45 linear duration-1000 delay-0 hidden lg:block'>
                     <img src={LearnGrowBackImg3} alt="CTA" />
             </div>
           </div>
@@ -30,7 +30,7 @@ const LearnGrowSection = () => {
           </div>
         </div>
         <div className="lg:w-1/2 justify-center items-center lg:pl-4 xl:pl-4">
-          <h2 className='text-4xl font-semibold pb-2 pt-[20%]'>Lorem ipsum dolor, sit amet sit amet consectetur adipisicing.</h2>
+          <h2 className='text-4xl font-semibold pb-2 pt-[5%]'>Lorem ipsum dolor, sit amet sit amet consectetur adipisicing.</h2>
           <p className='w-[95%] lg:w[75%] text-lg pt-4 pb-1'>Lorem ipsum dolor sit, Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, sunt. Sunt, voluptatibus. amet consectetur adipisicing elit. Suscipit incidunt non tempora nobis blanditiis numquam impedit sed harum nam quo. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, at odio alias vel voluptas debitis fuga? Ipsam, nemo! Maiores, molestias.</p>
           <div className="flex lg:flex-row pt-4 md:w-[80%] lg:w-[80%]  pb-8">
             <div className="lg:w-1/2">
