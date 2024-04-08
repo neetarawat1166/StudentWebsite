@@ -1,0 +1,33 @@
+@keyframes moveBackground {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-40px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+@keyframes moveBackground2 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+/* @media only screen and (min-width: 648px) and (max-width: 768px) {
+    .learnAndGrowImg2{
+        width: 80%;
+    }
+    .learnAndGrowImg1 {
+      display: none;
+    }
+    .learnAndGrowImg3 {
+       width:80%;
+    }
+} */
