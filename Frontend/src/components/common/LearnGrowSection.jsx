@@ -9,7 +9,8 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 import '../style/KirtikaStyle/KirtikaCSS.css'
 const LearnGrowSection = () => {
   return (
-    <div className="container mx-auto px-[50px] py-[50px] relative">
+    <section className='bg-[#eeeeee]'>
+      <div className="container mx-auto px-[50px] py-[50px] relative z-[1]">
       <div className="flex flex-col lg:flex-row">
         <div className="lg:w-1/2 flex">
           <div className="w-[100%] sm:w-1/2 md:w-1/2 lg:w-1/2 flex flex-col justify-center gap-5">
@@ -29,7 +30,7 @@ const LearnGrowSection = () => {
             <img src={LearnGrowImg3} alt="LearnGrowImg3" className='learnAndGrowImg3 hidden sm:block md:block lg:block' width="300px" height="auto" />
           </div>
         </div>
-        <div className="lg:w-1/2 justify-center items-center lg:pl-4 xl:pl-4">
+        <div className="lg:w-1/2 justify-center items-center md:pl-4 lg:pl-4 xl:pl-4">
           <h2 className='text-4xl font-semibold pb-2 pt-[5%]'>Lorem ipsum dolor, sit amet sit amet consectetur adipisicing.</h2>
           <p className='w-[95%] lg:w[75%] text-lg pt-4 pb-1'>Lorem ipsum dolor sit, Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, sunt. Sunt, voluptatibus. amet consectetur adipisicing elit. Suscipit incidunt non tempora nobis blanditiis numquam impedit sed harum nam quo. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, at odio alias vel voluptas debitis fuga? Ipsam, nemo! Maiores, molestias.</p>
           <div className="flex lg:flex-row pt-4 md:w-[80%] lg:w-[80%]  pb-8">
@@ -80,6 +81,7 @@ const LearnGrowSection = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

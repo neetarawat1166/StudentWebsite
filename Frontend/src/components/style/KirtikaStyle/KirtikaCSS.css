@@ -20,6 +20,21 @@
       transform: translateY(0);
     }
 }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.spinAnimate {
+  animation: spin linear 4s infinite;
+}
 /* @media only screen and (min-width: 648px) and (max-width: 768px) {
     .learnAndGrowImg2{
         width: 80%;
