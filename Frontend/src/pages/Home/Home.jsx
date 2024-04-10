@@ -10,7 +10,6 @@ import CountDown from '../../components/common/CountDown'
 const Home = () => {
   return (
     <>
-    
       <Banner/>
       <CountDown/>
       <HomeBrowseCategory/>
