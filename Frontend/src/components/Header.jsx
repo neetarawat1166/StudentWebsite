@@ -56,10 +56,10 @@ const Header = () => {
             <ul className="flex md:gap-3 gap-2">
               <li>
                 {/* <FaInstagram className="bg-[#FF9416] md:h-[40px] w-[30px] h-[30px] p-[5px] md:p-[10px] border-2 border-[#FF9416] hover:bg-transparent rounded-md text-white" />  */}
-                <p className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg  text-[16px] rounded-full hover:bg-[#252525]">Signup</p>
+                <NavLink to={'/signup'}><button className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg  text-[16px] rounded-lg hover:bg-[#252525]">Signup</button></NavLink>
               </li>
               <li>
-              <p className="bg-[#252525] py-1 px-2 text-white md:text-lg text-[16px]  rounded-full hover:bg-[#65bc7b]">Login</p>
+              <NavLink to={'/login'}><button className="bg-[#252525] py-1 px-2 text-white md:text-lg text-[16px]  rounded-lg hover:bg-[#65bc7b]">Login</button></NavLink>
               </li>
             </ul>
           </div>

@@ -6,6 +6,7 @@ import img4 from '../../../images/benedes4.png'
 import img5 from '../../../images/benedes5.png'
 import BenefitsCard from './BenefitsCard';
 import { HiCheckBadge } from "react-icons/hi2";
+import '../../style/NeetaStyle/style2.css'
 
 const BenefitContent = [
   {
@@ -35,15 +36,15 @@ const Benefits = () => {
     <>
       <div className='section py-[50px]'>
         <div className='relative'>
-          <div className='absolute md:left-[500px] duration-1000 ease-linear delay-0 alternate none  hidden md:block animate-translate-x-4 running infinite box-border'>
-              <img src={img1} alt="Benefits" />
+          <div className=' animate-bgmove2 absolute md:left-[500px]  hidden md:block box-border'>
+              <img src={img1} alt="Benefits" className=''/>
           </div>
           <div className='container mx-auto p-10'>
             <div className='grid  lg:grid-cols-3 grid-cols-1 lg:gap-20 gap-6 items-center'>
               <div className='mb-[30px] xl:col-span-2 col-span-3'>
                   <div>
                       <div className='mb-[30px]'>
-                        <span className='inline-block mb-[25px] bg-[#65bc7b] rounded-lg p-2'>WHY CHOOSE US</span>
+                        <span className='inline-block mb-[25px] bg-[#65bc7b] rounded-lg p-2 text-white'>WHY CHOOSE US</span>
                         <h4 className='text-[27px] font-bold'>
                           Creating A Community Of Life Long
                           <span className='text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#65bc7b]'> Learners</span>
@@ -79,9 +80,9 @@ const Benefits = () => {
                       <img src={img3} alt="" className='absolute top-[-5%]  left-[-5%] -z-50 block box-border' />
                       
                       
-                        <img src={img4} alt="" className='absolute bottom-[-5%] lg:right-[-5%] -z-50 block box-border'/>
+                        <img src={img4} alt="" className=' absolute bottom-[-5%] lg:right-[-5%] -z-50 block box-border'/>
                        
-                      <img src={img5} alt="" className='absolute top-[-10%] lg:right-[-5%] -z-50 block box-border duration-0 ease-linear delay-0 infinite alternate  none running ' />
+                      <img src={img5} alt="" className='animate-bgmove absolute -z-50  top-[-5%] lg:right-[-5%]  block box-border'/>
                   </div>
                 </div>
               </div>
