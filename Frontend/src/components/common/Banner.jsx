@@ -10,7 +10,7 @@ const Banner = () => {
     <section className="bg-gray-200 p-[50px] pb-0 relative" style={{ backgroundImage: `url(${BannerBackImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
         <div className="lg:w-2/3 lg:pr-8 mb-8 lg:mb-0"> {/* First column, 3/4 width on large screens */}
-          <h1 className="text-[50px] font-bold text-[#65bc7b] pb-4">Lorem ipsum dolor sit, amet consectetur adipisicing.</h1>
+          <h1 className="text-[38px] sm:text-[45px] md:text[50px] font-bold text-[#65bc7b] pb-4">Lorem ipsum dolor sit, amet consectetur adipisicing.</h1>
           <p className="text-[20px] font-semibold pb-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio quam accusamus ipsam tempora! Autem itaque exercitationem error! Ea, autem neque? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <button className='text-[20px] font-semibold bg-[#65bc7b] py-3 px-4 rounded-lg text-white hover:bg-[#4c9e61]'>Explore More!</button>
         </div>
