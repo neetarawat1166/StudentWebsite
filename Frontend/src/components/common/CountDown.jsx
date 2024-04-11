@@ -28,33 +28,33 @@ const CountDown = () => {
             clearInterval(interval1);
             clearInterval(interval2);
         };
-    }, []); // Empty dependency array to run only once on component mount
+    }, []); 
 
     return (
         <>
             <section className='bg-[#65bc7b]'>
-                <div className="container p-4 flex justify-center">
+                <div className="p-4 grid md:grid-cols-3 grid-cols-1 gap-5">
                     <div className='px-10 text-center'>
-                        <p className='text-white font-bold text-[45px]'>
+                        <p className='text-white font-bold text-[40px]'>
                             {number1 <= targetValue1 ? number1 : targetValue1}+
                         </p>
-                        <p className='text-white text-[30px] font-semibold'>
+                        <p className='text-white text-[25px] font-semibold'>
                             Students connect till date
                         </p>
                     </div>
                     <div className='px-10 text-center'>
-                        <p className='text-white font-bold text-[45px]'>
+                        <p className='text-white font-bold text-[40px]'>
                             {number2 <= targetValue2 ? number2 : targetValue2}+
                         </p>
-                        <p className='text-white text-[30px] font-semibold'>
+                        <p className='text-white text-[25px] font-semibold'>
                             Ranked with 4.7 Rating
                         </p>
                     </div>
                     <div className='px-10 text-center'>
-                        <p className='text-white font-bold text-[45px]'>
+                        <p className='text-white font-bold text-[40px]'>
                             {number2 <= targetValue2 ? number2 : targetValue2}+
                         </p>
-                        <p className='text-white text-[30px] font-semibold'>
+                        <p className='text-white text-[25px] font-semibold'>
                             Goal Reached
                         </p>
                     </div>
