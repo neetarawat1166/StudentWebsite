@@ -22,11 +22,13 @@ const Dashboard = () => {
                 <TeacherProfile/>   
               </div>
             </div>
-            <div className="">
-                <Attendance/>
-            </div>
-            <div className="">
-                <Announcement/>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div className=" ">
+              <Attendance/>
+              </div>
+              <div className="">
+              <Announcement/>  
+              </div>
             </div>
           </div>
         </div>
