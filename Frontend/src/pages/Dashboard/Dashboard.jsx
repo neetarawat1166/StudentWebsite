@@ -8,13 +8,13 @@ import TeacherProfile from "../../components/common/TeacherProfile";
 const Dashboard = () => {
   return (
     <>
-      <div className="section">
+      <section className="px-2">
         <div className="flex">
           <div className="w-[20%] ">
             <Profile />
           </div>
           <div className="w-[80%] ">
-            <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
               <div className="md:col-span-2 ">
                 <Timetable/>
               </div>
@@ -30,7 +30,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
