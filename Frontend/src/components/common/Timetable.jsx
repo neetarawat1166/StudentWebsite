@@ -2,7 +2,9 @@ import React from 'react'
 
 const Timetable = () => {
   return (
-    <div>Timetable</div>
+    <div>
+      <h1>Your Timetable</h1>
+    </div>
   )
 }
 

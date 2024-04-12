@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "../../components/common/Profile";
-import Timetable from "../Timetable/Timetable";
+import Timetable from "../../components/common/Timetable";
 import Attendance from "../../components/common/Attendance";
 import Announcement from "../../components/common/Announcement";
 import TeacherProfile from "../../components/common/TeacherProfile";

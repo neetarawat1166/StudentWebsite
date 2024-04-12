@@ -13,9 +13,9 @@ app.get('/', function(req,res){
 
 app.get('/create', function(req,res){
    usermodel.create({
-    name:"www",
-    email:"www@gmail",
-    password:"123434"
+    name:"kittuneetu",
+    email:"kittuneetu@gmail",
+    password:"615"
    })
 
    res.send("indiaaaaa donwwww")
