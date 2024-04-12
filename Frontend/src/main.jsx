@@ -8,6 +8,10 @@ import About from './pages/About/About.jsx'
 import Contact from './pages/Contact/Contact.jsx'
 import Signup from './pages/Signup/Signup.jsx'
 import Login from './pages/Login/Login.jsx'
+import Dashboard from './pages/Dashboard/Dashboard.jsx'
+import Assignment from './pages/Assignment/Assignment.jsx'
+import Timetable from './pages/Timetable/Timetable.jsx'
+import Query from './pages/Query/Query.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +21,10 @@ const router = createBrowserRouter(
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/login' element={<Login/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/assignment' element={<Assignment/>}/>
+      <Route path='/timetable' element={<Timetable/>}/>
+      <Route path='/query' element={<Query/>}/>
     </Route>
   )
 );

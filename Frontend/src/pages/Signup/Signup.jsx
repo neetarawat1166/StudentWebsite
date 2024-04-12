@@ -19,14 +19,19 @@ const Signup = () => {
             <NavLink to={'/signup'} className={`flex items-center p-1 md:p-2 justify-center md:text-lg text-[16px] font-semibold rounded-lg ${activeButton === 'signup' ? 'bg-[#65bc7b] text-white' : ''}`}
                 onClick={() => handleButtonClick('signup')}><button >Signup</button></NavLink>
             <NavLink to={'/login'} className={`flex p-1 md:p-2 items-center justify-center md:text-lg text-[16px] font-semibold rounded-lg ${activeButton === 'login' ? 'bg-[#65bc7b] text-white' : ''}`}
-                onClick={() => handleButtonClick('login')}><button >Login</button></NavLink>
+                onClick={() => handleButtonClick('login')}><button className='text-[#4c4a4a]' >Login</button></NavLink>
         </div>
 
-        <form action="" className='mx-auto grid grid-cols-1 gap-y-4 lg:w-[70%] md:w-[70%] w-[90%] sm:w-[80%] mt-4'>
-            <input type="text" placeholder='Enter your name...' className='border-2 border-solid border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4'/>
-            <input type="email" placeholder='Enter your email...' className='border-2 border-solid border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4'/>
-            <input type="password" placeholder='Enter your password...' className='border-2 border-solid border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4'/>
-            <input type="text" placeholder='Enter your Course...' className='border-2 border-solid border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4'/>
+        <form action="" className='mx-auto grid grid-cols-1 gap-y-4 lg:w-[70%] md:w-[70%] w-[90%] sm:w-[80%] mt-4'>     
+            <select id="profile" className='border-2 border-solid hover:border-[#65bc7b] border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4'>
+            <option value="" disabled selected>Choose your profile</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+            </select>
+            <input type="text" placeholder='Enter your name...' className='border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4'/>
+            <input type="email" placeholder='Enter your email...' className='border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4'/>
+            <input type="password" placeholder='Enter your password...' className='border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4'/>
+            <input type="text" placeholder='Enter your Course...' className='border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4'/>
         </form>
         <div className='mx-auto justify-center items-center flex mt-6 '>
             <button className='py-2 px-4 md:py-2 md:px-8  text-lg ont-semibold rounded-lg bg-[#65bc7b] text-white'>Signup</button>

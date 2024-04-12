@@ -34,6 +34,34 @@ const Header = () => {
               </li>
               <li className="text-lg relative py-4">
                 <NavLink
+                  to="/dashboard" 
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+              <li className="text-lg relative py-4">
+                <NavLink
+                  to="/timetable" 
+                >
+                  Time-Table
+                </NavLink>
+              </li>
+              <li className="text-lg relative py-4">
+                <NavLink
+                  to="/assignment" 
+                >
+                  Assignment
+                </NavLink>
+              </li>
+              <li className="text-lg relative py-4">
+                <NavLink
+                  to="/query" 
+                >
+                  Query
+                </NavLink>
+              </li>
+              <li className="text-lg relative py-4">
+                <NavLink
                   to="/About" 
                 >
                   About
