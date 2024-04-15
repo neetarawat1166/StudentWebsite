@@ -22,20 +22,20 @@ const Dashboard = () => {
     <>
       <section className="px-2 mb-[50px]">
         <div className="flex">
-          <div className="w-[20%] ">
+          <div className="hidden lg:block w-[20%] ">
             <Profile />
           
           </div>
           <div className="w-[80%] ">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              <div className="md:col-span-2 ">
+              <div className="md:col-span-2">
                 <Timetable/>
               </div>
-              <div className="md:col-span-1 ">
+              <div className="md:col-span-1">
                 <TeacherProfile/>   
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">
               <div className=" ">
               <Attendance attended="28" total="30"/>
               </div>
