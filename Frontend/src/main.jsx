@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard/Dashboard.jsx'
 import Assignment from './pages/Assignment/Assignment.jsx'
 import Timetable from './pages/Timetable/Timetable.jsx'
 import Query from './pages/Query/Query.jsx'
+import Feedback from './pages/Feedback/Feedback.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='/assignment' element={<Assignment/>}/>
       <Route path='/timetable' element={<Timetable/>}/>
       <Route path='/query' element={<Query/>}/>
+      <Route path='/feedback' element={<Feedback/>}/>
     </Route>
   )
 );

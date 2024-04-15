@@ -59,13 +59,6 @@ const Header = () => {
               </li>
               <li className="text-lg relative py-4">
                 <NavLink
-                  to="/query"
-                >
-                  Query
-                </NavLink>
-              </li>
-              <li className="text-lg relative py-4">
-                <NavLink
                   to="/About"
                 >
                   About
@@ -77,6 +70,20 @@ const Header = () => {
 
                 >
                   Contact
+                </NavLink>
+              </li>
+              <li className="text-lg relative py-4">
+                <NavLink
+                  to="/query"
+                >
+                  Any Query?
+                </NavLink>
+              </li>
+              <li className="text-lg relative py-4">
+                <NavLink
+                  to="/feedback"
+                >
+                  Feedback
                 </NavLink>
               </li>
             </ul>
@@ -130,6 +137,30 @@ const Header = () => {
             </li>
             <li>
               <NavLink
+                to="/dashboard"
+                className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
+              >
+                Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/timetable"
+                className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
+              >
+                Time-Table
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/assignment"
+                className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
+              >
+                Assignment
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/about"
                 className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
               >
@@ -143,6 +174,22 @@ const Header = () => {
                 className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
               >
                 Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/query"
+                className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
+              >
+                Any Query?
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/feedback"
+                className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
+              >
+                Feedback
               </NavLink>
             </li>
           </ul>
