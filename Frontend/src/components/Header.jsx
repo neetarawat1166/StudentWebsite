@@ -197,7 +197,7 @@ const Header = () => {
       </div>
       {/* Profile Sidebar */}
       <div
-        className={`fixed md:hidden lg:hidden top-0 w-full h-full z-30 bg-[#252525] transition-all duration-300 ${profileOpen ? "visible" : "invisible"
+        className={`fixed lg:hidden top-0 w-full h-full z-30 bg-[#252525] transition-all duration-300 ${profileOpen ? "visible" : "invisible"
           }`}
       >
         <div

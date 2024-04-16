@@ -35,14 +35,9 @@
 .spinAnimate {
   animation: spin linear 4s infinite;
 }
-/* @media only screen and (min-width: 648px) and (max-width: 768px) {
-    .learnAndGrowImg2{
-        width: 80%;
+@media only screen and (min-width: 520px) and (max-width: 640px) {
+    .TeacherFeatureImg{
+      width: 65%;
+      margin-left: 0;
     }
-    .learnAndGrowImg1 {
-      display: none;
-    }
-    .learnAndGrowImg3 {
-       width:80%;
-    }
-} */
+}

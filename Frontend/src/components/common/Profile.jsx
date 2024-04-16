@@ -2,7 +2,7 @@ import React from 'react';
 import img from '../../images/Akash_sir.png';
 const Profile = () => {
   return (
-    <div className='py-[50px] bg-[#eeeeee] h-full'>
+    <div className='py-[50px] h-full'>
       <div className='grid grid-cols-2 py-2'>
         {/* First Column: Image */}
         <div className='mx-auto rounded-full border-4 border-[#65bc7b] p-[1px]'>
