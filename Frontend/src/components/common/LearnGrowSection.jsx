@@ -7,6 +7,7 @@ import LearnGrowBackImg2 from '../../images/LearnGrowBackImg2.png'
 import LearnGrowBackImg3 from '../../images/LearnGrowBackImg3.png'
 import { IoMdCheckboxOutline } from "react-icons/io";
 import '../style/KirtikaStyle/KirtikaCSS.css'
+import { NavLink } from 'react-router-dom';
 const LearnGrowSection = () => {
   return (
     <section className='bg-[#eeeeee]'>
@@ -77,7 +78,7 @@ const LearnGrowSection = () => {
               </ul>
             </div>
           </div>
-          <button className='bg-[#65bc7b] text-lg text-white py-4 px-4 font-semibold  rounded-lg'>More About Us</button>
+          <NavLink to={'/about'}><button className='bg-[#65bc7b] text-lg text-white py-4 px-4 font-semibold  rounded-lg'>More About Us</button></NavLink>
         </div>
       </div>
     </div>
