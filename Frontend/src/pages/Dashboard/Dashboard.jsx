@@ -83,7 +83,7 @@ const Dashboard = () => {
           <div className="w-full lg:w-[80%]"> 
             <div className="">
               <div className="">
-                <Timetable/>
+                <Timetable TimeTableheading={"Your TimeTable"}/>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">

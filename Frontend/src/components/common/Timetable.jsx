@@ -75,10 +75,10 @@ import img2 from '../../images/ttimg2.png';
 import img3 from '../../images/ttimg3.png';
 import img4 from '../../images/ttimg4.png';
 
-const Timetable = () => {
+const Timetable = (props) => {
   return (
     <div className="flex flex-col py-[50px]">
-      <h1 className="text-[35px] font-semibold pl-3">Your Timetable</h1>
+      <h1 className="text-[35px] font-semibold pl-3">{props.TimeTableheading}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 py-2">
         {/* Card 1 */}
         <div className="bg-[#eeeeee] rounded-lg text-center border-2 border-green-500 p-6">
