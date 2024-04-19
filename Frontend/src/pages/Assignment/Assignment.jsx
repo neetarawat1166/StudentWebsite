@@ -13,7 +13,7 @@ const Assignment = () => {
       title: "Building a Social Media Platform",
       task: "Your task is to develop a full-stack social media platform that allows users to create profiles, connect with friends, share posts, and interact with each other.",
       assignDate: "04/16/2024",
-      dueDate: "04/30/2024",
+      dueDate: "04/30/2024",  
     },   
     {
       title: "E-commerce Website Development",
