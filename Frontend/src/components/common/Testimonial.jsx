@@ -9,7 +9,7 @@ import img1 from '../../images/testimonialbg.png'
 
 export default function Testimonial() {
   return (
-    <div className='section'>
+    <div className='section NeetaSwiper'>
       <div className='cotainer mx-auto'>
         <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center'>Testimonial</h1>
         <Swiper
