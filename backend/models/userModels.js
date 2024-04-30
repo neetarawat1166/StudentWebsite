@@ -1,18 +1,28 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+    profile: {
+        type: String,
+        required: true
     },
-    email:{
-        type:String,
-        required:true
+    name: {
+        type: String,
+        required: true
     },
-    password:{
-        type:String,
-        required:true
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    course: {
+        type: String,
+        required: true
     }
-})
+});
 
-export const usermodel = mongoose.model("user",userSchema) ;
+// Exporting separate models for teacher and student
+export const TeacherModel = mongoose.model("teacher", userSchema);
+export const StudentModel = mongoose.model("student", userSchema);
