@@ -3,8 +3,13 @@ import { NavLink } from "react-router-dom";
 import img1 from '../../images/wavii2.jpg';
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import toast, {Toaster} from 'react-hot-toast'
+import { useAuth } from './AuthContext';
 
 const Signup = () => {
+
+    const { setIsAuthenticated } = useAuth();
+    
     const [show, setShow] = useState(false);
     const [userData, setUserData] = useState({
         profile: "",
@@ -34,7 +39,7 @@ console.log(userData)
         const { profile, name, email, password, course } = userData;
 
         if (!profile || !name || !email || !password || !course) {
-            return alert("Please fill all the fields...");
+            return toast.error("Please fill all the fields");
         }
 
         try {
@@ -47,12 +52,7 @@ console.log(userData)
             });
             const serverres = await res.json();
             console.log(serverres);
-
-            if (!serverres.success && serverres.message === "This email already exists") {
-                // If the email already exists, show an alert message
-                return alert("This email already exists");
-            }
-
+            
             setUserData({
                 profile: "",
                 name: "",
@@ -60,6 +60,17 @@ console.log(userData)
                 password: "",
                 course: ""
             });
+
+            if (!serverres.success && serverres.message === "This email already exists") {
+                // If the email already exists, show an alert message
+                return toast.error("This mail already exists")
+            }
+            else{
+                setIsAuthenticated(true); // Set isAuthenticated to true upon successful signup
+                return toast.success("Signup Successfully")
+            }
+
+
         } catch (error) {
             console.error("Error:", error);
         }
@@ -104,6 +115,10 @@ console.log(userData)
                     <div className='mx-auto justify-center items-center flex mt-6 '>
                         <button className='py-2 px-4 md:py-2 md:px-8 text-lg ont-semibold rounded-lg bg-[#65bc7b] text-white' type='submit' onClick={datasave}>Signup</button>
                     </div>
+                    <Toaster 
+                    position="top-center"
+                    reverseOrder={false}
+                    />
                 </div>
             </div>
         </>

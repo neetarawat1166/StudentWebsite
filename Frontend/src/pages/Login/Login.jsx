@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import img1 from '../../images/wavii2.jpg';
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import toast,{Toaster} from 'react-hot-toast';
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -28,7 +29,7 @@ const Login = () => {
         const { email, password} = userData;
 
         if (!email || !password) {
-            return alert("Please fill all the fields...");
+            return toast.error("Please fill all the fields...");
         }
 
         try {
@@ -41,11 +42,7 @@ const Login = () => {
             });
             const serverres = await res.json();
             console.log(serverres);
-
-            if (!serverres.success && serverres.message === "This email already exists") {
-                // If the email already exists, show an alert message
-                return alert("This email already exists");
-            }
+           
 
             localStorage.setItem("token", serverres.token)
 
@@ -53,6 +50,12 @@ const Login = () => {
                 email: "",
                 password: ""
             });
+
+            if (serverres.success && serverres.message === "Login successfully") {
+                // If the email already exists, show an alert message
+                return toast.success("Login Successfully!!")
+            }
+
         } catch (error) {
             console.error("Error:", error);
         }
@@ -84,7 +87,10 @@ const Login = () => {
             <button className='py-2 px-4 md:py-2 md:px-8  text-lg ont-semibold rounded-lg bg-[#65bc7b] text-white' onClick={dataLogin}>Login</button>
         </div>
         <p className='text-[#4c4a4a] mx-auto justify-center items-center flex mt-6 '>Not a member?<NavLink to={'/signup'}><span className='text-[#2c55daee] px-2'>Signup now</span></NavLink></p>
-        
+        <Toaster
+         position="top-center"
+         reverseOrder={false}
+        />
 
     </div>
 </div>
