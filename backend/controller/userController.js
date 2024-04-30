@@ -15,11 +15,12 @@ export const Signup = async (req, res) => {
     }
 
     try {
-        let newUser;
+        let newUser,newUser2;
         if (profile === 'teacher') {
             // If the profile is teacher, save data to TeacherModel
             newUser = await TeacherModel.findOne({ email });
-            if (newUser) {
+            newUser2 = await StudentModel.findOne({ email });
+            if (newUser || newUser2) {
                 return res.status(409).json({
                     success: false,
                     message: "This email already exists"
@@ -35,7 +36,8 @@ export const Signup = async (req, res) => {
         } else if (profile === 'student') {
             // If the profile is student, save data to StudentModel
             newUser = await StudentModel.findOne({ email });
-            if (newUser) {
+            newUser2 = await TeacherModel.findOne({ email });
+            if (newUser || newUser2) {
                 return res.status(409).json({
                     success: false,
                     message: "This email already exists"
