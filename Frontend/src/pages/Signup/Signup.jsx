@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom"; // Import useNavigate
 import img1 from '../../images/wavii2.jpg';
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import toast, {Toaster} from 'react-hot-toast'
-import { useAuth } from './AuthContext';
 
 const Signup = () => {
 
-    const { setIsAuthenticated } = useAuth();
+    const navigate = useNavigate(); // Initialize useNavigate
     
     const [show, setShow] = useState(false);
     const [userData, setUserData] = useState({
@@ -66,8 +65,12 @@ console.log(userData)
                 return toast.error("This mail already exists")
             }
             else{
-                setIsAuthenticated(true); // Set isAuthenticated to true upon successful signup
-                return toast.success("Signup Successfully")
+               // Show success message
+                toast.success("Signup Successfully");
+                // Redirect to login page after a slight delay
+                setTimeout(() => {
+                    navigate('/login');
+                }, 500); // 500 milliseconds delay
             }
 
 
@@ -109,7 +112,7 @@ console.log(userData)
                         <div className=" absolute top-[50%] right-3 cursor-pointer translate-y-[-50%]" onClick={() => setShow((prev) => !prev)}>
                             {show ? <IoEye /> : <IoEyeOff  />}
                         </div>
-                      </div>
+                      </div>
                         <input type="text" value={userData.course} onChange={ValueUpdate} name="course" placeholder='Enter your Course...' className='border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4' />
                     </form>
                     <div className='mx-auto justify-center items-center flex mt-6 '>
