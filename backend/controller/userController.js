@@ -86,7 +86,7 @@ export const Login = async (req, res) => {
         if (!teacherData) {
             return res.status(401).json({
                 success: false,
-                message: "Please provide valid credentials - email"
+                message: "Please provide valid credentials -email"
             });
         }
         

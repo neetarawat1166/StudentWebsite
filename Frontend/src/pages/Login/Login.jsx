@@ -1,11 +1,17 @@
 import React,{useState} from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import img1 from '../../images/wavii2.jpg';
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import toast,{Toaster} from 'react-hot-toast';
+import { useAuth } from '../Signup/AuthContext';
 
 const Login = () => {
+
+    const navigate = useNavigate(); // Initialize useNavigate
+
+    const { setIsAuthenticated } = useAuth();
+    
     const [show, setShow] = useState(false);
     const [activeButton, setActiveButton] = useState('login');
     const [userData, setUserData] = useState({
@@ -52,8 +58,19 @@ const Login = () => {
             });
 
             if (serverres.success && serverres.message === "Login successfully") {
-                // If the email already exists, show an alert message
-                return toast.success("Login Successfully!!")
+                setIsAuthenticated(true); // Set isAuthenticated to true upon successful login
+                localStorage.setItem("isAuthenticated", "true"); // Set flag in localStorage
+                 // Show success message
+                toast.success("Login Successfully");
+                // Redirect to login page after a slight delay
+                setTimeout(() => {
+                    navigate('/');
+                }, 800); // 800 milliseconds delay
+            }
+            else if (!serverres.success && (serverres.message === "Please provide valid credentials - password" || serverres.message === "Please provide valid credentials -email"))
+            {
+                //if password not correcr
+                return toast.error("Please provide valid credentials")
             }
 
         } catch (error) {

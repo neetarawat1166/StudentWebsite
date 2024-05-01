@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { IoMenu } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/Logo.png";
 import Profile from "../components/common/Profile";
 import { useAuth } from '../pages/Signup/AuthContext';
 
 const Header = () => {
-  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate(); // Initialize useNavigate
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const toggleSidebar = () => {
@@ -17,6 +18,24 @@ const Header = () => {
   const toggleProfile = () => {
     setProfileOpen(!profileOpen);
   };
+
+  const handleLogout = () => {
+    // Clear authentication status and token from localStorage
+    setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    navigate('/login');
+  };
+
+  useEffect(() => {
+    // Check if the user is authenticated based on localStorage
+    const isAuthenticatedInLocalStorage = localStorage.getItem(
+      "isAuthenticated"
+    );
+    if (isAuthenticatedInLocalStorage === "true") {
+      setIsAuthenticated(true);
+    }
+  }, [setIsAuthenticated]);
 
   return (
     <nav className="bg-[#eeeeee] px-3 py-3 flex justify-between relative">
@@ -40,11 +59,6 @@ const Header = () => {
                 <li className="text-lg relative py-4">
                   <NavLink to="/dashboard">
                     Dashboard
-                  </NavLink>
-                </li>
-                <li className="text-lg relative py-4">
-                  <NavLink to="/timetable">
-                    Time-Table
                   </NavLink>
                 </li>
                 <li className="text-lg relative py-4">
@@ -86,16 +100,31 @@ const Header = () => {
                 onClick={toggleProfile}
               />
             </li>
-            <li>
-              <NavLink to={'/signup'}>
-                <button className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg  text-[16px] rounded-lg hover:bg-[#252525]">Signup</button>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={'/login'}>
-                <button className="bg-[#252525] py-1 px-2 text-white md:text-lg text-[16px]  rounded-lg hover:bg-[#65bc7b]">Login</button>
-              </NavLink>
-            </li>
+            {isAuthenticated ? (
+              // Render logout button if user is authenticated
+              <li>
+                <button
+                  className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg text-[16px] rounded-lg hover:bg-[#252525]"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              // Render signup and login buttons if user is not authenticated
+              <>
+                <li>
+                  <NavLink to={'/signup'}>
+                    <button className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg text-[16px] rounded-lg hover:bg-[#252525]">Signup</button>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={'/login'}>
+                    <button className="bg-[#252525] py-1 px-2 text-white md:text-lg text-[16px] rounded-lg hover:bg-[#65bc7b]">Login</button>
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
@@ -131,14 +160,6 @@ const Header = () => {
                     className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
                   >
                     Dashboard
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/timetable"
-                    className="block text-white bg-[#65bc7b] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525]"
-                  >
-                    Time-Table
                   </NavLink>
                 </li>
                 <li>
