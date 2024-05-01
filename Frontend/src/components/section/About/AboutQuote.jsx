@@ -13,7 +13,7 @@ const AboutQuote = () => {
         <h1 className='text-3xl md:text-4xl lg:text-4xl font-bold py-8 text-center text-[#65bc7b]'>Insights From Our Team</h1>
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={30}     
           pagination={{ clickable: true }}
           modules={[Pagination]}
           className="mySwiper pb-8 md:pb-[50px]"

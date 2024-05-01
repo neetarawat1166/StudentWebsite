@@ -13,7 +13,6 @@ export const Signup = async (req, res) => {
             message: "Please fill all the form details"
         });
     }
-
     try {
         let newUser,newUser2;
         if (profile === 'teacher') {
@@ -56,7 +55,6 @@ export const Signup = async (req, res) => {
                 message: "Invalid profile type"
             });
         }
-
         res.status(200).json({
             success: true,
             message: "Data saved successfully",
