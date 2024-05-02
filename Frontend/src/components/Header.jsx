@@ -57,17 +57,29 @@ const Header = () => {
                   <NavLink to="/dashboard">Dashboard</NavLink>
                 </li>
                 <li className="text-lg relative py-4">
+                  <NavLink to="/dashboard-1">Dashboard-1</NavLink>
+                </li>
+                <li className="text-lg relative py-4">
                   <NavLink to="/assignment">Assignment</NavLink>
+                </li>
+                <li className="text-lg relative py-4">
+                  <NavLink to="/assignment-1">Assignment-1</NavLink>
                 </li>
                 <li className="text-lg relative py-4">
                   <NavLink to="/resources">Resources</NavLink>
                 </li>
                 <li className="text-lg relative py-4">
+                  <NavLink to="/resources-1">Resources-1</NavLink>
+                </li>
+                <li className="text-lg relative py-4">
                   <NavLink to="/syllabus">Syllabus</NavLink>
+                </li>
+                <li className="text-lg relative py-4">
+                  <NavLink to="/syllabus-1">Syllabus-1</NavLink>
                 </li>
               </>
             )}
-            <li className="text-lg relative py-4">
+            {/* <li className="text-lg relative py-4">
               <NavLink to="/About">About</NavLink>
             </li>
             <li className="text-lg relative py-4">
@@ -78,7 +90,7 @@ const Header = () => {
             </li>
             <li className="text-lg relative py-4">
               <NavLink to="/feedback">Feedback</NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
