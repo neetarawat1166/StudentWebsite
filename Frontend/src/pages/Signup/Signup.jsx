@@ -32,7 +32,7 @@ const Signup = () => {
             });
         }
     };
-console.log(userData)
+    console.log(userData)
     const datasave = async (e) => {
         e.preventDefault();
         const { profile, name, email, password, course } = userData;

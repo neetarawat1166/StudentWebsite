@@ -14,6 +14,8 @@ import Timetable from './pages/Timetable/Timetable.jsx'
 import Query from './pages/Query/Query.jsx'
 import Feedback from './pages/Feedback/Feedback.jsx'
 import { AuthProvider } from './pages/Signup/AuthContext.jsx'
+import Resources from '../src/teacherPages/Resources/Resources.jsx'
+import Syllabus from '../src/teacherPages/Syllabus/Syllabus.jsx'
 // import ProtectedRoute from '../../Frontend/src/pages/Dashboard/ProtectedRoute.jsx'; // Import the ProtectedRoute component
 
 const router = createBrowserRouter(
@@ -26,6 +28,8 @@ const router = createBrowserRouter(
       <Route path='/login' element={<Login/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/assignment' element={<Assignment/>}/>
+      <Route path='/resources' element={<Resources/>}/>
+      <Route path='/syllabus' element={<Syllabus/>}/>
       <Route path='/timetable' element={<Timetable/>}/>
       <Route path='/query' element={<Query/>}/>
       <Route path='/feedback' element={<Feedback/>}/>
