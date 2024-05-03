@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import AssignmentList from '../../components/section/Assignment/AsignmentList'
-const Assignment = () => {
+import React, { useState, useEffect } from 'react';
+import AssignmentList from '../../components/section/Assignment/AssignmentList';
+import { FaPlus } from "react-icons/fa";
+import AssignmentModal from '../../components/common/AssignmentModal';
 
-  const assignments = [
+const Assignment = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [assignments, setAssignments] = useState([
     {
       title: "Building a Full-Stack Application",
       task: "You are tasked with developing a full-stack application for managing a library system. The application should allow users to browse, borrow, and return books, as well as manage their accounts.",
@@ -28,7 +31,21 @@ const Assignment = () => {
       dueDate: "05/30/2024",
     },
     // Add more assignments as needed
-  ];
+  ]);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const addAssignment = (newAssignment) => {
+  const formattedAssignDate = new Date().toLocaleDateString().split('/').map(part => part.padStart(2, '0')).join('/');
+  newAssignment.assignDate = formattedAssignDate;
+  setAssignments([...assignments, newAssignment]);
+  };
 
   return (
     <>
@@ -38,10 +55,16 @@ const Assignment = () => {
           <div>
             <AssignmentList assignments={assignments} />
           </div>
+          <div className="flex justify-center items-center pb-8"> 
+            <div className='bg-[#eeeeee] rounded-full p-6 cursor-pointer' onClick={handleModalOpen}>
+              <FaPlus className='text-[30px] text-[#65bc7b]'/>
+            </div>
+          </div>
         </div>
       </div>
+      <AssignmentModal isOpen={isModalOpen} onClose={handleModalClose} addAssignment={addAssignment} />
     </>
-  )
+  );
 }
 
-export default Assignment
+export default Assignment;
