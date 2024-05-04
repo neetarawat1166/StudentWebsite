@@ -1,6 +1,7 @@
 import React from "react";
 import { SlNote } from "react-icons/sl";
 import img1 from '../../images/announcement.png'
+import { FaEdit } from "react-icons/fa";
 
 const Announcement = ({ announcements }) => {
   return (
@@ -22,6 +23,7 @@ const Announcement = ({ announcements }) => {
                   <div className="flex justify-center items-center gap-4">
                       {item.heading}
                       <img src={img1} className="lg:h-[12%] lg:w-[10%] md:h-[10%] md:w-[18%] sm:h-[10%] sm:w-[12%] h-[10%] w-[16%]" alt="" />
+                      <FaEdit className="text-[#252525] cursor-pointer"/>
                   </div>
                 </h2>
                 <ul className="list-disc">

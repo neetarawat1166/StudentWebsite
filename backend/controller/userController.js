@@ -1,143 +1,110 @@
-import { TeacherModel, StudentModel } from "../models/userModels.js";
-import bcrypt from 'bcrypt';
-import JWT from 'jsonwebtoken';
+import { UserModel } from "../models/userModels.js";
+import bcrypt from "bcrypt";
+import JWT from "jsonwebtoken";
+import router from "../routes/userRouter.js";
+import { sentToken } from "../utils/jwtauth.js";
 
-const JWT_SECURE = "thisisourjsonwebtokenandimfromindia"
+const JWT_SECURE = "thisisourjsonwebtokenandimfromindia";
 
 export const Signup = async (req, res) => {
-    const { profile, name, email, password, course } = req.body;
+  const { profile, name, email, password, course } = req.body;
 
-    if (!profile || !name || !email || !password || !course) {
+  if (!profile || !name || !email || !password || !course) {
+    return res.status(404).json({
+      success: false,
+      message: "Please fill all the form details",
+    });
+  }
+  try {
+    let user = await UserModel.findOne({ email });
+    if(user){
         return res.status(400).json({
             success: false,
-            message: "Please fill all the form details"
-        });
+            message: "This Email Already Exists"
+        })
     }
-    try {
-        let newUser,newUser2;
-        if (profile === 'teacher') {
-            // If the profile is teacher, save data to TeacherModel
-            newUser = await TeacherModel.findOne({ email });
-            newUser2 = await StudentModel.findOne({ email });
-            if (newUser || newUser2) {
-                return res.status(409).json({
-                    success: false,
-                    message: "This email already exists"
-                });
-            }
-            newUser = await TeacherModel.create({
-                profile,
-                name,
-                email,
-                password: await bcrypt.hash(password, 10),
-                course
-            });
-        } else if (profile === 'student') {
-            // If the profile is student, save data to StudentModel
-            newUser = await StudentModel.findOne({ email });
-            newUser2 = await TeacherModel.findOne({ email });
-            if (newUser || newUser2) {
-                return res.status(409).json({
-                    success: false,
-                    message: "This email already exists"
-                });
-            }
-            newUser = await StudentModel.create({
-                profile,
-                name,
-                email,
-                password: await bcrypt.hash(password, 10),
-                course
-            });
-        } else {
-            return res.status(400).json({
-                success: false,
-                message: "Invalid profile type"
-            });
-        }
-        res.status(200).json({
-            success: true,
-            message: "Data saved successfully",
-            user: newUser
-        });
-    } catch (error) {
-        console.error("Error in signup:", error);
-        res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        });
-    }
+
+    const saltRound = 10;
+    const hashedPass = await bcrypt.hash(password, saltRound)
+
+    const userdata = await UserModel.create({
+      profile,
+      name,
+      email,
+      password: hashedPass,
+      course,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Signup successfully",
+      user: userdata,
+    });
+
+  } catch (error) {
+    console.error("Error in signup:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
 };
 
 // Login controller
 export const Login = async (req, res) => {
-    const { email, password } = req.body;
-    console.log(email, password);
-
-    // Check in studentModel
-    const studentData = await StudentModel.findOne({ email: email });
-    console.log(studentData);
-    
-    // If not found in studentModel, check in TeacherModel
-    if (!studentData) {
-        const teacherData = await TeacherModel.findOne({ email: email });
-        console.log(teacherData);
-        
-        if (!teacherData) {
-            return res.status(401).json({
-                success: false,
-                message: "Please provide valid credentials -email"
-            });
-        }
-        
-        // Password compare for teacherData
-        const comparePassTeacher = await bcrypt.compare(password, teacherData.password);
-        console.log(comparePassTeacher);
-        
-        if (!comparePassTeacher) {
-            return res.status(401).json({
-                success: false,
-                message: "Please provide valid credentials - password"
-            });
-        }
-        
-        // JWT token for teacherData
-        const userTeacher = {
-            id: {
-                userID: teacherData._id
-            }
-        };
-        const tokenTeacher = JWT.sign(userTeacher, JWT_SECURE, { expiresIn: '1h' });
-        console.log(tokenTeacher)
-        return res.status(200).json({
-            success: true,
-            message: "Login successfully",
-            token: tokenTeacher
-        });
-    }
-
-    // Password compare for studentData
-    const comparePassStudent = await bcrypt.compare(password, studentData.password);
-    console.log(comparePassStudent);
-    
-    if (!comparePassStudent) {
-        return res.status(401).json({
+  const { email, password, profile } = req.body;
+  // console.log(email, password, profile);
+  
+  try {
+    const isEmail = await UserModel.findOne({email});
+    if(!isEmail){
+        return res.status(400).json({
             success: false,
-            message: "Please provide valid credentials - password"
-        });
+            message: "Please Enter Valid Credentials"
+        })
     }
+
+    if(isEmail.profile !== profile){
+      console.log("err")
+      return res.status(400).json({
+            success: false,
+            message: "Please Enter Valid Credentials"
+      })
+    }
+
+    const compass = await bcrypt.compare(password, isEmail.password);
+
+    if(!compass){
+        return res.status(400).json({
+            success: false,
+            message: "Please Enter Valid Credentials"
+        })
+    }
+    sentToken(isEmail, res, 201, "Login Successfully")
+  } catch (error) {
+    console.log(error)
     
-    // JWT token for studentData
-    const userStudent = {
-        id: {
-            userID: studentData._id
-        }
-    };
-    const tokenStudent = JWT.sign(userStudent, JWT_SECURE, { expiresIn: '1h' });
-    console.log(tokenStudent)
-    res.status(200).json({
+  }
+};
+
+// Logout Controller
+export const Logout = (req, res) => {
+    res.clearCookie("token").status(201).json({
         success: true,
-        message: "Login successfully",
-        token: tokenStudent
+        message: "Logout Successfully!"
     });
 };
+
+
+
+// Get User
+export const getUser = (req, res) => {
+    const user = req.user;
+
+    res.status(201).json({
+        success: true,
+        message: "User Verify",
+        user
+    })
+
+}

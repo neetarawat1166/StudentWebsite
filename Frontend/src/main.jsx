@@ -13,13 +13,14 @@ import Assignment from './pages/Assignment/Assignment.jsx'
 import Timetable from './pages/Timetable/Timetable.jsx'
 import Query from './pages/Query/Query.jsx'
 import Feedback from './pages/Feedback/Feedback.jsx'
-import { AuthProvider } from './pages/Signup/AuthContext.jsx'
+// import { AuthProvider } from './pages/Signup/AuthContext.jsx'
 import Resources from '../src/pages/Resources/Resources.jsx'
 import Syllabus from '../src/pages/Syllabus/Syllabus.jsx'
 import TeacherAssignment from '../src/teacherPages/TeacherAssignment/TeacherAssignment.jsx'
 import TeacherResources from '../src/teacherPages/TeacherResources/TeacherResources.jsx'
 import TeacherSyllabus from '../src/teacherPages/TeacherSyllabus/TeacherSyllabus.jsx'
 import TeacherDashboard from '../src/teacherPages/TeacherDashboard/TeacherDashboard.jsx'
+import { IsAuthenticatedContextProvider } from './context/userContext.jsx'
 // import ProtectedRoute from '../../Frontend/src/pages/Dashboard/ProtectedRoute.jsx'; // Import the ProtectedRoute component
 
 const router = createBrowserRouter(
@@ -46,10 +47,11 @@ const router = createBrowserRouter(
 );
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
+    <IsAuthenticatedContextProvider>
       <RouterProvider router={router}/>
-    </AuthProvider>
+    </IsAuthenticatedContextProvider>
   </React.StrictMode>,
 );

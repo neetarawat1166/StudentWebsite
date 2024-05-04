@@ -1,17 +1,17 @@
-// AuthContext.js
+// // AuthContext.js
 
-import React, { createContext, useContext, useState } from 'react';
+// import React, { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext();
+// const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+// export const AuthProvider = ({ children }) => {
+//     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
+//     return (
+//         <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+//             {children}
+//         </AuthContext.Provider>
+//     );
+// };
 
-export const useAuth = () => useContext(AuthContext);
+// export const useAuth = () => useContext(AuthContext);

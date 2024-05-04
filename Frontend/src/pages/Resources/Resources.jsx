@@ -1,46 +1,33 @@
 import React, { useState } from 'react';
-import toast,{Toaster} from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Resources = () => {
   const [topics, setTopics] = useState([]);
   const [newTopic, setNewTopic] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
+  const [googleDriveLink, setGoogleDriveLink] = useState('');
 
   const handleTopicAdd = () => {
     if (newTopic.trim() === '') {
-     toast.error('Please enter a topic name');
+      toast.error('Please enter a topic name');
       return;
     }
     setTopics([...topics, { name: newTopic, resources: [] }]);
     setNewTopic('');
   };
 
-  const handleTopicNameChange = (index, newName) => {
-    const updatedTopics = [...topics];
-    updatedTopics[index].name = newName;
-    setTopics(updatedTopics);
-  };
-
   const handleResourceAdd = (index) => {
-    if (!selectedFile) {
-      toast.error("Please choose a file");
+    if (googleDriveLink.trim() === '') {
+      toast.error('Please enter a Google Drive link');
       return;
     }
     const updatedTopics = [...topics];
-    const fileName = selectedFile.name;
-    // Assuming you have some function to upload the file and get the URL
-    // For demonstration, we're just simulating it with a timeout
-    setTimeout(() => {
-      const resource = {
-        name: fileName,
-        url: 'https://example.com/' + fileName // Replace with the actual URL
-      };
-      updatedTopics[index].resources.push(resource);
-      setTopics(updatedTopics);
-      setSelectedFile(null); // Clear the selected file after upload
-      // Clear the file input value
-      document.getElementById('file-input').value = '';
-    }, 1000);
+    const resource = {
+      name: 'Resource', // You can customize this name if needed
+      url: googleDriveLink,
+    };
+    updatedTopics[index].resources.push(resource);
+    setTopics(updatedTopics);
+    setGoogleDriveLink('');
   };
 
   return (
@@ -48,31 +35,7 @@ const Resources = () => {
       {topics.map((topic, index) => (
         <div key={index} className="mb-8">
           <div className="mb-4">
-            {topic.editing ? (
-              <div className="flex items-center">
-                <input
-                  type="text"
-                  value={topic.name}
-                  onChange={(e) => handleTopicNameChange(index, e.target.value)}
-                  className="border border-gray-400 p-2 mr-2"
-                  placeholder="Enter Topic Name"
-                />
-                <button
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                  onClick={() =>
-                    setTopics(
-                      topics.map((t, i) =>
-                        i === index ? { ...t, editing: false } : t
-                      )
-                    )
-                  }
-                >
-                  Save
-                </button>
-              </div>
-            ) : (
-              <h2 className="text-2xl font-semibold mb-4">{`Topic Name: ${topic.name}`}</h2>
-            )}
+            <h2 className="text-2xl font-semibold mb-4">{`Topic Name: ${topic.name}`}</h2>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Resources:</h3>
@@ -86,16 +49,17 @@ const Resources = () => {
           </div>
           <div className="flex items-center mt-4">
             <input
-              id="file-input"
-              type="file"
+              type="text"
+              value={googleDriveLink}
+              onChange={(e) => setGoogleDriveLink(e.target.value)}
               className="border border-gray-400 p-2 mr-2"
-              onChange={(e) => setSelectedFile(e.target.files[0])} 
+              placeholder="Enter Google Drive Link"
             />
             <button
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
               onClick={() => handleResourceAdd(index)}
             >
-              Upload File
+              Add Resource
             </button>
           </div>
           <hr className="my-8" />
@@ -119,9 +83,9 @@ const Resources = () => {
         </div>
       </div>
       <Toaster
-         position="top-center"
-         reverseOrder={false}
-        />
+        position="top-center"
+        reverseOrder={false}
+      />
     </div>
   );
 };

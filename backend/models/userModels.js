@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     profile: {
         type: String,
-        required: true
+        required: true,
+        enum: ["Teacher", "Student"]
     },
     name: {
         type: String,
@@ -24,5 +25,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // Exporting separate models for teacher and student
-export const TeacherModel = mongoose.model("teacher", userSchema);
-export const StudentModel = mongoose.model("student", userSchema);
+// export const TeacherModel = mongoose.model("teacher", userSchema);
+// export const StudentModel = mongoose.model("student", userSchema);
+export const UserModel = mongoose.model("users", userSchema);

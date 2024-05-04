@@ -5,6 +5,7 @@ import Attendance from "../../components/common/Attendance";
 import Announcement from "../../components/common/Announcement";
 import TeacherProfile from "../../components/common/TeacherProfile";
 
+
 const Dashboard = () => {
 
     const announcements = [
@@ -35,7 +36,7 @@ const Dashboard = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">
               <div className=" ">
-              <Attendance attended="28" total="30"/>
+              <Attendance total="30"/>
               </div>
               <div className="">
               <Announcement announcements={announcements}/>  

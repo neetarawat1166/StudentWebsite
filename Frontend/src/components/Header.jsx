@@ -1,40 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IoMenu } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/Logo.png";
 import Profile from "../components/common/Profile";
-import { useAuth } from "../pages/Signup/AuthContext";
+import { isAuthenticatedContext } from "../context/userContext.jsx";
+// import { useAuth } from "../pages/Signup/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate(); // Initialize useNavigate
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  // const { isAuthenticated, setIsAuthenticated } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  const {isAuthenticat, setUser, user, setisAuthenticat} = useContext(isAuthenticatedContext)
+
   const toggleProfile = () => {
     setProfileOpen(!profileOpen);
   };
 
   const handleLogout = () => {
     // Clear authentication status and token from localStorage
-    setIsAuthenticated(false);
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("token");
+    // setIsAuthenticated(false);
+    // localStorage.removeItem("isAuthenticated");
+    // localStorage.removeItem("token");
+    setUser("");
+    setisAuthenticat(false);
     navigate("/login");
   };
 
-  useEffect(() => {
-    // Check if the user is authenticated based on localStorage
-    const isAuthenticatedInLocalStorage =
-      localStorage.getItem("isAuthenticated");
-    if (isAuthenticatedInLocalStorage === "true") {
-      setIsAuthenticated(true);
-    }
-  }, [setIsAuthenticated]);
+  // useEffect(() => {
+  //   // Check if the user is authenticated based on localStorage
+  //   const isAuthenticatedInLocalStorage =
+  //     localStorage.getItem("isAuthenticated");
+  //   if (isAuthenticatedInLocalStorage === "true") {
+  //     setIsAuthenticated(true);
+  //   }
+  // }, [setIsAuthenticated]);
 
   return (
     <nav className="bg-[#eeeeee] px-3 py-3 flex justify-between relative">
@@ -51,11 +57,11 @@ const Header = () => {
             <li className="text-lg relative py-4">
               <NavLink to="/">Home</NavLink>
             </li>
-            {isAuthenticated && (
+            {isAuthenticat && (
               <>
                 <li className="text-lg relative py-4">
                   <NavLink to="/dashboard">Dashboard</NavLink>
-                </li>
+                </li> 
                 <li className="text-lg relative py-4">
                   <NavLink to="/dashboard-1">Dashboard-1</NavLink>
                 </li>
@@ -103,7 +109,7 @@ const Header = () => {
                 onClick={toggleProfile}
               />
             </li>
-            {isAuthenticated ? (
+            {isAuthenticat ? (
               // Render logout button if user is authenticated
               <li>
                 <button
@@ -161,7 +167,7 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            {isAuthenticated && (
+            {isAuthenticat && (
               <>
                 <li>
                   <NavLink
