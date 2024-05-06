@@ -15,6 +15,7 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
+    mobile: "",
     course: "",
   });
 
@@ -35,9 +36,9 @@ const Signup = () => {
   console.log(userData);
   const datasave = async (e) => {
     e.preventDefault();
-    const { profile, name, email, password, course } = userData;
+    const { profile, name, email, password,mobile, course } = userData;
 
-    if (!profile || !name || !email || !password || !course) {
+    if (!profile || !name || !email || !password || !mobile || !course) {
       return toast.error("Please fill all the fields");
     }
 
@@ -49,6 +50,7 @@ const Signup = () => {
           name,
           email,
           password,
+          mobile,
           course,
         },
         {
@@ -75,9 +77,11 @@ const Signup = () => {
           name: "",
           email: "",
           password: "",
+          mobile:"",
           course: "",
         });
       } 
+      
       // if(
       //   !serverres.data.success &&
       //   serverres.data.message === "This Email Allready Exists"
@@ -197,6 +201,14 @@ const Signup = () => {
                 {show ? <IoEye /> : <IoEyeOff />}
               </div>
             </div>
+            <input
+              type="number"
+              value={userData.mobile}
+              onChange={ValueUpdate}
+              name="mobile"
+              placeholder="Enter your Contact number..."
+              className="border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+            />
             <select
               id="course"
               onChange={ValueUpdate}

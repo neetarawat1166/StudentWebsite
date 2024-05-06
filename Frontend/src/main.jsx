@@ -21,6 +21,7 @@ import TeacherResources from '../src/teacherPages/TeacherResources/TeacherResour
 import TeacherSyllabus from '../src/teacherPages/TeacherSyllabus/TeacherSyllabus.jsx'
 import TeacherDashboard from '../src/teacherPages/TeacherDashboard/TeacherDashboard.jsx'
 import { IsAuthenticatedContextProvider } from './context/userContext.jsx'
+import StudentList from '../src/teacherPages/StudentList/StudentList.jsx'
 // import ProtectedRoute from '../../Frontend/src/pages/Dashboard/ProtectedRoute.jsx'; // Import the ProtectedRoute component
 
 const router = createBrowserRouter(
@@ -32,14 +33,15 @@ const router = createBrowserRouter(
       <Route  path="/signup" element={<Signup/>} />
       <Route path='/login' element={<Login/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
-      <Route path='/dashboard-1' element={<TeacherDashboard/>}/>
+      {/* <Route path='/dashboard-1' element={<TeacherDashboard/>}/> */}
       <Route path='/assignment' element={<Assignment/>}/>
-      <Route path='/assignment-1' element={<TeacherAssignment/>}/>
+      {/* <Route path='/assignment-1' element={<TeacherAssignment/>}/> */}
       <Route path='/resources' element={<Resources/>}/>
-      <Route path='/resources-1' element={<TeacherResources/>}/>
+      {/* <Route path='/resources-1' element={<TeacherResources/>}/> */}
       <Route path='/syllabus' element={<Syllabus/>}/>
-      <Route path='/syllabus-1' element={<TeacherSyllabus/>}/>
-      <Route path='/timetable' element={<Timetable/>}/>
+      {/* <Route path='/syllabus-1' element={<TeacherSyllabus/>}/> */}
+      <Route path='/studentlist' element={<StudentList/>}/>
+      {/* <Route path='/timetable' element={<Timetable/>}/> */}
       <Route path='/query' element={<Query/>}/>
       <Route path='/feedback' element={<Feedback/>}/>
     </Route>

@@ -18,13 +18,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    mobile: {
+        type: Number,
+        required: true
+    },
     course: {
         type: String,
         required: true
     }
 });
 
-// Exporting separate models for teacher and student
-// export const TeacherModel = mongoose.model("teacher", userSchema);
-// export const StudentModel = mongoose.model("student", userSchema);
 export const UserModel = mongoose.model("users", userSchema);

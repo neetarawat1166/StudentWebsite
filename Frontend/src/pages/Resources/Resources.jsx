@@ -47,7 +47,7 @@ const Resources = () => {
               ))}
             </ul>
           </div>
-          <div className="flex items-center mt-4">
+          <div className="flex justify-center items-center mt-4">
             <input
               type="text"
               value={googleDriveLink}
@@ -59,14 +59,14 @@ const Resources = () => {
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
               onClick={() => handleResourceAdd(index)}
             >
-              Add Resource
+              Add
             </button>
           </div>
           <hr className="my-8" />
         </div>
       ))}
       <div className="flex items-center justify-center">
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-center">
           <input
             type="text"
             value={newTopic}
@@ -78,7 +78,7 @@ const Resources = () => {
             className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
             onClick={handleTopicAdd}
           >
-            Add Topic
+            Save
           </button>
         </div>
       </div>

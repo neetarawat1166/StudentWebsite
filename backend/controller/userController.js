@@ -7,9 +7,9 @@ import { sentToken } from "../utils/jwtauth.js";
 const JWT_SECURE = "thisisourjsonwebtokenandimfromindia";
 
 export const Signup = async (req, res) => {
-  const { profile, name, email, password, course } = req.body;
+  const { profile, name, email, password, mobile, course } = req.body;
 
-  if (!profile || !name || !email || !password || !course) {
+  if (!profile || !name || !email || !password || !mobile || !course) {
     return res.status(404).json({
       success: false,
       message: "Please fill all the form details",
@@ -17,21 +17,22 @@ export const Signup = async (req, res) => {
   }
   try {
     let user = await UserModel.findOne({ email });
-    if(user){
-        return res.status(400).json({
-            success: false,
-            message: "This Email Already Exists"
-        })
+    if (user) {
+      return res.status(400).json({
+        success: false,
+        message: "This Email Already Exists",
+      });
     }
 
     const saltRound = 10;
-    const hashedPass = await bcrypt.hash(password, saltRound)
+    const hashedPass = await bcrypt.hash(password, saltRound);
 
     const userdata = await UserModel.create({
       profile,
       name,
       email,
       password: hashedPass,
+      mobile,
       course,
     });
 
@@ -40,7 +41,6 @@ export const Signup = async (req, res) => {
       message: "Signup successfully",
       user: userdata,
     });
-
   } catch (error) {
     console.error("Error in signup:", error);
     res.status(500).json({
@@ -54,57 +54,89 @@ export const Signup = async (req, res) => {
 export const Login = async (req, res) => {
   const { email, password, profile } = req.body;
   // console.log(email, password, profile);
-  
+
   try {
-    const isEmail = await UserModel.findOne({email});
-    if(!isEmail){
-        return res.status(400).json({
-            success: false,
-            message: "Please Enter Valid Credentials"
-        })
+    const isEmail = await UserModel.findOne({ email });
+    if (!isEmail) {
+      return res.status(400).json({
+        success: false,
+        message: "Please Enter Valid Credentials",
+      });
     }
 
-    if(isEmail.profile !== profile){
-      console.log("err")
+    if (isEmail.profile !== profile) {
+      console.log("err");
       return res.status(400).json({
-            success: false,
-            message: "Please Enter Valid Credentials"
-      })
+        success: false,
+        message: "Please Enter Valid Credentials",
+      });
     }
 
     const compass = await bcrypt.compare(password, isEmail.password);
 
-    if(!compass){
-        return res.status(400).json({
-            success: false,
-            message: "Please Enter Valid Credentials"
-        })
+    if (!compass) {
+      return res.status(400).json({
+        success: false,
+        message: "Please Enter Valid Credentials",
+      });
     }
-    sentToken(isEmail, res, 201, "Login Successfully")
+    sentToken(isEmail, res, 201, "Login Successfully");
   } catch (error) {
-    console.log(error)
-    
+    console.log(error);
   }
 };
 
 // Logout Controller
 export const Logout = (req, res) => {
-    res.clearCookie("token").status(201).json({
-        success: true,
-        message: "Logout Successfully!"
-    });
+  res.clearCookie("token").status(201).json({
+    success: true,
+    message: "Logout Successfully!",
+  });
 };
 
+//get Students
+export const getStudents = async (req, res) => {
+  try {
+    const fullStackStudents = await UserModel.find({
+      profile: "Student",
+      course: "Full Stack Web Development",
+    });
 
+    const dataScienceStudents = await UserModel.find({
+      profile: "Student",
+      course: "Data Science & Machine Learning with AI",
+    });
+
+    const devOpsStudents = await UserModel.find({
+      profile: "Student",
+      course: "Cloud Computing & DevOps",
+    });
+
+    const embeddedSystemsStudents = await UserModel.find({
+      profile: "Student",
+      course: "Embedded Systems & Robotics with IOT",
+    });
+
+    res.status(200).json({
+      success: true,
+      fullStackStudents,
+      dataScienceStudents,
+      devOpsStudents,
+      embeddedSystemsStudents,
+    });
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
 
 // Get User
 export const getUser = (req, res) => {
-    const user = req.user;
+  const user = req.user;
 
-    res.status(201).json({
-        success: true,
-        message: "User Verify",
-        user
-    })
-
-}
+  res.status(201).json({
+    success: true,
+    message: "User Verify",
+    user,
+  });
+};
