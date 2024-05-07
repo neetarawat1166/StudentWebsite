@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/Logo.png";
 import Profile from "../components/common/Profile";
 import { isAuthenticatedContext } from "../context/userContext.jsx";
+import axios from "axios";
 // import { useAuth } from "../pages/Signup/AuthContext";
 
 const Header = () => {
@@ -23,24 +24,23 @@ const Header = () => {
     setProfileOpen(!profileOpen);
   };
 
-  const handleLogout = () => {
-    // Clear authentication status and token from localStorage
-    // setIsAuthenticated(false);
-    // localStorage.removeItem("isAuthenticated");
-    // localStorage.removeItem("token");
-    setUser("");
-    setisAuthenticat(false);
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/v1/logout", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+          withCredentials: true,
+        });
+        console.log(res)
+      setUser("");
+      setisAuthenticat(false);
+      navigate("/login");
+    } catch (error) {
+      console.log(error)
+    }
   };
 
-  // useEffect(() => {
-  //   // Check if the user is authenticated based on localStorage
-  //   const isAuthenticatedInLocalStorage =
-  //     localStorage.getItem("isAuthenticated");
-  //   if (isAuthenticatedInLocalStorage === "true") {
-  //     setIsAuthenticated(true);
-  //   }
-  // }, [setIsAuthenticated]);
 
   return (
     <nav className="bg-[#eeeeee] px-3 py-3 flex justify-between relative">

@@ -4,6 +4,7 @@ import { UserModel } from '../models/userModels.js';
 
 export const isAuthenticated = async (req, res, next) => {
     const token = req.cookies.token;
+    console.log(token)
     
     if(!token){
         return res.status(404).json({

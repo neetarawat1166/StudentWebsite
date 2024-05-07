@@ -58,6 +58,8 @@ const Login = () => {
         }
       );
 
+      console.log(serverres)
+
       if (serverres.data.statuscode == 201) {
         setUser(serverres.data.user);
         setisAuthenticat(true);
@@ -82,32 +84,19 @@ const Login = () => {
         }, 800); // 800 milliseconds delay
       }
       // console.log(serverres.data.success);
-      // if (
-      //   !error.response.data.success &&
-      //   (error.response.data.message == "Please Enter Valid Details - pass" ||
-      //     error.response.data.message == "Please Enter Valid Details - email"||
-      //     error.response.data.message == "This role not match in this email")
+      if (
+        !error.response.data.success &&
+        (error.response.data.message == "Please Enter Valid Details - pass" ||
+          error.response.data.message == "Please Enter Valid Details - email"||
+          error.response.data.message == "This role not match in this email")
 
-      // ) {
-      //   //if password not correcr
-      //   return toast.error("Please provide valid credentials");
-      // }
+      ) {
+        //if password not correcr
+        return toast.error("Please provide valid credentials");
+      }
     } catch (error) {
       console.error("Error:", error);
-
-      // Handle error response from the backend
-      if (error.response) {
-        const errorMessage = error.response.data.message || "Server Error";
-        toast.error(errorMessage);
-      } else if (error.request) {
-        // Handle request error
-        console.error("Request Error:", error.request);
-        toast.error("Request Error");
-      } else {
-        // Handle other errors
-        console.error("Other Error:", error.message);
-        toast.error("Other Error");
-      }
+      toast.error(error.response.data.message);
     }
   };
 

@@ -6,40 +6,23 @@ import axios from "axios";
 import { isAuthenticatedContext } from "./context/userContext.jsx";
 
 const Layout = () => {
+  const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(isAuthenticatedContext);
+  console.log(user)
+  useEffect(() => {
+    
+    const fetchuser = async () => {
+      const res = await axios.get("http://localhost:5000/api/v1/getuser", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      setUser(res.data.user)
+      setisAuthenticat(true)
+    };
 
-  // useEffect(() => {
-
-  //   const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(isAuthenticatedContext);
-
-  //   const fetchuser = () => {
-  //     const res = axios.get("http://localhost:5000/api/v1/getuser", {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       withCredentials: true,
-  //     });
-
-  //     console.log(res);
-  //   };
-
-  //   fetchuser();
-  // }, []);
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(isAuthenticatedContext);
-  //     try {
-  //       const res = await axios.get("http://localhost:5000/api/v1/getuser", {
-  //         withCredentials: true
-  //       });
-  //       setUser(res.data.user);
-  //       setisAuthenticat(true);
-  //     } catch (error) {
-  //       console.error("Error fetching user:", error);
-  //     }
-  //   };
-
-  //   fetchUserData();
-  // }, []);
+    fetchuser();
+  }, [isAuthenticat]);
 
   return (
     <>

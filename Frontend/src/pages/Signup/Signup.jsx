@@ -61,16 +61,15 @@ const Signup = () => {
         }
       );
     //   const serverres = await res.json();
-      console.log(serverres);   
+      console.log(serverres);
 
       if (serverres.data.success &&
-        serverres.data.message === "Signup successfully") {    ///WHY NOT THROUGH SUCCESSSCODE ?????????????????????????????????????????????????????????????
-        // Show success message
+        serverres.data.message === "Signup successfully") {
+          
         toast.success("Signup Successfully");
-        // Redirect to login page after a slight delay
         setTimeout(() => {
           navigate("/login");
-        }, 500); // 500 milliseconds delay
+        }, 500);
 
         setUserData({
           profile: "",
@@ -81,35 +80,29 @@ const Signup = () => {
           course: "",
         });
       } 
-      
-      // if(
-      //   !serverres.data.success &&
-      //   serverres.data.message === "This Email Allready Exists"
-      // ) {
-      //   // If the email already exists, show an alert message
-      //   return toast.error("This mail already exists");
-      // }
     } catch (error) {
       console.error("Error:", error);
-
-      // Handle error response from the backend
-      if (error.response) {
-        const errorMessage = error.response.data.message || "Server Error";
-        toast.error(errorMessage);
-      } else if (error.request) {
-        // Handle request error
-        console.error("Request Error:", error.request);
-        toast.error("Request Error");
-      } else {
-        // Handle other errors
-        console.error("Other Error:", error.message);
-        toast.error("Other Error");
-      }
+      toast.error(error.response.data.message)
+      
+      
+      
+      
+      
+      // if (error.response) {
+      //   const errorMessage = error.response.data.message || "Server Error";
+      //   toast.error(errorMessage);
+      // } else if (error.request) {
+      //   console.error("Request Error:", error.request);
+      //   toast.error("Request Error");
+      // } else {
+      //   console.error("Other Error:", error.message);
+      //   toast.error("Other Error");
+      // }
     }
-  };
-
-  const [activeButton, setActiveButton] = useState("signup");
-
+    };
+    
+    const [activeButton, setActiveButton] = useState("signup");
+    
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
