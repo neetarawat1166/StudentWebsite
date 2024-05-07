@@ -41,7 +41,7 @@ const AssignmentModal = ({ isOpen, onClose, addAssignment }) => {
             <input type="text" id="assignmentHeading" name="assignmentHeading" className="border border-black rounded-md px-3 py-2 w-full" />
           </div>
           <div className="pb-4">
-            <label htmlFor="assignmentDescription" className="block font-medium">Assignment Description"</label>
+            <label htmlFor="assignmentDescription" className="block font-medium">Assignment Description</label>
             <textarea id="assignmentDescription" name="assignmentDescription" rows="4" className="border border-black rounded-md px-3 py-2 w-full"></textarea>
           </div>
           <div className="pb-6">

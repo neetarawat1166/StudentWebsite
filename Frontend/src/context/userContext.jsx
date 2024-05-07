@@ -11,8 +11,8 @@ export const IsAuthenticatedContextProvider = ({children}) => {
     const [user, setUser] = useState();
 
     return(
-        <isAuthenticatedContext.Provider value={{isAuthenticat, setisAuthenticat, user, setUser}}>
+           <isAuthenticatedContext.Provider value={{isAuthenticat,setisAuthenticat,user,setUser}}>
             {children}
-        </isAuthenticatedContext.Provider>
+           </isAuthenticatedContext.Provider>
     )
 }

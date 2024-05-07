@@ -1,8 +1,10 @@
 import React from 'react'
-
+import CommonSyllabus from '../../components/common/Syllabus'
 const Syllabus = () => {
   return (
-    <div>Syllabus</div>
+    <>
+        <CommonSyllabus/>
+    </>
   )
 }
 
