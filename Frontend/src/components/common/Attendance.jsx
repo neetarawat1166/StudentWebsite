@@ -1,9 +1,14 @@
-import React, {useState} from "react";
+import React, {useState,useContext} from "react";
 import CircleProgress from "../common/AttendanceCard";
 import { IoLogoWebComponent } from "react-icons/io5";
 import { CiEdit } from "react-icons/ci";
+import { isAuthenticatedContext } from "../../context/userContext";
 
 const Attendance = ({ attended, total }) => {
+
+  const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
+    isAuthenticatedContext
+  );
 
   const [newAttendance, setEditedAttendance] = useState('29'); // Initial topic is HTML
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,7 +53,7 @@ const Attendance = ({ attended, total }) => {
                 <h2>/</h2>
                 <h2>{total}</h2>
               </div>
-              <CiEdit className='text-[28px] cursor-pointer' onClick={handleModalOpen} />
+              {user &&   user.profile === 'Teacher' && <CiEdit className='text-[28px] cursor-pointer' onClick={handleModalOpen} />}
             </div>
           </div>
 

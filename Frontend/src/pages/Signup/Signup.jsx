@@ -61,7 +61,7 @@ const Signup = () => {
         }
       );
     //   const serverres = await res.json();
-      console.log(serverres);
+     // console.log(serverres);
 
       if (serverres.data.success &&
         serverres.data.message === "Signup successfully") {

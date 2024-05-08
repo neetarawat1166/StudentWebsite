@@ -133,7 +133,7 @@ export const getStudents = async (req, res) => {
 // Get User
 export const getUser = (req, res) => {
   const user = req.user;
-
+ 
   res.status(201).json({
     success: true,
     message: "User Verify",

@@ -28,8 +28,6 @@ const StudentList = () => {
             <tr>
               <th className="border-2 border-[#65bc7b] px-4 py-2">Serial No.</th>
               <th className="border-2 border-[#65bc7b] px-4 py-2">Name</th>
-              <th className="border-2 border-[#65bc7b] px-4 py-2">Email</th>
-              <th className="border-2 border-[#65bc7b] px-4 py-2">Mobile Number</th>
             </tr>
           </thead>
           <tbody>
@@ -37,8 +35,6 @@ const StudentList = () => {
               <tr className="text-center" key={student._id}>
                 <td className="border-2 border-[#65bc7b] px-4 py-2">{index + 1}</td>
                 <td className="border-2 border-[#65bc7b] px-4 py-2">{student.name}</td>
-                <td className="border-2 border-[#65bc7b] px-4 py-2">{student.email}</td>
-                <td className="border-2 border-[#65bc7b] px-4 py-2">{student.mobile}</td>
               </tr>
             ))}
           </tbody>

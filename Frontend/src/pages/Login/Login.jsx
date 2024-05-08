@@ -13,7 +13,7 @@ const Login = () => {
   const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
     isAuthenticatedContext
   );
-  // console.log(user)
+  //console.log(user)
   // console.log(isAuthenticat)
 
   const [show, setShow] = useState(false);
