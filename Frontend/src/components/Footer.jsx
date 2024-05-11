@@ -9,6 +9,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaPinterestP } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { NavLink } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-[#252525] text-gray-300 pt-4 px-10">
@@ -42,23 +43,23 @@ const Footer = () => {
             <ul className="list-none">
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Web Development</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Web Development</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>UI/UX Design</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">UI/UX Design</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Management</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Management</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Digital Marketing</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Digital Marketing</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Digital Marketing</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Digital Marketing</NavLink>
               </li>
             </ul>
           </div>
@@ -69,23 +70,23 @@ const Footer = () => {
             <ul className="list-none">
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Web Development</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Web Development</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>UI/UX Design</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">UI/UX Design</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Management</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Management</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Digital Marketing</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Digital Marketing</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <span>Digital Marketing</span>
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#65bc7b]">Digital Marketing</NavLink>
               </li>
             </ul>
           </div>
@@ -110,7 +111,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full text-center">
-            <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#65bc7b]'>EduEmpower</span> || All Rights Reserved</p>
+          <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#65bc7b]'>EduEmpower</span> || All Rights Reserved</p>
         </div>
       </div>
     </footer>

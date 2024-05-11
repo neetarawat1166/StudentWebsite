@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AssignmentList from '../../components/section/Assignment/AssignmentList';
 import { FaPlus } from "react-icons/fa";
 import AssignmentModal from '../../components/common/AssignmentModal';
+import { isAuthenticatedContext } from '../../context/userContext';
 
 const Assignment = () => {
+  const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
+    isAuthenticatedContext
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assignments, setAssignments] = useState([
     {
@@ -55,14 +59,14 @@ const Assignment = () => {
           <div>
             <AssignmentList assignments={assignments} />
           </div>
-          <div className="flex justify-center items-center pb-8"> 
+          {user &&   user.profile === 'Teacher' &&   <div className="flex justify-center items-center pb-8"> 
             <div className='bg-[#eeeeee] rounded-full p-6 cursor-pointer' onClick={handleModalOpen}>
               <FaPlus className='text-[30px] text-[#65bc7b]'/>
             </div>
-          </div>
-        </div>
+          </div>}
+        </div> 
       </div>
-      <AssignmentModal isOpen={isModalOpen} onClose={handleModalClose} addAssignment={addAssignment} />
+       <AssignmentModal isOpen={isModalOpen} onClose={handleModalClose} addAssignment={addAssignment} /> 
     </>
   );
 }

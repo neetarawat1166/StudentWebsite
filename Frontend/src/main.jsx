@@ -15,7 +15,10 @@ import Query from './pages/Query/Query.jsx'
 import Feedback from './pages/Feedback/Feedback.jsx'
 // import { AuthProvider } from './pages/Signup/AuthContext.jsx'
 import Resources from '../src/pages/Resources/Resources.jsx'
-import Syllabus from '../src/pages/Syllabus/Syllabus.jsx'
+import EmbeddedSystemSyllabus from '../src/pages/Syllabus/EmbeddedSystemSyllabus.jsx'
+import DataScienceSyllabus from '../src/pages/Syllabus/DataScienceSyllabus.jsx'
+import CloudComputingSyllabus from '../src/pages/Syllabus/CloudComputingSyllabus.jsx'
+import FullStackSyllabus from '../src/pages/Syllabus/FullStackSyllabus.jsx'
 import { IsAuthenticatedContextProvider } from './context/userContext.jsx'
 import StudentList from '../src/teacherPages/StudentList/StudentList.jsx'
 // import ProtectedRoute from '../../Frontend/src/pages/Dashboard/ProtectedRoute.jsx'; // Import the ProtectedRoute component
@@ -31,7 +34,10 @@ const router = createBrowserRouter(
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/assignment' element={<Assignment/>}/>
       <Route path='/resources' element={<Resources/>}/>
-      <Route path='/syllabus' element={<Syllabus/>}/>
+      <Route path='/fullstacksyllabus' element={<FullStackSyllabus/>}/>
+      <Route path='/embeddedsystemssyllabus' element={<EmbeddedSystemSyllabus/>}/>
+      <Route path='/datasciencesyllabus' element={<DataScienceSyllabus/>}/>
+      <Route path='/cloudcomputingsyllabus' element={<CloudComputingSyllabus/>}/>
       <Route path='/studentlist' element={<StudentList/>}/>
       <Route path='/query' element={<Query/>}/>
       <Route path='/feedback' element={<Feedback/>}/>
