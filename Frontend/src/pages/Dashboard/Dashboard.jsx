@@ -7,17 +7,16 @@ import TeacherProfile from "../../components/common/TeacherProfile";
 
 
 const Dashboard = () => {
-
-    const announcements = [
-        {
-            heading: "Heading 1",
-            content: ["Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum."]
-          },
-          {
-            heading: "Heading 2",
-            content: ["Content 4", "Content 5"]
-          }
-      ];
+    // const announcements = [
+    //     {
+    //         heading: "Heading 1",
+    //         content: ["Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum."]
+    //       },
+    //       {
+    //         heading: "Heading 2",
+    //         content: ["Content 4", "Content 5"]
+    //       }
+    //   ];
 
   return (
     <>
@@ -39,7 +38,7 @@ const Dashboard = () => {
               <Attendance total="30"/>
               </div>
               <div className="">
-              <Announcement announcements={announcements}/>  
+              <Announcement/>  
               </div>
             </div>
             <div className="md:col-span-1 pl-4">

@@ -3,6 +3,7 @@ import img1 from '../../images/ttimg1.png';
 import img2 from '../../images/ttimg2.png';
 import img3 from '../../images/ttimg3.png';
 import img4 from '../../images/ttimg4.png';
+import BgImage from '../../images/wavii2.jpg'
 import { CiEdit } from "react-icons/ci";
 import { isAuthenticatedContext } from '../../context/userContext';
 
@@ -25,8 +26,6 @@ const Timetable = (props) => {
   };
 
   const handleSaveTopic = () => {
-    // You can implement the logic to save the edited topic here
-    // For demonstration, let's just update the state with the edited topic
     setIsModalOpen(false);
     props.onTopicEdit(editedTopic);
   };
@@ -35,40 +34,39 @@ const Timetable = (props) => {
     <div className="flex flex-col py-[50px]">
       <h1 className="text-[35px] font-semibold pl-3">{props.TimeTableheading}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 py-2">
-        {/* Card 1 */}
+    
         <div className="bg-[#eeeeee] rounded-lg text-center border-2 border-green-500 p-6">
           <img src={img1} alt="Image 1" className="w-24 h-auto object-cover mx-auto mb-3" />
           <p className="text-lg font-bold uppercase">Time</p>
           <p className="text-base font-semibold">9:00 AM</p>
         </div>
-        {/* Card 2 */}
+       
         <div className="bg-[#eeeeee] rounded-lg text-center border-2 border-green-500 p-6">
           <img src={img2} alt="Image 2" className="w-24 h-auto object-cover mx-auto mb-3" />
           <p className="text-lg font-bold uppercase">Subject</p>
           <p className="text-base font-semibold">Full Stack Web Development</p>
         </div>
-        {/* Card 3 */}
+     
         <div className="bg-[#eeeeee] rounded-lg text-center border-2 border-green-500 p-6">
           <img src={img3} alt="Image 3" className="w-24 h-auto object-cover mx-auto mb-3" />
           <p className="text-lg font-bold uppercase">Floor</p>
           <p className="text-base font-semibold">2nd</p>
         </div>
-        {/* Card 4 */}
+ 
         <div className="bg-[#eeeeee] rounded-lg text-center border-2 border-green-500 p-6">
           <img src={img4} alt="Image 4" className="w-24 h-auto object-cover mx-auto mb-3" />
           <div className='flex justify-center gap-2'>
             <p className="text-lg font-bold uppercase">Topic</p>
             {user &&   user.profile === 'Teacher' && <CiEdit className='text-[25px] cursor-pointer' onClick={handleModalOpen} />}
-          </div>
-          <p className="text-base font-semibold">{editedTopic}</p> {/* Use editedTopic here */}
+          </div> 
+          <p className="text-base font-semibold">{editedTopic}</p> 
         </div>
       </div>
 
-      {/* Modal for editing topic */}
       {isModalOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="bg-white p-4 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">Edit Topic</h2>
+          <div className="bg-white p-4 rounded-lg" style={{ backgroundImage: `url(${BgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+            <h2 className="text-xl font-semibold mb-4 text-[#65bc7b]">New Topic</h2>
             <input
               type="text"
               value={editedTopic}
@@ -76,7 +74,7 @@ const Timetable = (props) => {
               className="border border-gray-300 rounded px-3 py-2 mb-4"
               placeholder="Enter topic name"
             />
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2" onClick={handleSaveTopic}>
                 Save
               </button>
