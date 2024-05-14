@@ -23,7 +23,7 @@ const Dashboard = () => {
     <>
       <section className="pr-4 relative">
         <div className="flex">
-          <div className="hidden lg:block w-[20%] h-auto bg-[#eeeeee]">``
+          <div className="hidden lg:block w-[20%] h-auto bg-[#eeeeee]">
             <div className=" sticky top-0">
               <Profile />
             </div>

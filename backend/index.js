@@ -14,7 +14,7 @@ app.get('/', function(req, res) {
 });
 
 const corsOptions ={
-    origin:'http://localhost:5173', 
+    origin:'http://localhost:5173',
     credentials:true,
     optionSuccessStatus:200
 }
@@ -23,6 +23,8 @@ const corsOptions ={
 app.use(cors(corsOptions));
 app.use(express.json()); // to support json
 app.use(cookieParser())
+
+// Routes
 app.use("/api/v1", router); // Use the router middleware for the /api/v1 route
 
 DBConnect();

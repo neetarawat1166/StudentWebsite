@@ -25,8 +25,6 @@ const Timetable = (props) => {
   };
 
   const handleSaveTopic = () => {
-    // You can implement the logic to save the edited topic here
-    // For demonstration, let's just update the state with the edited topic
     setIsModalOpen(false);
     props.onTopicEdit(editedTopic);
   };
