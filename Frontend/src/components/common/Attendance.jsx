@@ -3,6 +3,7 @@ import CircleProgress from "../common/AttendanceCard";
 import { IoLogoWebComponent } from "react-icons/io5";
 import { CiEdit } from "react-icons/ci";
 import { isAuthenticatedContext } from "../../context/userContext";
+import BgImage from '../../images/wavii2.jpg'
 
 const Attendance = ({ attended, total }) => {
 
@@ -72,8 +73,8 @@ const Attendance = ({ attended, total }) => {
       {/* Modal for editing topic */}
       {isModalOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="bg-white p-4 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">Edit Attendance</h2>
+          <div className="bg-white p-4 rounded-lg" style={{ backgroundImage: `url(${BgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+            <h2 className="text-xl font-semibold mb-4 text-[#65bc7b]">Edit Attendance</h2>
             <input
               type="text"
               value={newAttendance}
@@ -81,7 +82,7 @@ const Attendance = ({ attended, total }) => {
               className="border border-gray-300 rounded px-3 py-2 mb-4"
               placeholder="Enter new Attendance"
             />
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2" onClick={handleSaveTopic}>
                 Save
               </button>

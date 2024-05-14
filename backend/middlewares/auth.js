@@ -16,7 +16,7 @@ export const isAuthenticated = async (req, res, next) => {
     const decode = JWT.verify(token, process.env.JWT_SECURE)
 
     const user = await UserModel.findById(decode.id);
-    console.log(user)
+    //console.log(user)
     req.user = user;
     next()
 }

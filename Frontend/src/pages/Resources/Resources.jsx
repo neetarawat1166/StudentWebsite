@@ -1,33 +1,39 @@
-import React, { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import React, { useState, useRef } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import img from '../../images/nodata.png'
 
 const Resources = () => {
   const [topics, setTopics] = useState([]);
-  const [newTopic, setNewTopic] = useState('');
-  const [googleDriveLink, setGoogleDriveLink] = useState('');
+  const [newTopic, setNewTopic] = useState("");
+  const [showNoResourcesText, setShowNoResourcesText] = useState(true); // Track if the text should be shown
+  const fileInputRef = useRef(null);
 
   const handleTopicAdd = () => {
-    if (newTopic.trim() === '') {
-      toast.error('Please enter a topic name');
+    if (newTopic.trim() === "") {
+      toast.error("Please enter a topic name");
       return;
     }
     setTopics([...topics, { name: newTopic, resources: [] }]);
-    setNewTopic('');
+    setNewTopic("");
+    setShowNoResourcesText(false); // Hide the text when the first topic is added
   };
 
   const handleResourceAdd = (index) => {
-    if (googleDriveLink.trim() === '') {
-      toast.error('Please enter a Google Drive link');
+    const fileInput = fileInputRef.current;
+    if (!fileInput || !fileInput.files[0]) {
+      toast.error("Please upload a file");
       return;
     }
+    const file = fileInput.files[0];
     const updatedTopics = [...topics];
     const resource = {
-      name: 'Resource', // You can customize this name if needed
-      url: googleDriveLink,
+      name: file.name,
+      file: URL.createObjectURL(file),
     };
     updatedTopics[index].resources.push(resource);
     setTopics(updatedTopics);
-    setGoogleDriveLink('');
+    // Clear the file input
+    fileInput.value = "";
   };
 
   return (
@@ -39,21 +45,31 @@ const Resources = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Resources:</h3>
-            <ul>
-              {topic.resources.map((resource, idx) => (
-                <li key={idx} className="mb-2">
-                  <a href={resource.url} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">{resource.name}</a>
-                </li>
-              ))}
-            </ul>
+            {topic.resources.length > 0 ? (
+              <ul>
+                {topic.resources.map((resource, idx) => (
+                  <li key={idx} className="mb-2">
+                    <a
+                      href={resource.file}
+                      className="text-blue-500 hover:underline"
+                      download
+                    >
+                      {resource.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-red-600">
+                No resources available for this topic...
+              </p>
+            )}
           </div>
           <div className="flex justify-center items-center mt-4">
             <input
-              type="text"
-              value={googleDriveLink}
-              onChange={(e) => setGoogleDriveLink(e.target.value)}
+              type="file"
+              ref={fileInputRef}
               className="border border-gray-400 p-2 mr-2"
-              placeholder="Enter Google Drive Link"
             />
             <button
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
@@ -65,6 +81,7 @@ const Resources = () => {
           <hr className="my-8" />
         </div>
       ))}
+
       <div className="flex items-center justify-center">
         <div className="mb-4 flex items-center justify-center">
           <input
@@ -82,10 +99,15 @@ const Resources = () => {
           </button>
         </div>
       </div>
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-      />
+      {showNoResourcesText && topics.length === 0 && (
+        <>
+         <img src={img} alt="" className="mx-auto h-[250px]"/>
+         <p className="text-3xl text-center mb-4 text-red-600">No resources available...</p>
+        
+        </>
+       
+      )}
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
