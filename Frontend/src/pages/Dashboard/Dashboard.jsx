@@ -11,7 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
 
-  const {isAuthenticat} = useContext(isAuthenticatedContext)
+  const {isAuthenticat, setUser, user, setisAuthenticat} = useContext(isAuthenticatedContext)
 
   return (
     <>
