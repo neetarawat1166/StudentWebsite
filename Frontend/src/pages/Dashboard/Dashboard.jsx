@@ -11,7 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
 
-  const {isAuthenticat} = useContext(isAuthenticatedContext)
+  const {isAuthenticat, setUser, user, setisAuthenticat} = useContext(isAuthenticatedContext)
   // const isAuthenticat = true
   // console.log(isAuthenticat)
   const navigate = useNavigate()
@@ -38,14 +38,21 @@ const Dashboard = () => {
                 <Timetable TimeTableheading={"Your TimeTable"}/>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">
+            {user && user.profile==='Teacher' &&  <div className="pl-4">
+              <div className="">
+              <Announcement/>  
+              </div>
+            </div>}
+
+            {user && user.profile==='Student' &&  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">
               <div className=" ">
-              <Attendance total="30"/>
+              <Attendance total="30"/> 
               </div>
               <div className="">
               <Announcement/>  
               </div>
-            </div>
+            </div>}
+
             <div className="md:col-span-1 pl-4">
                 <TeacherProfile/>   
             </div>
