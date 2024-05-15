@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef} from "react";
 import toast, { Toaster } from "react-hot-toast";
 import img from '../../images/nodata.png'
 
 const Resources = () => {
+
   const [topics, setTopics] = useState([]);
   const [newTopic, setNewTopic] = useState("");
   const [showNoResourcesText, setShowNoResourcesText] = useState(true); // Track if the text should be shown

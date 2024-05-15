@@ -1,7 +1,8 @@
-import React from 'react'
+import React  from 'react'
 import Syllabus from '../../components/common/Syllabus';
 
 const CloudComputingSyllabus = () => {
+
   // Define topics here
   const topics = [
     {

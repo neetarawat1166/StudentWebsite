@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import AssignmentList from '../../components/section/Assignment/AssignmentList';
 import { FaPlus } from "react-icons/fa";
 import AssignmentModal from '../../components/common/AssignmentModal';
@@ -8,6 +8,7 @@ const Assignment = () => {
   const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
     isAuthenticatedContext
   );
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assignments, setAssignments] = useState([
     {

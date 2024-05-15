@@ -6,19 +6,25 @@ import axios from "axios";
 import { isAuthenticatedContext } from "./context/userContext.jsx";
 
 const Layout = () => {
-  const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(isAuthenticatedContext);
-  console.log(user)
+  const { isAuthenticat, setUser, user, setisAuthenticat, setLoading } = useContext(isAuthenticatedContext);
+  // console.log(user)
   useEffect(() => {
     
     const fetchuser = async () => {
-      const res = await axios.get("http://localhost:5000/api/v1/getuser", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      setUser(res.data.user)
-      setisAuthenticat(true)
+      try {
+        const res = await axios.get("http://localhost:5000/api/v1/getuser", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
+        setUser(res.data.user);
+        setisAuthenticat(true);
+      } catch (error) {
+        setisAuthenticat(false);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchuser();

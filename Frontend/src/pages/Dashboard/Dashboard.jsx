@@ -12,16 +12,6 @@ import toast, { Toaster } from "react-hot-toast";
 const Dashboard = () => {
 
   const {isAuthenticat} = useContext(isAuthenticatedContext)
-  // const isAuthenticat = true
-  // console.log(isAuthenticat)
-  const navigate = useNavigate()
-
-    useEffect(()=>{
-      if(!isAuthenticat){
-        toast.error("You are not an authorized user")
-        navigate("/")  
-      }
-    }, [isAuthenticat])
 
   return (
     <>
