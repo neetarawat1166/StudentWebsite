@@ -21,6 +21,7 @@ import FullStackSyllabus from '../src/pages/Syllabus/FullStackSyllabus.jsx'
 import { IsAuthenticatedContextProvider } from './context/userContext.jsx'
 import StudentList from '../src/teacherPages/StudentList/StudentList.jsx'
 import { isAuthenticatedContext } from "../../Frontend/src/context/userContext.jsx";
+import ProtectedRoute from './context/ProtectedRoute.jsx'
 
 
 // const { isAuthenticat } = useContext(isAuthenticatedContext);
@@ -34,20 +35,27 @@ const router = createBrowserRouter(
       <Route path='/contact' element={<Contact/>}/>
       <Route  path="/signup" element={<Signup/>} />
       <Route path='/login' element={<Login/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
-      <Route path='/assignment' element={<Assignment/>}/>
-      <Route path='/resources' element={<Resources/>}/>
-      <Route path='/fullstacksyllabus' element={<FullStackSyllabus/>}/>
-      <Route path='/embeddedsystemssyllabus' element={<EmbeddedSystemSyllabus/>}/>
-      <Route path='/datasciencesyllabus' element={<DataScienceSyllabus/>}/>
-      <Route path='/cloudcomputingsyllabus' element={<CloudComputingSyllabus/>}/>
-      <Route path='/studentlist' element={<StudentList/>}/>
+      {/* <Route path='/dashboard' element={<Dashboard/>}/> */}
+      <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
+      {/* <Route path='/assignment' element={<Assignment/>}/> */}
+      <Route path='/assignment' element={<ProtectedRoute element={<Assignment/>} />} />
+      {/* <Route path='/resources' element={<Resources/>}/> */}
+      <Route path='/resources' element={<ProtectedRoute element={<Resources/>} />} />
+      {/* <Route path='/fullstacksyllabus' element={<FullStackSyllabus/>}/> */}
+      <Route path='/fullstacksyllabus' element={<ProtectedRoute element={<FullStackSyllabus />} />} />
+      {/* <Route path='/embeddedsystemssyllabus' element={<EmbeddedSystemSyllabus/>}/> */}
+      <Route path='/embeddedsystemssyllabus' element={<ProtectedRoute element={<EmbeddedSystemSyllabus />} />} />
+      {/* <Route path='/datasciencesyllabus' element={<DataScienceSyllabus/>}/> */}
+      <Route path='/datasciencesyllabus' element={<ProtectedRoute element={<DataScienceSyllabus/>} />} />
+      {/* <Route path='/cloudcomputingsyllabus' element={<CloudComputingSyllabus/>}/> */}
+      <Route path='/cloudcomputingsyllabus' element={<ProtectedRoute element={<CloudComputingSyllabus/>} />} />
+      {/* <Route path='/studentlist' element={<StudentList/>}/> */}
+      <Route path='/studentlist' element={<ProtectedRoute element={<StudentList/>} />} />
       <Route path='/query' element={<Query/>}/>
       <Route path='/feedback' element={<Feedback/>}/>
     </Route>
   )
 );
-
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

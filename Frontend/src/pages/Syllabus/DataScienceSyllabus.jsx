@@ -2,6 +2,8 @@ import React from 'react'
 import Syllabus from '../../components/common/Syllabus';
 
 const DataScienceSyllabus = () => {
+
+
   // Define topics here
   const topics = [
     {

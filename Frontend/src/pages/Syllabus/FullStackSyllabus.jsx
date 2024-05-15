@@ -1,7 +1,9 @@
-import React from 'react';
+import React  from 'react';
 import Syllabus from '../../components/common/Syllabus'; // Importing the Syllabus component
 
+
 const FullStackSyllabus = () => {
+
   // Define topics here
   const topics = [
     {
