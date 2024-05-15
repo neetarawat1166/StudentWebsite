@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Profile from "../../components/common/Profile";
 import Timetable from "../../components/common/Timetable";
 import Attendance from "../../components/common/Attendance";
 import Announcement from "../../components/common/Announcement";
 import TeacherProfile from "../../components/common/TeacherProfile";
+import { isAuthenticatedContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const Dashboard = () => {
-    // const announcements = [
-    //     {
-    //         heading: "Heading 1",
-    //         content: ["Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum.","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, cum."]
-    //       },
-    //       {
-    //         heading: "Heading 2",
-    //         content: ["Content 4", "Content 5"]
-    //       }
-    //   ];
+
+  const {isAuthenticat} = useContext(isAuthenticatedContext)
+  // const isAuthenticat = true
+  // console.log(isAuthenticat)
+  const navigate = useNavigate()
+
+    useEffect(()=>{
+      if(!isAuthenticat){
+        toast.error("You are not an authorized user")
+        navigate("/")  
+      }
+    }, [isAuthenticat])
 
   return (
     <>
-      <section className="pr-4 relative">
+      {isAuthenticat ? <section className="pr-4 relative">
         <div className="flex">
           <div className="hidden lg:block w-[20%] h-auto bg-[#eeeeee]">
             <div className=" sticky top-0">
@@ -46,7 +51,8 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> : 'User Not Authorized'}
+      <Toaster/>
     </>
   );
 };

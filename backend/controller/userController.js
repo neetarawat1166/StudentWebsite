@@ -53,7 +53,7 @@ export const Signup = async (req, res) => {
 // Login controller
 export const Login = async (req, res) => {
   const { email, password, profile } = req.body;
-  // console.log(email, password, profile);
+  console.log(email, password, profile);
 
   try {
     const isEmail = await UserModel.findOne({ email });
@@ -95,34 +95,19 @@ export const Logout = (req, res) => {
 };
 
 //get Students
-export const getStudents = async (req, res) => {
+export const Students = async (req, res) => {
   try {
-    const fullStackStudents = await UserModel.find({
-      profile: "Student",
-      course: "Full Stack Web Development",
-    });
+    const { course } = req.body;
 
-    const dataScienceStudents = await UserModel.find({
-      profile: "Student",
-      course: "Data Science & Machine Learning with AI",
-    });
-
-    const devOpsStudents = await UserModel.find({
-      profile: "Student",
-      course: "Cloud Computing & DevOps",
-    });
-
-    const embeddedSystemsStudents = await UserModel.find({
-      profile: "Student",
-      course: "Embedded Systems & Robotics with IOT",
-    });
+    // Query with both conditions
+    const students = await UserModel.find({$and: [{
+      course: course,
+      profile: "Student"
+    }]});
 
     res.status(200).json({
       success: true,
-      fullStackStudents,
-      dataScienceStudents,
-      devOpsStudents,
-      embeddedSystemsStudents,
+      students, // Assuming you want to send the students data back
     });
   } catch (error) {
     console.error("Error fetching students:", error);
