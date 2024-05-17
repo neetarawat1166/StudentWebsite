@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import img from '../../images/Akash_sir.png';
 import axios from 'axios';
+import { CgProfile } from "react-icons/cg";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -24,14 +25,15 @@ const Profile = () => {
     <div className='py-[50px] h-full'>
       <div className='grid grid-cols-2 py-2'>
         {/* First Column: Image */}
-        <div className='mx-auto rounded-full border-4 border-[#65bc7b] p-[1px]'>
-          <img src={img} alt="Profile" className="w-[70px] h-auto rounded-full border-2 border-[#65bc7b]" />
+        <div className='mx-auto p-[1px]'>
+          {/* <img src={img} alt="Profile" className="w-[70px] h-auto rounded-full border-2 border-[#65bc7b]" /> */}
+          <CgProfile className="w-[70px] h-auto rounded-full border-2 border-[#252525] text-[#65bc7b]"/>
         </div>
         {/* Second Column: Text */}
         <div className='flex flex-col justify-center'>
           {userData && (
             <>
-              <p className=''>Hey, <span className='font-bold'>{userData.name}</span></p>
+              <p className='text-[20px]'>Hey, <span className='font-bold'>{userData.name}</span></p>
             </>
           )}
         </div>

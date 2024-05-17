@@ -83,9 +83,11 @@ const Header = () => {
                   {user && user.course === 'Data Science & Machine Learning with AI' && <NavLink to="/datasciencesyllabus">Syllabus</NavLink>}
                   {user && user.course === 'Full Stack Web Development' && <NavLink to="/fullstacksyllabus">Syllabus</NavLink>}
                 </li>
-                <li className="text-lg relative py-4">
+                {
+                  user && user.profile === "Teacher" ? (<li className="text-lg relative py-4">
                   <NavLink to="/studentlist">Student-List</NavLink>
-                </li>
+                </li>) : ""
+                }
                 {/* <li className="text-lg relative py-4">
                   <NavLink to="/syllabus-1">Syllabus-1</NavLink>
                 </li> */}

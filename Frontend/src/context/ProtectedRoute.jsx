@@ -3,10 +3,14 @@ import { Navigate } from 'react-router-dom';
 import { isAuthenticatedContext } from './userContext';
 
 const ProtectedRoute = ({ element }) => {
-  const { isAuthenticat, isLoading } = useContext(isAuthenticatedContext);
+  const { isAuthenticat, isLoading, studentcheck } = useContext(isAuthenticatedContext);
 
   if(isLoading){
     return <div>Loading...</div>
+  }
+  console.log(studentcheck)
+  if(studentcheck){
+    return <Navigate to="/" replace />;
   }
 
   if (!isAuthenticat) {

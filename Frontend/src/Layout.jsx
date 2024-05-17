@@ -6,7 +6,7 @@ import axios from "axios";
 import { isAuthenticatedContext } from "./context/userContext.jsx";
 
 const Layout = () => {
-  const { isAuthenticat, setUser, user, setisAuthenticat, setLoading } = useContext(isAuthenticatedContext);
+  const { isAuthenticat, setUser, user, setisAuthenticat, setLoading, setStudentcheck } = useContext(isAuthenticatedContext);
   // console.log(user)
   useEffect(() => {
     
@@ -20,6 +20,9 @@ const Layout = () => {
         });
         setUser(res.data.user);
         setisAuthenticat(true);
+        if(res.data.user.profile === "Teacher"){
+          setStudentcheck(false)
+        }
       } catch (error) {
         setisAuthenticat(false);
       } finally {

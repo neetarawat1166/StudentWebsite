@@ -16,7 +16,11 @@ const userSchema = new mongoose.Schema({
     assignment: {
         type: Array,
         required: true
+    },
+    days:{
+        type: Number,
+        required: true
     }
 });
 
-export const UserModel = mongoose.model("dataUpdate", userSchema);
+export const FullStackModel = mongoose.model("FullStackDataUpdate", userSchema);
