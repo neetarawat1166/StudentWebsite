@@ -1,29 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { isAuthenticatedContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 const StudentList = () => {
-  const [students, setStudents] = useState([]);
+  // const [students, setStudents] = useState();
   const { user } = useContext(isAuthenticatedContext);
+  let navigate = useNavigate()
+  useEffect(() =>{
+    if(user.profile == "Student"){
+      navigate("/");
+    }
+  },[user])
 
-  useEffect(() => {
-    const fetchStudents = async () => {
-      if (user && user.profile === "Teacher") {
-        let course = user.course;
-        if (course) {
-          try {
-            const response = await axios.post("http://localhost:5000/api/v1/students", { course });
-            //console.log(response)
-            setStudents(response.data.students); 
-          } catch (error) {
-            console.error("Error fetching students:", error);
-          }
-        }
-      }
-    };
-
-    fetchStudents();
-  }, [user]);
+  const {studentList}  =useContext(isAuthenticatedContext)
+  // console.log(studentList)
+  // setStudents(studentList)
+  // console.log(students)
 
   if (!user) {
     return <div>Loading...</div>;
@@ -44,7 +37,7 @@ const StudentList = () => {
             </tr>
           </thead>
           <tbody>
-            {students.map((student, index) => (
+            {studentList && studentList.map((student, index) => (
               <tr className="text-center" key={student._id}>
                 <td className="border-2 border-[#65bc7b] px-4 py-2">{index + 1}</td>
                 <td className="border-2 border-[#65bc7b] px-4 py-2">{student.name}</td>

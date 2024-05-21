@@ -7,7 +7,9 @@ export const isAuthenticatedContext = createContext({
     isLoading: true,
     setLoading: () => {},
     studentcheck: true,
-    setStudentcheck: () => {}
+    setStudentcheck: () => {},
+    setUpdateData: () => {},
+    setStudentList:  () => {}
 })
 
 export const IsAuthenticatedContextProvider = ({children}) => {
@@ -16,10 +18,11 @@ export const IsAuthenticatedContextProvider = ({children}) => {
     const [user, setUser] = useState();
     const [isLoading, setLoading] = useState(true)
     const [studentcheck, setStudentcheck] = useState(true)
-
+    const [updateData, setUpdateData] = useState();
+    const [studentList, setStudentList] = useState();
 
     return(
-           <isAuthenticatedContext.Provider value={{isAuthenticat,setisAuthenticat,user,setUser, isLoading, setLoading, studentcheck, setStudentcheck}}>
+           <isAuthenticatedContext.Provider value={{isAuthenticat,setisAuthenticat,user,setUser, isLoading, setLoading, studentcheck, setStudentcheck, updateData, setUpdateData, studentList, setStudentList}}>
             {children}
            </isAuthenticatedContext.Provider>
     )

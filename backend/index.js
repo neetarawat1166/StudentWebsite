@@ -2,7 +2,8 @@
 import express from 'express';
 import { DBConnect } from './db/database.js';
 import dotenv from 'dotenv';
-import router from './routes/userRouter.js';
+import userRouter from './routes/userRouter.js';
+import TeacherRouter from './routes/TeacherUpdateRouter.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -25,7 +26,8 @@ app.use(express.json()); // to support json
 app.use(cookieParser())
 
 // Routes
-app.use("/api/v1", router); // Use the router middleware for the /api/v1 route
+app.use("/api/v1", userRouter); // Use the router middleware for the /api/v1 route
+app.use("/api/v1", TeacherRouter); // Use the router middleware for the /api/v1 route
 
 DBConnect();
 

@@ -6,13 +6,23 @@ import img4 from '../../images/ttimg4.png';
 import BgImage from '../../images/wavii2.jpg'
 import { CiEdit } from "react-icons/ci";
 import { isAuthenticatedContext } from '../../context/userContext';
+import axios from 'axios';
 
 const Timetable = (props) => {
 
-  const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
+  const { isAuthenticat, setUser, user, setisAuthenticat, updateData } = useContext(
     isAuthenticatedContext
   );
-  console.log("hiiii",user)
+
+  const [datasend, setDataSend] = useState({
+    topic: "India",
+    attendance: "india",
+    announcement: ["india"],
+    assignment: ["india"],
+    days: 12
+  })
+
+  console.log("hiiii user",user)
   // console.log("hiiii",user.profile)
   const [editedTopic, setEditedTopic] = useState('HTML'); // Initial topic is HTML
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,9 +35,13 @@ const Timetable = (props) => {
     setIsModalOpen(false);
   };
 
-  const handleSaveTopic = () => {
-    setIsModalOpen(false);
-    props.onTopicEdit(editedTopic);
+  const handleSaveTopic = async () => {
+    // setIsModalOpen(false);
+    // props.onTopicEdit(editedTopic);
+    console.log(isAuthenticat)
+    let meclear  = await axios.put("http://localhost:5000/api/v1/updateData", datasend);
+    console.log("Heyaaa",meclear)
+
   };
 
   return (

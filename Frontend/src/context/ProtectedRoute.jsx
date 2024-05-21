@@ -9,9 +9,11 @@ const ProtectedRoute = ({ element }) => {
     return <div>Loading...</div>
   }
   console.log(studentcheck)
-  if(studentcheck){
-    return <Navigate to="/" replace />;
-  }
+
+
+  // if(studentcheck){
+  //   return <Navigate to="/" replace />;
+  // }
 
   if (!isAuthenticat) {
     return <Navigate to="/" replace />;

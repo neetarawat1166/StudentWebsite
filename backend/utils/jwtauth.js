@@ -8,7 +8,7 @@ const getJwt = (user) => {
         profile: profile
     };
     const tokenStudent = JWT.sign(userStudent, process.env.JWT_SECURE, { expiresIn: '7D' });
-    console.log(tokenStudent)
+    console.log("hii jwtauth",tokenStudent)
     
     return tokenStudent;
 

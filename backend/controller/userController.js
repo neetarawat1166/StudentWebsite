@@ -3,6 +3,10 @@ import bcrypt from "bcrypt";
 import JWT from "jsonwebtoken";
 import router from "../routes/userRouter.js";
 import { sentToken } from "../utils/jwtauth.js";
+import { FullStackModel } from "../models/FullStackUpdateModel.js";
+import { DataScienceModel } from "../models/DataScienceUpdateModel.js";
+import {IOTModel} from '../models/IOTUpdateModel.js'
+import { DevOpsModel } from "../models/DevOpsUpdateModel.js";
 
 const JWT_SECURE = "thisisourjsonwebtokenandimfromindia";
 
@@ -104,10 +108,31 @@ export const Students = async (req, res) => {
       course: course,
       profile: "Student"
     }]});
+    console.log(course)
+    
+    let UpdateData = "";
+
+    if(course == "Data Science & Machine Learning with AI"){
+      UpdateData = await DataScienceModel.find();
+      console.log(UpdateData);
+    }
+    if(course == "Full Stack Web Development"){
+      UpdateData = await FullStackModel.find();
+      console.log(UpdateData)
+    }
+    if(course == "Embedded Systems & Robotics with IOT"){
+      UpdateData = await IOTModel.find();
+      console.log(UpdateData)
+    }
+    if(course == "Cloud Computing & DevOps"){
+      UpdateData = await DevOpsModel.find();
+      console.log(UpdateData)
+    }
 
     res.status(200).json({
       success: true,
-      students, // Assuming you want to send the students data back
+      students,
+      UpdateData
     });
   } catch (error) {
     console.error("Error fetching students:", error);

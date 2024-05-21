@@ -6,7 +6,7 @@ import axios from "axios";
 import { isAuthenticatedContext } from "./context/userContext.jsx";
 
 const Layout = () => {
-  const { isAuthenticat, setUser, user, setisAuthenticat, setLoading, setStudentcheck } = useContext(isAuthenticatedContext);
+  const { isAuthenticat, setUser, user, setisAuthenticat, setLoading, setStudentcheck, setStudentList, setUpdateData } = useContext(isAuthenticatedContext);
   // console.log(user)
   useEffect(() => {
     
@@ -29,8 +29,50 @@ const Layout = () => {
         setLoading(false);
       }
     };
-
     fetchuser();
+
+    const fetchStudents = async () => {
+      if (user && user.profile === "Teacher") {
+        let course = user.course;
+        if (course) {
+          try {
+            const response = await axios.post("http://localhost:5000/api/v1/students", { course });
+            console.log("india", response)
+            setStudentList(response.data.students); 
+            setUpdateData(response.data.UpdateData)
+          } catch (error) {
+            console.error("Error fetching students:", error);
+          }
+        }
+      }
+    };
+
+    fetchStudents();
+    
+    // if(user.profile == 'Teacher'){
+    //   const UpdateData = async () => {
+    //     try {
+    //       const res = await axios.post("http://localhost:5000/api/v1/getuser", {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         withCredentials: true,
+    //       });
+    //       setUser(res.data.user);
+    //       setisAuthenticat(true);
+    //       if(res.data.user.profile === "Teacher"){
+    //         setStudentcheck(false)
+    //       }
+    //     } catch (error) {
+    //       setisAuthenticat(false);
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };
+  
+    //   UpdateData();
+    // }
+
   }, [isAuthenticat]);
 
   return (

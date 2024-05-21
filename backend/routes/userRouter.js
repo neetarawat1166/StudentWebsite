@@ -14,6 +14,9 @@ router.get("/logout", isAuthenticated , Logout)
 //students details
 router.post("/students", Students);
 
+router.post("/dataadd", Students);
+
+
 //getstudents
 
 

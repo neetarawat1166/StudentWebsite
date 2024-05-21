@@ -4,22 +4,27 @@ const userSchema = new mongoose.Schema({
     topic: {
         type: String,
         required: true,
+        default : "Welcome DevOps"
     },
     attendance: {
         type: String,
-        required: true
+        required: true,
+        default : "Welcome DevOps"
     },
     announcement: {
         type: Array,
-        required: true
+        required: true,
+        default : "Welcome DevOps"
     },
     assignment: {
         type: Array,
-        required: true
+        required: true,
+        default : "Welcome DevOps"
     },
     days:{
         type: Number,
-        required: true
+        required: true,
+        default : 0
     }
 });
 
