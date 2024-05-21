@@ -76,7 +76,7 @@ const Header = () => {
                 </li>
                 {/* <li className="text-lg relative py-4">
                   <NavLink to="/resources-1">Resources-1</NavLink>
-                </li> */}
+                </li> */} 
                 <li className="text-lg relative py-4">
                   {user && user.course === 'Embedded Systems & Robotics with IOT' && <NavLink to="/embeddedsystemssyllabus">Syllabus</NavLink>}
                   {user && user.course === 'Cloud Computing & DevOps' && <NavLink to="/cloudcomputingsyllabus">Syllabus</NavLink>}
