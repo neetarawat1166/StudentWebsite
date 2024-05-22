@@ -6,9 +6,8 @@ import { IOTModel } from "../models/IOTUpdateModel.js";
 // Update Post
 export const TeacherUpdateData = async (req, res) => {
   const user = req.user;
-  // console.log(req.body)
-  // console.log(user)
-
+  //console.log("user heyaa",user)
+ 
   if (user.course == "Data Science & Machine Learning with AI") {
     try {
       // Find the post by ID
@@ -17,7 +16,7 @@ export const TeacherUpdateData = async (req, res) => {
       if (!UpdateModel) {
         return res.status(404).json({
           success: false,
-          message: "Post not found.",
+          message: "Data not found.",
         });
       }
 
@@ -31,12 +30,12 @@ export const TeacherUpdateData = async (req, res) => {
 
       res.status(200).json({
         success: true,
-        message: "Post Updated",
+        message: "Data Updated",
         UpdateModel,
       });
     } catch (error) {
       // Handle unexpected errors
-      console.error("Error deleting post:", error);
+      console.error("Unable to update data:", error);
       res.status(500).json({
         success: false,
         message: "Internal server error.",
@@ -52,7 +51,7 @@ export const TeacherUpdateData = async (req, res) => {
       if (!UpdateModel) {
         return res.status(404).json({
           success: false,
-          message: "Post not found.",
+          message: "Data not found.",
         });
       }
 
@@ -66,12 +65,12 @@ export const TeacherUpdateData = async (req, res) => {
 
       res.status(200).json({
         success: true,
-        message: "Post Updated",
+        message: "Data Updated",
         UpdateModel,
       });
     } catch (error) {
       // Handle unexpected errors
-      console.error("Error deleting post:", error);
+      console.error("Unable to update Data", error);
       res.status(500).json({
         success: false,
         message: "Internal server error.",
@@ -87,7 +86,7 @@ export const TeacherUpdateData = async (req, res) => {
       if (!UpdateModel) {
         return res.status(404).json({
           success: false,
-          message: "Post not found.",
+          message: "Data not found.",
         });
       }
 
@@ -101,12 +100,12 @@ export const TeacherUpdateData = async (req, res) => {
 
       res.status(200).json({
         success: true,
-        message: "Post Updated",
+        message: "Data Updated",
         UpdateModel,
       });
     } catch (error) {
       // Handle unexpected errors
-      console.error("Error deleting post:", error);
+      console.error("Unable to update Data", error);
       res.status(500).json({
         success: false,
         message: "Internal server error.",
@@ -123,7 +122,7 @@ export const TeacherUpdateData = async (req, res) => {
       if (!UpdateModel) {
         return res.status(404).json({
           success: false,
-          message: "Post not found.",
+          message: "Data not found.",
         });
       }
 
@@ -137,12 +136,12 @@ export const TeacherUpdateData = async (req, res) => {
 
       res.status(200).json({
         success: true,
-        message: "Post Updated",
+        message: "Data Updated",
         UpdateModel,
       });
     } catch (error) {
       // Handle unexpected errors
-      console.error("Error deleting post:", error);
+      console.error("Unable to update data", error);
       res.status(500).json({
         success: false,
         message: "Internal server error.",

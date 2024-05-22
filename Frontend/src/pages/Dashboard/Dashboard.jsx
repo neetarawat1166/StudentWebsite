@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const {isAuthenticat, setUser, user, setisAuthenticat, updateData} = useContext(isAuthenticatedContext)
 
-  console.log(updateData)
+  //console.log(updateData)
 
   return (
     <>

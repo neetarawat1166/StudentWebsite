@@ -6,11 +6,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         default : "Welcome IOT"
     },
-    attendance: {
-        type: String,
-        required: true,
-        default : "Welcome IOT"
-    },
     announcement: {
         type: Array,
         required: true,

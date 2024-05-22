@@ -15,9 +15,9 @@ app.get('/', function(req, res) {
 });
 
 const corsOptions ={
-    origin:'http://localhost:5173',
-    credentials:true,
-    optionSuccessStatus:200
+    origin: ["http://localhost:5173"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true
 }
 
 // Middlewares

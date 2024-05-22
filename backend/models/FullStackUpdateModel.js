@@ -6,11 +6,6 @@ const userSchema = new mongoose.Schema({
         default : "Welcome Full Stack",
         required: true
     },
-    attendance: {
-        type: String,
-        required: true,
-        default : "Welcome Full Stack"
-    },
     announcement: {
         type: Array,
         required: true,

@@ -6,11 +6,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         default : "Welcome Data Science"
     },
-    attendance: {
-        type: String,
-        required: true,
-        default : "Welcome Data Science"
-    },
     announcement: {
         type: Array,
         required: true,

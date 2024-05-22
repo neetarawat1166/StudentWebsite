@@ -169,7 +169,11 @@ import { isAuthenticatedContext } from "../../context/userContext";
 
 const Announcement = () => {
 
-  const { user } = useContext(isAuthenticatedContext);
+  const { isAuthenticat, setUser, user, setisAuthenticat,setUpdateData, updateData } = useContext(
+    isAuthenticatedContext
+  );
+  console.log("hiii update data announcement",updateData)
+
   const [announcements, setAnnouncements] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newHeading, setNewHeading] = useState("");

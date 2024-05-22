@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
     course: {
         type: String,
         required: true
+    },
+    attendance :{
+        type:Number,
+        required : true,
+        default: 0
     }
 });
 

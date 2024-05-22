@@ -8,7 +8,7 @@ const ProtectedRoute = ({ element }) => {
   if(isLoading){
     return <div>Loading...</div>
   }
-  console.log(studentcheck)
+  // console.log(studentcheck)
 
 
   // if(studentcheck){

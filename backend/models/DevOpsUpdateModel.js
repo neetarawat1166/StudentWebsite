@@ -6,11 +6,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         default : "Welcome DevOps"
     },
-    attendance: {
-        type: String,
-        required: true,
-        default : "Welcome DevOps"
-    },
     announcement: {
         type: Array,
         required: true,

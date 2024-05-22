@@ -2,13 +2,13 @@ import JWT from 'jsonwebtoken'
 
 const getJwt = (user) => {
     const {_id, profile} = user;
-    console.log(_id)
+    // console.log(_id)
     const userStudent = {
         id: _id,
         profile: profile
     };
     const tokenStudent = JWT.sign(userStudent, process.env.JWT_SECURE, { expiresIn: '7D' });
-    console.log("hii jwtauth",tokenStudent)
+    // console.log("hii jwtauth",tokenStudent)
     
     return tokenStudent;
 

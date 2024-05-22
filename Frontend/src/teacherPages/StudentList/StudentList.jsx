@@ -14,12 +14,16 @@ const StudentList = () => {
   },[user])
 
   const {studentList}  =useContext(isAuthenticatedContext)
-  // console.log(studentList)
+  console.log(studentList)
   // setStudents(studentList)
   // console.log(students)
 
   if (!user) {
     return <div>Loading...</div>;
+  }
+
+  const presentbtn = (id) => {
+    console.log(id)
   }
 
   return (
@@ -44,7 +48,7 @@ const StudentList = () => {
                 <td className="border-2 border-[#65bc7b] px-4 py-2">
                   <div className="flex justify-center gap-10">
                         {student.name}
-                        <button className="bg-[#65bc7b] p-1 rounded-lg text-white">Present</button>
+                        <button className="bg-[#65bc7b] p-1 rounded-lg text-white" onClick={() => presentbtn(student._id)}>Present</button>
                   </div>
                 </td>
               </tr>

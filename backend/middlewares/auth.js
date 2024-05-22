@@ -3,6 +3,7 @@ import { UserModel } from '../models/userModels.js';
 
 
 export const isAuthenticated = async (req, res, next) => {
+    console.log(req)
     const token = req.cookies.token;
     console.log("hii token_auth",token)
     
