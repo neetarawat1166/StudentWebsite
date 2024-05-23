@@ -6,6 +6,10 @@ import { IoEyeOff } from "react-icons/io5";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
+//console.log(import.meta.env.VITE_SECRET_KEY) // "123"
+
+const KEY = import.meta.env.VITE_SECRET_KEY;
+
 const Signup = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -17,29 +21,35 @@ const Signup = () => {
     password: "",
     mobile: "",
     course: "",
+    secretKey: "", // Add secretKey to userData
   });
 
   const ValueUpdate = (e) => {
     const { name, value } = e.target;
-    if (name === "profile") {
-      setUserData({
-        ...userData,
-        [name]: value,
-      });
-    } else {
-      setUserData({
-        ...userData,
-        [name]: value,
-      });
-    }
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
   };
-  console.log(userData);
+
   const datasave = async (e) => {
     e.preventDefault();
-    const { profile, name, email, password,mobile, course } = userData;
+    const { profile, name, email, password, mobile, course, secretKey } =
+      userData;
 
-    if (!profile || !name || !email || !password || !mobile || !course) {
+    if (
+      !profile ||
+      !name ||
+      !email ||
+      !password ||
+      !mobile ||
+      !course ||
+      (profile === "Teacher" && !secretKey)
+    ) {
       return toast.error("Please fill all the fields");
+    }
+    if (profile === "Teacher" && secretKey !== KEY) {
+      return toast.error("Invalid secret key");
     }
 
     try {
@@ -52,6 +62,7 @@ const Signup = () => {
           password,
           mobile,
           course,
+          secretKey, // Include secretKey in the request body
         },
         {
           headers: {
@@ -60,12 +71,11 @@ const Signup = () => {
           withCredentials: true,
         }
       );
-    //   const serverres = await res.json();
-     // console.log(serverres);
 
-      if (serverres.data.success &&
-        serverres.data.message === "Signup successfully") {
-          
+      if (
+        serverres.data.success &&
+        serverres.data.message === "Signup successfully"
+      ) {
         toast.success("Signup Successfully");
         setTimeout(() => {
           navigate("/login");
@@ -76,33 +86,19 @@ const Signup = () => {
           name: "",
           email: "",
           password: "",
-          mobile:"",
+          mobile: "",
           course: "",
+          secretKey: "", // Reset secretKey
         });
-      } 
+      }
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error.response.data.message)
-      
-      
-      
-      
-      
-      // if (error.response) {
-      //   const errorMessage = error.response.data.message || "Server Error";
-      //   toast.error(errorMessage);
-      // } else if (error.request) {
-      //   console.error("Request Error:", error.request);
-      //   toast.error("Request Error");
-      // } else {
-      //   console.error("Other Error:", error.message);
-      //   toast.error("Other Error");
-      // }
+      toast.error(error.response.data.message);
     }
-    };
-    
-    const [activeButton, setActiveButton] = useState("signup");
-    
+  };
+
+  const [activeButton, setActiveButton] = useState("signup");
+
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
@@ -194,6 +190,27 @@ const Signup = () => {
                 {show ? <IoEye /> : <IoEyeOff />}
               </div>
             </div>
+            {userData.profile === "Teacher" && (
+              <div className="relative">
+                <div>
+                  <input
+                    type="password"
+                    value={userData.secretKey}
+                    onChange={ValueUpdate}
+                    name="secretKey"
+                    placeholder="Enter secret key..."
+                    className=" w-full border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+                    required
+                  />
+                  <div
+                    className=" absolute top-[50%] right-3 cursor-pointer translate-y-[-50%]"
+                    onClick={() => setShow((prev) => !prev)}
+                  >
+                    {show ? <IoEye /> : <IoEyeOff />}
+                  </div>
+                </div>
+              </div>
+            )}
             <input
               type="number"
               value={userData.mobile}
@@ -228,7 +245,7 @@ const Signup = () => {
           </form>
           <div className="mx-auto justify-center items-center flex mt-6 ">
             <button
-              className="py-2 px-4 md:py-2 md:px-8 text-lg ont-semibold rounded-lg bg-[#65bc7b] text-white"
+              className="py-2 px-4 md:py-2 md:px-8 text-lg font-semibold rounded-lg bg-[#65bc7b] text-white"
               type="submit"
               onClick={datasave}
             >

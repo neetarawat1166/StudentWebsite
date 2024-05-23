@@ -7,6 +7,8 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { isAuthenticatedContext } from "../../context/userContext.jsx";
 
+const KEY = import.meta.env.VITE_SECRET_KEY;
+
 const Login = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -22,6 +24,7 @@ const Login = () => {
     profile: "",
     email: "",
     password: "",
+    secretKey: "" // Add secretKey to userData
   });
   const handleButtonClick = (button) => {
     setActiveButton(button);
@@ -36,11 +39,16 @@ const Login = () => {
   };
   const dataLogin = async (e) => {
     e.preventDefault();
-    const { profile, email, password } = userData;
+    const { profile, email, password,secretKey } = userData;
 
-    if (!profile || !email || !password) {
+    if (!profile || !email || !password || (profile === "Teacher" && !secretKey)) {
       return toast.error("Please fill all the fields.");
     }
+
+    if (profile === "Teacher" && secretKey !== KEY) {
+      return toast.error("Invalid secret key");
+    }
+
 
     try {
       const serverres = await axios.post(
@@ -179,6 +187,27 @@ const Login = () => {
                 {show ? <IoEye /> : <IoEyeOff />}
               </div>
             </div>
+            {userData.profile === "Teacher" && (
+              <div className="relative">
+                <div>
+                  <input
+                    type="password"
+                    value={userData.secretKey}
+                    onChange={ValueUpdate}
+                    name="secretKey"
+                    placeholder="Enter secret key..."
+                    className=" w-full border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+                    required
+                  />
+                  <div
+                    className=" absolute top-[50%] right-3 cursor-pointer translate-y-[-50%]"
+                    onClick={() => setShow((prev) => !prev)}
+                  >
+                    {show ? <IoEye /> : <IoEyeOff />}
+                  </div>
+                </div>
+              </div>
+            )}
             <p className="text-[#2c55daee]">Forgot password ?</p>
           </form>
           <div className="mx-auto justify-center items-center flex mt-6 ">
