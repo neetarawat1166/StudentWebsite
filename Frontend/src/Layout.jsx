@@ -39,7 +39,9 @@ const Layout = () => {
           try {
             const response = await axios.post("http://localhost:5000/api/v1/students", { course });
             console.log("india", response)
-            setStudentList(response.data.students); 
+            if (user && user.profile =="Teacher") {
+              setStudentList(response.data.students); 
+            }
             setUpdateData(response.data.UpdateData)
           } catch (error) {
             console.error("Error fetching students:", error);

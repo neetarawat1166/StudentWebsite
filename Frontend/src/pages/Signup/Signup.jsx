@@ -6,12 +6,10 @@ import { IoEyeOff } from "react-icons/io5";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-//console.log(import.meta.env.VITE_SECRET_KEY) // "123"
-
 const KEY = import.meta.env.VITE_SECRET_KEY;
 
 const Signup = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const [show, setShow] = useState(false);
   const [userData, setUserData] = useState({
@@ -21,7 +19,7 @@ const Signup = () => {
     password: "",
     mobile: "",
     course: "",
-    secretKey: "", // Add secretKey to userData
+    secretKey: "", 
   });
 
   const ValueUpdate = (e) => {

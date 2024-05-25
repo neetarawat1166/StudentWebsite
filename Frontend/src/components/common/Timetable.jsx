@@ -243,7 +243,7 @@ const Timetable = (props) => {
   const { isAuthenticat, setUser, user, setisAuthenticat,setUpdateData, updateData } = useContext(
     isAuthenticatedContext
   );
-  console.log("hiii update data",updateData)
+  // console.log("hiii update data",updateData)
 
   const [editedTopic, setEditedTopic] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);

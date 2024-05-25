@@ -127,7 +127,7 @@ export const TeacherUpdateData = async (req, res) => {
       }
 
       const id = UpdateModel[0]._id;
-
+      console.log("daraaraaa", req.body)
       UpdateModel = await DevOpsModel.findByIdAndUpdate(id, req.body, {
         new: true,
         runValidators: true,

@@ -172,9 +172,9 @@ const Announcement = () => {
   const { isAuthenticat, setUser, user, setisAuthenticat,setUpdateData, updateData } = useContext(
     isAuthenticatedContext
   );
-  console.log("hiii update data announcement",updateData)
+  // console.log("hiii update data announcement",updateData)
 
-  const [announcements, setAnnouncements] = useState([]);
+  const [announcements, setAnnouncements] = useState([{newHeading:"CSS",newContent:"css is the styling property"}]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newHeading, setNewHeading] = useState("");
   const [newContent, setNewContent] = useState("");
@@ -189,12 +189,27 @@ const Announcement = () => {
     setNewContent("");
   };
 
-  const handleSaveAnnouncement = () => {
-    if (newHeading && newContent) {
-      const newAnnouncement = { heading: newHeading, content: newContent };
-      setAnnouncements([...announcements, newAnnouncement]);
-      handleClosePopup();      
+  const handleSaveAnnouncement = async() => {
+    // if (newHeading && newContent) {
+    //   const newAnnouncement = { heading: newHeading, content: newContent };
+    //   setAnnouncements([...announcements, newAnnouncement]);
+    //   handleClosePopup();      
+    // }
+
+    try {
+      const updatedData = { ...updateData[0], announcement: {newHeading,newContent} };
+      const response = await axios.put('http://localhost:5000/api/v1/updateData', updatedData, {
+        withCredentials: true,
+      });
+      setUpdateData(updatedData);
+      //setIsModalOpen(false);
+      //setEditedTopic(updatedData.announcement); // Update the editedTopic state with the new topic
+      //setNewContent(updatedData.announcement.description)
+      console.log("Data updated successfully", response);
+    } catch (error) {
+      console.error("Error updating data", error);
     }
+  
   };
 
   return (
