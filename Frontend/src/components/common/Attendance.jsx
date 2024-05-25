@@ -10,6 +10,7 @@ const Attendance = ({ attended, total }) => {
   const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
     isAuthenticatedContext
   );
+  
 
   const [newAttendance, setEditedAttendance] = useState('29'); // Initial topic is HTML
   const [isModalOpen, setIsModalOpen] = useState(false);

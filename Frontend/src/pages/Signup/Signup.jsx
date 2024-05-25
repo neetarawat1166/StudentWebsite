@@ -30,10 +30,14 @@ const Signup = () => {
     });
   };
 
+  const validateEmail = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    return emailPattern.test(email);
+  };
+
   const datasave = async (e) => {
     e.preventDefault();
-    const { profile, name, email, password, mobile, course, secretKey } =
-      userData;
+    const { profile, name, email, password, mobile, course, secretKey } = userData;
 
     if (
       !profile ||
@@ -46,6 +50,15 @@ const Signup = () => {
     ) {
       return toast.error("Please fill all the fields");
     }
+
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email!");
+    }
+
+    if (password.length < 4) {
+      return toast.error("Password should be at least 4 characters long!");
+    }
+
     if (profile === "Teacher" && secretKey !== KEY) {
       return toast.error("Invalid secret key");
     }
@@ -86,7 +99,7 @@ const Signup = () => {
           password: "",
           mobile: "",
           course: "",
-          secretKey: "", // Reset secretKey
+          secretKey: "", 
         });
       }
     } catch (error) {

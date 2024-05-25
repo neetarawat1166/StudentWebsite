@@ -166,6 +166,7 @@ import { FaEdit } from "react-icons/fa";
 import img1 from "../../images/announcement.png";
 import BgImage from '../../images/wavii2.jpg'
 import { isAuthenticatedContext } from "../../context/userContext";
+import axios from "axios";
 
 const Announcement = () => {
 
@@ -189,7 +190,7 @@ const Announcement = () => {
     setNewContent("");
   };
 
-  const handleSaveAnnouncement = async() => {
+const handleSaveAnnouncement = async() => {
     // if (newHeading && newContent) {
     //   const newAnnouncement = { heading: newHeading, content: newContent };
     //   setAnnouncements([...announcements, newAnnouncement]);
@@ -198,7 +199,8 @@ const Announcement = () => {
 
     try {
       const updatedData = { ...updateData[0], announcement: {newHeading,newContent} };
-      const response = await axios.put('http://localhost:5000/api/v1/updateData', updatedData, {
+      console.log(updateData);
+      const response = await axios.put('http://localhost:5000/api/v1/updatedata', updatedData, {
         withCredentials: true,
       });
       setUpdateData(updatedData);

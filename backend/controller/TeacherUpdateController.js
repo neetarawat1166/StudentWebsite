@@ -149,3 +149,150 @@ export const TeacherUpdateData = async (req, res) => {
     }
   }
 };
+
+
+export const AddAnnouncement = async () => {
+  const user = req.user;
+  //console.log("user heyaa",user)
+ 
+  if (user.course == "Data Science & Machine Learning with AI") {
+    try {
+      // Find the post by ID
+      let UpdateModel = await DataScienceModel.find();
+      // console.log(UpdateModel)
+      if (!UpdateModel) {
+        return res.status(404).json({
+          success: false,
+          message: "Data not found.",
+        });
+      }
+
+      const id = UpdateModel[0]._id;
+
+      UpdateModel = await DataScienceModel.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Data Updated",
+        UpdateModel,
+      });
+    } catch (error) {
+      // Handle unexpected errors
+      console.error("Unable to update data:", error);
+      res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+      });
+    }
+  }
+
+  if (user.course == "Embedded Systems & Robotics with IOT") {
+    try {
+      // Find the post by ID
+      let UpdateModel = await IOTModel.find();
+      // console.log(UpdateModel)
+      if (!UpdateModel) {
+        return res.status(404).json({
+          success: false,
+          message: "Data not found.",
+        });
+      }
+
+      const id = UpdateModel[0]._id;
+
+      UpdateModel = await IOTModel.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Data Updated",
+        UpdateModel,
+      });
+    } catch (error) {
+      // Handle unexpected errors
+      console.error("Unable to update Data", error);
+      res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+      });
+    }
+  }
+
+  if (user.course == "Full Stack Web Development") {
+    try {
+      // Find the post by ID
+      let UpdateModel = await FullStackModel.find();
+      // console.log(UpdateModel)
+      if (!UpdateModel) {
+        return res.status(404).json({
+          success: false,
+          message: "Data not found.",
+        });
+      }
+
+      const id = UpdateModel[0]._id;
+
+      UpdateModel = await FullStackModel.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Data Updated",
+        UpdateModel,
+      });
+    } catch (error) {
+      // Handle unexpected errors
+      console.error("Unable to update Data", error);
+      res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+      });
+    }
+    // return res.send("ok check kar");
+  }
+
+  if (user.course == "Cloud Computing & DevOps") {
+    try {
+      // Find the post by ID
+      let UpdateModel = await DevOpsModel.find();
+      // console.log(UpdateModel)
+      if (!UpdateModel) {
+        return res.status(404).json({
+          success: false,
+          message: "Data not found.",
+        });
+      }
+
+      const id = UpdateModel[0]._id;
+      console.log("daraaraaa", req.body)
+      UpdateModel = await DevOpsModel.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Data Updated",
+        UpdateModel,
+      });
+    } catch (error) {
+      // Handle unexpected errors
+      console.error("Unable to update data", error);
+      res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+      });
+    }
+  }
+}

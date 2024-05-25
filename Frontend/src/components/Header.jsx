@@ -4,6 +4,7 @@ import { MdManageAccounts } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/Logo.png";
+import UpflairsLogo from '../images/UpflairsLogo.png'
 import Profile from "../components/common/Profile";
 import { isAuthenticatedContext } from "../context/userContext.jsx";
 import axios from "axios";
@@ -43,17 +44,17 @@ const Header = () => {
 
 
   return (
-    <nav className="bg-[#eeeeee] px-3 py-3 flex justify-between relative">
+    <nav className="bg-[#003366] px-3 py-3 flex justify-between relative">
       <div className="flex items-center gap-[3rem]">
         <IoMenu
           className="text-3xl text-black cursor-pointer lg:hidden"
           onClick={toggleSidebar}
         />
         <div className="text-black">
-          <img src={logo} className="md:w-[100px] w-[90px] pr-3" alt="logo" />
+          <img src={UpflairsLogo} className="md:w-[180px] w-[110px] pr-3" alt="logo" />
         </div>
         <div className="hidden lg:block relative">
-          <ul className="flex gap-[2rem] text-black">
+          <ul className="flex gap-[2rem] text-white">
             <li className="text-lg relative py-4">
               <NavLink to="/">Home</NavLink>
             </li>
@@ -121,7 +122,7 @@ const Header = () => {
               // Render logout button if user is authenticated
               <li>
                 <button
-                  className="bg-[#65bc7b] py-1 px-2 text-white md:text-lg text-[16px] rounded-lg hover:bg-[#252525]"
+                  className="bg-[#ff9416] py-2 px-2 text-white font-semibold md:text-lg text-[16px] rounded-lg hover:bg-[#252525]"
                   onClick={handleLogout}
                 >
                   Logout

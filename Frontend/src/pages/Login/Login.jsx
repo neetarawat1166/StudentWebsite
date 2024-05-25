@@ -19,6 +19,7 @@ const Login = () => {
   // console.log(isAuthenticat)
 
   const [show, setShow] = useState(false);
+  const [secretshow, setSecretshow] = useState(false);
   const [activeButton, setActiveButton] = useState("login");
   const [userData, setUserData] = useState({
     profile: "",
@@ -191,7 +192,7 @@ const Login = () => {
               <div className="relative">
                 <div>
                   <input
-                    type="password"
+                    type={secretshow ? "text" : "password"}
                     value={userData.secretKey}
                     onChange={ValueUpdate}
                     name="secretKey"
@@ -201,9 +202,9 @@ const Login = () => {
                   />
                   <div
                     className=" absolute top-[50%] right-3 cursor-pointer translate-y-[-50%]"
-                    onClick={() => setShow((prev) => !prev)}
+                    onClick={() => setSecretshow((prev) => !prev)}
                   >
-                    {show ? <IoEye /> : <IoEyeOff />}
+                    {secretshow ? <IoEye /> : <IoEyeOff />}
                   </div>
                 </div>
               </div>

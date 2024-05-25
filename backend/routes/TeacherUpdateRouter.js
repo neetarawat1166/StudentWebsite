@@ -7,6 +7,10 @@ const router = express.Router();
 // router.get("/")
 // router.get("/getUpdatedata",isAuthenticated,TeacherUpdateData)
 
-router.put("/updateData", isAuthenticated, TeacherUpdateData)
+router.put("/updatedata", isAuthenticated, TeacherUpdateData)
+
+
+// Add Announcement
+router.post("/addannouncement", isAuthenticated, )
 
 export default router;
