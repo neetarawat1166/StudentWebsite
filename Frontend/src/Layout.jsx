@@ -34,7 +34,7 @@ const Layout = () => {
     const fetchStudents = async () => {
       if (user) {                       //changes done here (&& user.profile =="Teacher")...................
         let course = user.course;
-        console.log("hii course",course)
+        // console.log("hii course",course)
         if (course) {
           try {
             const response = await axios.post("http://localhost:5000/api/v1/students", { course });

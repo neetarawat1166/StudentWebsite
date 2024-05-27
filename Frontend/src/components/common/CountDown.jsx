@@ -32,7 +32,7 @@ const CountDown = () => {
 
     return (
         <>
-            <section className='bg-[#65bc7b]'>
+            <section className='bg-[#003366]'>
                 <div className="p-4 grid sm:grid-cols-3 grid-cols-1 gap-5">
                     <div className='px-10 text-center'>
                         <p className='text-white font-bold text-[30px] md:text-[40px]'>

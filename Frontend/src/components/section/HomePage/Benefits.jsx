@@ -10,31 +10,31 @@ import '../../style/NeetaStyle/style2.css'
 
 const BenefitContent = [
   {
-    icon: <HiCheckBadge className='text-[#65bc7b] size-6' />,
-    title: "World class trainers",
-    para: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente neque dignissimos commodi laborum? Sed cum, eius eaque repudiandae est delectus?"
+    icon: <HiCheckBadge className='text-[#ff9416] size-6' />,
+    title: "Tailored Solutions",
+    para: "We understand that every individual has unique needs and goals. That's why we offer customized solutions designed to address your specific challenges effectively."
   },
   {
-    icon: <HiCheckBadge className='text-[#65bc7b] size-6'/>,
-    title: "World class trainers",
-    para: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente neque dignissimos commodi laborum? Sed cum, eius eaque repudiandae est delectus?"
+    icon: <HiCheckBadge className='text-[#ff9416] size-6'/>,
+    title: "Commitment to Excellence",
+    para: "We are committed to excellence in everything we do, ensuring that you receive the highest quality service and support at every step of your journey with us."
   },
   {
-    icon: <HiCheckBadge className='text-[#65bc7b]  size-6' />,
-    title: "World class trainers",
-    para: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente neque dignissimos commodi laborum? Sed cum, eius eaque repudiandae est delectus?"
+    icon: <HiCheckBadge className='text-[#ff9416]  size-6' />,
+    title: "Transparent Communication",
+    para: "We believe in transparent communication, keeping you informed and involved throughout the process, so you know exactly what to expect."
   },
   {
-    icon: <HiCheckBadge className='text-[#65bc7b] size-6'/>,
-    title: "World class trainers",
-    para: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente neque dignissimos commodi laborum? Sed cum, eius eaque repudiandae est delectus?"
+    icon: <HiCheckBadge className='text-[#ff9416] size-6'/>,
+    title: "Continuous Support",
+    para: "Our support doesn't end with the completion of a project. We provide continuous support and guidance to help you navigate challenges and seize opportunities."
   }
 ]
 
 const Benefits = () => {
   return (
     <>
-      <div className='section py-[50px]'>
+      <div className='section py-[50px] relative z-[-1] bg-[#d9e7ff]'>
         <div className='relative'>
           <div className=' animate-bgmove2 absolute md:left-[500px]  hidden md:block box-border'>
               <img src={img1} alt="Benefits" className=''/>
@@ -43,17 +43,17 @@ const Benefits = () => {
             <div className='grid  lg:grid-cols-3 grid-cols-1 lg:gap-20 gap-6 items-center'>
               <div className='mb-[30px] xl:col-span-2 col-span-3'>
                   <div>
-                      <div className='mb-[30px]'>
-                        <span className='inline-block mb-[25px] bg-[#65bc7b] rounded-lg p-2 text-white'>WHY CHOOSE US</span>
+                      <div className='pb-[10px]'>
+                        <span className='inline-block mb-[20px] bg-[#003366] rounded-lg p-2 text-white'>WHY CHOOSE US</span>
                         <h4 className='text-[27px] font-bold'>
-                          Creating A Community Of Life Long
-                          <span className='text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#65bc7b]'> Learners</span>
+                        <span className='text-2xl md:text-3xl lg:text-4xl font-bold text-center text-[#ff9416]'>Experience </span>
+                         customized solutions catered to Your Every Requirement, Delivering Outstanding Value and Results.
                         </h4>
                       </div>
                       {/* start from here */}
                       <div className='pb-[15px]'>
                         <p>
-                          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime aliquid, dolorem iure molestiae dolores voluptatibus sit voluptatum architecto similique adipisci.
+                        At Upflairs, we tailor solutions to your unique needs, ensuring effective results. With our proven success, trust us to guide you through challenges and opportunities in the tech field. Count on our commitment to excellence and unwavering support every step of the way.
                         </p>
                       </div>
                         <div>
@@ -77,7 +77,7 @@ const Benefits = () => {
                 <div className=''>
                   <div className=''>
                       <img src={img2} alt="benefits" className='lg:h-[540px] w-[100%] object-cover'/>
-                      <img src={img3} alt="" className='absolute top-[-5%]  left-[-5%] -z-50 block box-border' />
+                      <img src={img4} alt="" className='absolute top-[-5%]  left-[-5%] -z-50 block box-border rotate-[180.8deg]' />
                       
                       
                         <img src={img4} alt="" className=' absolute bottom-[-5%] lg:right-[-5%] -z-50 block box-border'/>

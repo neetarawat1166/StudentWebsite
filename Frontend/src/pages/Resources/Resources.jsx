@@ -61,7 +61,7 @@ const Resources = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-red-600">
+              <p className="text-[#ff9416]">
                 No resources available for this topic...
               </p>
             )}
@@ -93,7 +93,7 @@ const Resources = () => {
             placeholder="Enter Topic Name"
           />
           <button
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            className="bg-[#003366] text-white px-4 py-2 rounded hover:bg-[#ff9416]"
             onClick={handleTopicAdd}
           >
             Save
@@ -103,7 +103,7 @@ const Resources = () => {
       {showNoResourcesText && topics.length === 0 && (
         <>
          <img src={img} alt="" className="mx-auto h-[250px]"/>
-         <p className="text-3xl text-center mb-4 text-red-600">No resources available...</p>
+         <p className="text-3xl text-center mb-4 text-[#ff9416]">No resources available...</p>
         
         </>
        

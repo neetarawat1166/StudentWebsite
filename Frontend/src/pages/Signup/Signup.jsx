@@ -118,22 +118,22 @@ const Signup = () => {
     <>
       <div className="section bg-[#eeeeee] py-[50px]">
         <div
-          className="container mx-auto lg:w-[40%] md:w-[60%] w-[80%] py-[30px] rounded-md bg-white"
-          style={{
-            backgroundImage: `url(${img1})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+          className="container mx-auto lg:w-[40%] md:w-[60%] w-[80%] py-[30px] rounded-md bg-gradient-to-br from-blue-100 to-[#003366] border border-[#003366] shadow-xl shadow-black"
+          // style={{
+          //   backgroundImage: `url(${img1})`,
+          //   backgroundRepeat: "no-repeat",
+          //   backgroundSize: "cover",
+          //   backgroundPosition: "center",
+          // }}
         >
-          <h1 className="md:text-[30px] text-[20px] font-bold text-center mb-8 text-[#4c4a4a]">
+          <h1 className="md:text-[30px] text-[20px] font-bold text-center mb-8 text-[#003366]">
             Signup Form
           </h1>
-          <div className="grid grid-cols-2 gap-4 mx-auto lg:w-[70%] mb-8 md:w-[70%] w-[90%] sm:w-[80%] rounded-lg border-2 border-solid border-[#b4b1b1]">
+          <div className="grid grid-cols-2 gap-4 mx-auto lg:w-[70%] mb-8 md:w-[70%] w-[90%] sm:w-[80%] rounded-lg border-2 border-solid border-[#003366]">
             <NavLink
               to={"/signup"}
               className={`flex items-center p-1 md:p-2 justify-center md:text-lg text-[16px] font-semibold rounded-lg ${
-                activeButton === "signup" ? "bg-[#65bc7b] text-white" : ""
+                activeButton === "signup" ? "bg-[#003366] text-white" : ""
               }`}
               onClick={() => handleButtonClick("signup")}
             >
@@ -142,11 +142,11 @@ const Signup = () => {
             <NavLink
               to={"/login"}
               className={`flex p-1 md:p-2 items-center justify-center md:text-lg text-[16px] font-semibold rounded-lg ${
-                activeButton === "login" ? "bg-[#65bc7b] text-white" : ""
+                activeButton === "login" ? "bg-[#003366] text-white" : ""
               }`}
               onClick={() => handleButtonClick("login")}
             >
-              <button className="text-[#4c4a4a]">Login</button>
+              <button className="text-[#003366]">Login</button>
             </NavLink>
           </div>
 
@@ -159,7 +159,7 @@ const Signup = () => {
               onChange={ValueUpdate}
               value={userData.profile}
               name="profile"
-              className="border-2 border-solid hover:border-[#65bc7b] border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4"
+              className="border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
             >
               <option value="" disabled>
                 Choose your profile
@@ -173,7 +173,7 @@ const Signup = () => {
               onChange={ValueUpdate}
               name="name"
               placeholder="Enter your name..."
-              className="border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+              className="border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
             />
             <input
               type="email"
@@ -181,7 +181,7 @@ const Signup = () => {
               onChange={ValueUpdate}
               name="email"
               placeholder="Enter your email..."
-              className="border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+              className="border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
             />
             <div className="mt-1 relative">
               <input
@@ -192,7 +192,7 @@ const Signup = () => {
                 placeholder="Enter your Password..."
                 autoComplete="current-password"
                 required
-                className=" w-full border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+                className=" w-full border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
               />
               <div
                 className=" absolute top-[50%] right-3 cursor-pointer translate-y-[-50%]"
@@ -210,7 +210,7 @@ const Signup = () => {
                     onChange={ValueUpdate}
                     name="secretKey"
                     placeholder="Enter secret key..."
-                    className=" w-full border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+                    className=" w-full border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
                     required
                   />
                   <div
@@ -228,14 +228,14 @@ const Signup = () => {
               onChange={ValueUpdate}
               name="mobile"
               placeholder="Enter your Contact number..."
-              className="border-2 border-solid border-[#b4b1b1] hover:border-[#65bc7b] rounded-lg md:px-6 py-2 px-4"
+              className="border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
             />
             <select
               id="course"
               onChange={ValueUpdate}
               value={userData.course}
               name="course"
-              className="border-2 border-solid hover:border-[#65bc7b] border-[#b4b1b1] rounded-lg md:px-6 py-2 px-4"
+              className="border-2 border-solid hover:border-[#ff7f16] border-[#ff9416] rounded-lg md:px-6 py-2 px-4"
             >
               <option value="" disabled>
                 Choose your Course
@@ -256,7 +256,7 @@ const Signup = () => {
           </form>
           <div className="mx-auto justify-center items-center flex mt-6 ">
             <button
-              className="py-2 px-4 md:py-2 md:px-8 text-lg font-semibold rounded-lg bg-[#65bc7b] text-white"
+              className="py-2 px-4 md:py-2 md:px-8 text-lg font-semibold rounded-lg border-2 border-[#003366] bg-[#003366] text-white hover:bg-white hover:text-[#003366] hover:border-[#003366] hover:font-semibold"
               type="submit"
               onClick={datasave}
             >

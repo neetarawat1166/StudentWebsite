@@ -1,19 +1,21 @@
-// import React, { useState,useContext } from "react";
+// import React, { useState, useContext } from "react";
 // import { FaEdit } from "react-icons/fa";
 // import img1 from "../../images/announcement.png";
 // import BgImage from '../../images/wavii2.jpg'
 // import { isAuthenticatedContext } from "../../context/userContext";
+// import axios from "axios";
 
 // const Announcement = () => {
 
-//   const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
+//   const { isAuthenticat, setUser, user, setisAuthenticat,setUpdateData, updateData } = useContext(
 //     isAuthenticatedContext
 //   );
-//   const [announcements, setAnnouncements] = useState([]);
+//   // console.log("hiii update data announcement",updateData)
+
+//   // const [announcements, setAnnouncements] = useState([{newHeading:"CSS", newContent:"css is the styling property"}]);
 //   const [isPopupOpen, setIsPopupOpen] = useState(false);
 //   const [newHeading, setNewHeading] = useState("");
 //   const [newContent, setNewContent] = useState("");
-//   const [contentList, setContentList] = useState([]);
 
 //   const handleOpenPopup = () => {
 //     setIsPopupOpen(true);
@@ -23,26 +25,31 @@
 //     setIsPopupOpen(false);
 //     setNewHeading("");
 //     setNewContent("");
-//     setContentList([]);
 //   };
 
-//   const handleSaveAnnouncement = () => {
-//     // Add validation if necessary
-//     if (newHeading && contentList.length > 0) {
-//       setAnnouncements([
-//         ...announcements,
-//         { heading: newHeading, content: contentList },
-//       ]);
-//       handleClosePopup();
-//     }
-//   };
+// const handleSaveAnnouncement = async() => {
+//     // if (newHeading && newContent) {
+//     //   const newAnnouncement = { heading: newHeading, content: newContent };
+//     //   setAnnouncements([...announcements, newAnnouncement]);
+//     //   handleClosePopup();      
+//     // }
 
-//   const handleAddContent = () => {
-//     if (newContent.trim()) {
-//       setContentList([...contentList, newContent]);
-//       setNewContent("");
+//     try {
+//       // const updatedData = { ...updateData[0], announcement: {newHeading,newContent}};
+//       const updatedData = { newHeading, newContent };
+//       console.log(updatedData);
+//       const response = await axios.post('http://localhost:5000/api/v1/addannouncement', updatedData, {
+//         withCredentials: true,
+//       });
+
+//       console.log("Data updated successfully", response);
+//     } catch (error) {
+//       console.error("Error updating data", error);
 //     }
+  
 //   };
+//   console.log(updateData)
+//   // console.log(updateData[0].announcement)
 
 //   return (
 //     <>
@@ -51,44 +58,26 @@
 //           <h1 className="text-[35px] text-[#252525] font-semibold text-center py-5">
 //             Announcements
 //           </h1>
-          
-//             {user &&   user.profile === 'Teacher' && <FaEdit
-//             className="text-[#252525] text-[30px] cursor-pointer"
-//             onClick={handleOpenPopup}
-//           />}
+
+//           {user && user.profile === 'Teacher' && (
+//             <FaEdit
+//               className="text-[#252525] text-[30px] cursor-pointer"
+//               onClick={handleOpenPopup}
+//             />
+//           )}
 //         </div>
 //         <div className="container mx-auto bg-[#eeeeee] py-[10px] text-[#252525] w-full rounded-lg overflow-auto h-[300px] max-h-[286px] lg:max-h-[302px] border-2 border-[#65bc7b]">
-//           {announcements.length === 0 ? (
-//             <div className="text-center py-10">
-//               <p className="text-[30px] text-[#65bc7b] font-semibold">
-//                 No announcements for today
-//               </p>
-//               <img
-//                 src={img1}
-//                 className="h-[200px] mx-auto"
-//                 alt=""
-//               />
-//             </div>
-//           ) : (
-//             announcements.map((item, index) => (
+//           {console.log("jaihind", updateData)}
+//           {updateData &&(
+//             updateData[0].announcement.map((item, index) => (
 //               <div key={index} className="mb-6">
 //                 <h2 className="text-[30px] font-semibold mb-2 text-center text-[#65bc7b]">
 //                   <div className="flex justify-center items-center gap-4">
 //                     {item.heading}
-//                     {/* <img
-//                       src={img1}
-//                       className="lg:h-[12%] lg:w-[10%] md:h-[10%] md:w-[18%] sm:h-[10%] sm:w-[12%] h-[10%] w-[16%]"
-//                       alt=""
-//                     /> */}
+//                     {item.description}
 //                   </div>
 //                 </h2>
-//                 <ul className="list-disc">
-//                   {item.content.map((contentItem, contentIndex) => (
-//                     <li className="w-[80%] mx-auto" key={contentIndex}>
-//                       {contentItem}
-//                     </li>
-//                   ))}
-//                 </ul>
+//                 <p className="text-center">{item.content}</p>
 //               </div>
 //             ))
 //           )}
@@ -116,27 +105,14 @@
 //               <label className="block text-md font-medium text-[#65bc7b]">
 //                 Content
 //               </label>
-//               <div className="flex">
-//                 <input
-//                   type="text"
-//                   value={newContent}
-//                   onChange={(e) => setNewContent(e.target.value)}
-//                   className="border border-gray-300 rounded-l px-3 py-2 w-full"
-//                   placeholder="Enter content"
-//                 />
-//                 <button
-//                   className="bg-green-500 text-white px-4 py-2 rounded-r hover:bg-green-600"
-//                   onClick={handleAddContent}
-//                 >
-//                   Add Content
-//                 </button>
-//               </div>
+//               <input
+//                 type="text"
+//                 value={newContent}
+//                 onChange={(e) => setNewContent(e.target.value)}
+//                 className="border border-gray-300 rounded px-3 py-2 w-full"
+//                 placeholder="Enter content"
+//               />
 //             </div>
-//             <ul className="list-disc ml-8 mb-4">
-//               {contentList.map((contentItem, index) => (
-//                 <li key={index}>{contentItem}</li>
-//               ))}
-//             </ul>
 //             <div className="flex justify-end">
 //               <button
 //                 className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2"
@@ -161,7 +137,7 @@
 // export default Announcement;
 
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FaEdit } from "react-icons/fa";
 import img1 from "../../images/announcement.png";
 import BgImage from '../../images/wavii2.jpg'
@@ -175,11 +151,14 @@ const Announcement = () => {
   );
   // console.log("hiii update data announcement",updateData)
 
-  const [announcements, setAnnouncements] = useState([{newHeading:"CSS",newContent:"css is the styling property"}]);
+  // const [announcements, setAnnouncements] = useState([{newHeading:"CSS", newContent:"css is the styling property"}]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newHeading, setNewHeading] = useState("");
   const [newContent, setNewContent] = useState("");
+  const [editedAnnouncement, seteditedAnnouncement] = useState('');
 
+
+  // console.log("gg",editedAnnouncement)
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
   };
@@ -190,29 +169,33 @@ const Announcement = () => {
     setNewContent("");
   };
 
+  //console.log("jiiiii",updateData[0].announcement)
+  
+
 const handleSaveAnnouncement = async() => {
-    // if (newHeading && newContent) {
-    //   const newAnnouncement = { heading: newHeading, content: newContent };
-    //   setAnnouncements([...announcements, newAnnouncement]);
-    //   handleClosePopup();      
-    // }
 
     try {
-      const updatedData = { ...updateData[0], announcement: {newHeading,newContent} };
-      console.log(updateData);
-      const response = await axios.put('http://localhost:5000/api/v1/updatedata', updatedData, {
+      //const updatedData = { ...updateData[0], announcement: {newHeading,newContent}};
+      const updatedData = { newHeading, newContent };
+      console.log("heyyy",updatedData);
+      const response = await axios.post('http://localhost:5000/api/v1/addannouncement', updatedData, {
         withCredentials: true,
       });
-      setUpdateData(updatedData);
-      //setIsModalOpen(false);
-      //setEditedTopic(updatedData.announcement); // Update the editedTopic state with the new topic
-      //setNewContent(updatedData.announcement.description)
+
+      // Update the state with the new announcement added to the existing announcements
+      //setUpdateData([ ...updateData,{ announcement: updatedData }]);
+
+      //console.log("upfateeeee",updateData)
+
+      setIsPopupOpen(false)
       console.log("Data updated successfully", response);
     } catch (error) {
       console.error("Error updating data", error);
     }
   
   };
+  console.log(updateData)
+  // console.log(updateData[0].announcement)
 
   return (
     <>
@@ -221,7 +204,7 @@ const handleSaveAnnouncement = async() => {
           <h1 className="text-[35px] text-[#252525] font-semibold text-center py-5">
             Announcements
           </h1>
-          
+
           {user && user.profile === 'Teacher' && (
             <FaEdit
               className="text-[#252525] text-[30px] cursor-pointer"
@@ -230,22 +213,16 @@ const handleSaveAnnouncement = async() => {
           )}
         </div>
         <div className="container mx-auto bg-[#eeeeee] py-[10px] text-[#252525] w-full rounded-lg overflow-auto h-[300px] max-h-[286px] lg:max-h-[302px] border-2 border-[#65bc7b]">
-          {announcements.length === 0 ? (
-            <div className="text-center py-10">
-              <p className="text-[30px] text-[#65bc7b] font-semibold">
-                No announcements for today
-              </p>
-              <img src={img1} className="h-[200px] mx-auto" alt="" />
-            </div>
-          ) : (
-            announcements.map((item, index) => (
+          {/* {console.log("jaihind", updateData)} */}
+          {updateData &&(
+            updateData[0].announcement.map((item, index) => (
               <div key={index} className="mb-6">
                 <h2 className="text-[30px] font-semibold mb-2 text-center text-[#65bc7b]">
                   <div className="flex justify-center items-center gap-4">
                     {item.heading}
                   </div>
                 </h2>
-                <p className="text-center">{item.content}</p>
+                <p className="text-center">{item.description}</p>
               </div>
             ))
           )}
@@ -303,4 +280,3 @@ const handleSaveAnnouncement = async() => {
 };
 
 export default Announcement;
-

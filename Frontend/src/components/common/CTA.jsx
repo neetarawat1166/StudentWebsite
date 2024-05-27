@@ -31,7 +31,7 @@ const CTA = () => {
                 <div class='text-center z-50 relative'>
                     <h2 class='text-white font-semibold lg:text-[65px] sm:text-[40px] text-[30px]'>Let's learn to manage!</h2>
                     <h3 class='text-white lg:text-[20px] md-[]'>Need help? Click below for support!</h3>
-                    <NavLink to={'/contact'}><button class='bg-white p-2 rounded-lg font-serif mt-5 text-[20px] hover:bg-[#65bc7b] hover:text-white mb-2'>Contact us</button></NavLink>
+                    <NavLink to={'/contact'}><button class='bg-white p-2 rounded-lg font-serif mt-5 text-[20px] hover:bg-[#ff9416] hover:text-white mb-2'>Contact us</button></NavLink>
                 </div>
         </div>
     </>

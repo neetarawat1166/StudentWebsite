@@ -10,7 +10,7 @@ import '../style/KirtikaStyle/KirtikaCSS.css'
 import { NavLink } from 'react-router-dom';
 const LearnGrowSection = () => {
   return (
-    <section className='bg-[#eeeeee]'>
+    <section className='bg-[#d9e7ff]'>
       <div className="container mx-auto px-[50px] py-[50px] relative z-[1]">
       <div className="flex flex-col lg:flex-row">
         <div className="lg:w-1/2 flex">
@@ -32,53 +32,54 @@ const LearnGrowSection = () => {
           </div>
         </div>
         <div className="lg:w-1/2 justify-center items-center md:pl-4 lg:pl-4 xl:pl-4">
-          <h2 className='text-4xl font-semibold pb-2 pt-[5%]'>Lorem ipsum dolor, sit amet sit amet consectetur adipisicing.</h2>
-          <p className='w-[95%] lg:w[75%] text-lg pt-4 pb-1'>Lorem ipsum dolor sit, Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, sunt. Sunt, voluptatibus. amet consectetur adipisicing elit. Suscipit incidunt non tempora nobis blanditiis numquam impedit sed harum nam quo. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, at odio alias vel voluptas debitis fuga? Ipsam, nemo! Maiores, molestias.</p>
+        <span className='inline-block bg-[#003366] rounded-lg p-2 text-white'>WHO WE ARE</span>
+          <h2 className='text-4xl font-semibold pb-2 pt-[5%]'>Fostering Growth with Education and Paving the Way for Achievement!</h2>
+          <p className='w-[95%] lg:w[75%] text-lg pt-4 pb-1'>At Upflairs, we're passionate about transforming learning into opportunities for personal growth. With a range of dynamic educational programs and services, we create pathways to success that match each student's aspirations. From engaging workshops to personalized guidance, we're here to nurture your development every step of the way. Led by experienced mentors, our team is dedicated to helping you achieve mastery in your chosen field.</p>
           <div className="flex lg:flex-row pt-4 md:w-[80%] lg:w-[80%]  pb-8">
             <div className="lg:w-1/2">
-              <h3 className="text-xl font-semibold pb-3">Flexible Classes 1</h3>
+              {/* <h3 className="text-xl text-[#ff9416] font-semibold pb-3">Flexible Classes 1</h3> */}
               <ul>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Lorem ipsum dolor sit</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Innovation</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Explicabo, velit!</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Empowerment</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Some other item</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Personalization</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Some other item</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Growth</span>
                 </li>
               </ul>
             </div>
             <div className="lg:w-1/2 pl-5 sm:pl-8 md:pl-[90px] lg:pl-2">
-              <h3 className="text-xl font-semibold pb-3">Flexible Classes 2</h3>
+              {/* <h3 className="text-xl text-[#ff9416] font-semibold pb-3">Flexible Classes 2</h3> */}
               <ul>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Lorem ipsum dolor sit</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>LImmersion</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Explicabo, velit!</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Guidance</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Some other item</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Expertise</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#65bc7b] text-lg mr-2' />
-                  <span>Some other item</span>
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <span>Mastery</span>
                 </li>
               </ul>
             </div>
           </div>
-          <NavLink to={'/about'}><button className='bg-[#65bc7b] text-lg text-white py-4 px-4 font-semibold  rounded-lg'>More About Us</button></NavLink>
+          <NavLink to={'/about'}><button className='bg-[#003366] text-lg text-white py-4 px-4 font-semibold  rounded-lg'>More About Us</button></NavLink>
         </div>
       </div>
     </div>

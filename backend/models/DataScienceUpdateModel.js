@@ -1,26 +1,33 @@
 import mongoose from "mongoose";
 
+const announcementSchema = new mongoose.Schema({
+    heading: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    }
+})
+
 const userSchema = new mongoose.Schema({
     topic: {
         type: String,
         required: true,
-        default : "Welcome Data Science"
+        default : "Welcome DevOps"
     },
-    announcement: {
-        type: Array,
-        required: true,
-        default : "Welcome Data Science"
-    },
+    announcement: [announcementSchema],
     assignment: {
         type: Array,
         required: true,
-        default : "Welcome Data Science"
+        default : "Welcome DevOps"
     },
     days:{
         type: Number,
         required: true,
         default : 0
-    },
+    }
 });
 
 export const DataScienceModel = mongoose.model("DataScienceDataUpdate", userSchema);

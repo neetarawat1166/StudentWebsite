@@ -5,7 +5,7 @@ const ContactContent = () => {
   return (
     <div className='section lg:py-[20px] mt-6'>
        <div className="flex flex-col items-center px-[2rem] sm:px-[4rem] md:px-[2rem] lg:px-[8rem] gap-[1rem] sm:gap-[2rem] text-[#252525]">
-      <h1 className="sm:text-[3rem] text-[30px] font-semibold text-[#65bc7b]">Stay Connected...</h1>
+      <h1 className="sm:text-[3rem] pt-4 text-[30px] font-semibold text-[#003366]">Stay Connected...</h1>
       <p className='sm:text-[25px] text-[16px]'>Stay connected with us! For any inquiries or assistance, feel free to reach out by filling out the following form</p>
       <div className="flex flex-col md:grid grid-cols-2 gap-[2rem] lg:gap-[4rem]">
         <div className="flex items-center justify-center">

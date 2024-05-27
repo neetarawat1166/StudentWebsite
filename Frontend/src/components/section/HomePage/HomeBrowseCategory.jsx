@@ -30,7 +30,8 @@ const HomeBrowseCategory = () => {
 
   return (
     <div className="px-5 py-5 md:px-10 md:py-10 lg:px-2 lg:py-20">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center">Browse By Categories</h1>
+      <h1 className="text-3xl md:text-4xl text-[#003366] lg:text-5xl font-bold pb-3 text-center">BROWSE BY CATEGORIES</h1>
+      <hr className="border-t-4 border-[#ff9416] w-32 mx-auto mb-10" />
       <div className="flex flex-wrap gap-2">
         {categories.map((category, index) => (
           <BrowseCategoryCard

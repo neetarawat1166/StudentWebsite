@@ -63,8 +63,8 @@ const Syllabus = ({ topics, courseHeading }) => { // Accepting 'topics' as props
     <>
       <section className='py-8'>
         <div className='container mx-auto px-[80px] pb-10 flex flex-col items-center'>
-          <h1 className='text-[38px] md:text-[50px] font-bold pb-6 text-[#65bc7b]'>{courseHeading}</h1>
-          <div className='flex bg-[#eeeeee] rounded-xl flex-wrap w-full items-center justify-center py-8'>
+          <h1 className='text-[38px] md:text-[50px] font-bold pb-6 text-[#003366]'>{courseHeading}</h1>
+          <div className='flex bg-[#faead8] border-2 border-[#003366] shadow-lg shadow-[#003366] rounded-xl flex-wrap w-full items-center justify-center py-8'>
             {topics.map((topic, index) => (
               <div key={index} className='flex flex-col md:flex-row w-[90%] justify-end py-2'>
                 <div className='w-full md:w-[70%]'>
@@ -83,7 +83,7 @@ const Syllabus = ({ topics, courseHeading }) => { // Accepting 'topics' as props
                   </div>
                 </div>
                 <div className="w-full md:w-[20%] text-center flex flex-col md:flex-row items-center justify-start">
-                  <button className='bg-[#65bc7b] text-white font-semibold p-4 text-lg rounded-xl' onClick={() => handleFeedbackClick(topic)}>Feedback</button>
+                  <button className='bg-[#003366] text-white font-semibold p-4 text-lg rounded-xl' onClick={() => handleFeedbackClick(topic)}>Feedback</button>
                 </div>
               </div>
             ))}
