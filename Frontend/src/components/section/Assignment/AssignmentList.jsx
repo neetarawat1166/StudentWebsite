@@ -22,9 +22,9 @@ const AssignmentList = ({ assignments }) => {
         <>
           {assignmentsForToday.length > 0 && (
             <div>
-              <h2 className="font-bold mb-4 text-center md:text-[30px] text-[20px] text-[#65bc7b]">Assignments for today ({today}):</h2>
+              <h2 className="font-bold mb-4 text-center md:text-[30px] text-[20px] text-[#003366]">Assignments for today ({today}):</h2>
               {assignmentsForToday.map((assignment, index) => (
-                <div key={index} className="bg-[#68be7d81] border-2 border-[#65bc7b] rounded-lg p-4 mb-4">
+                <div key={index} className="bg-[#7881e981] border-2 border-[#d2ae40] rounded-lg p-4 mb-4">
                   <div className='flex justify-start gap-4'>
                     <h3 className="text-lg font-semibold mb-2">{assignment.title}</h3>
                     <FaBookOpenReader className=' hidden sm:block text-[25px] text-black' />
@@ -40,12 +40,12 @@ const AssignmentList = ({ assignments }) => {
           )}
           {upcomingAssignments.length > 0 && (
             <div>
-              <h2 className="md:text-[30px] text-center text-[20px] font-bold mb-4 text-[#65bc7b]">Previous Assignments:</h2>
+              <h2 className="md:text-[30px] text-center text-[20px] font-bold mb-4 text-[#003366]">Previous Assignments:</h2>
               {upcomingAssignments.map((assignment, index) => (
-                <div key={index} className="bg-[#d0d3d166] rounded-lg p-4 mb-4 border-2 border-[#65bc7b]">
+                <div key={index} className="bg-[#D9E7FF] rounded-lg p-4 mb-4 border-2 border-[#d2ae40]">
                   <div className='flex justify-start gap-4'>
                     <h3 className="text-lg font-semibold mb-2">{assignment.title}</h3>
-                    <FaBookOpenReader className=' hidden sm:block text-[25px] text-[#65bc7b]' />
+                    <FaBookOpenReader className=' hidden sm:block text-[25px] text-[#c59941]' />
                   </div>
                   <p className="text-black mb-2">{assignment.task}</p>
                   <div className='flex flex-col sm:flex-row sm:justify-between'>

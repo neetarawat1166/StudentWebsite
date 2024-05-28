@@ -52,3 +52,19 @@
 
 
 /* BENEFITS CSS ENDS */
+
+
+/* HEADER MODAL CSS */
+.nav-modal {
+    position: fixed;
+    box-shadow: 0px 0px 3px rgb(184, 184, 184);
+    padding: 0;
+    margin: 0;
+    width: 15rem;
+    z-index: 2000;
+    transition: all 1s;
+    border-radius: 5px;
+  }
+  
+
+/* ENDS HERE */

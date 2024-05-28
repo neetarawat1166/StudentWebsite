@@ -17,17 +17,17 @@ const ContactDetail = () => {
                
                 <div class='conatiner flex justify-center items-center text-white z-50 relative'>
                    <div className='grid md:grid-cols-3 md:gap-40 gap-16 grid-cols-1'>
-                        <div className='text-center  hover:text-[#65bc7b]'>
+                        <div className='text-center  hover:text-[#ff9416]'>
                             <p className='lg:text-[25px] text-[18px] font-semibold'>+91 9351494002</p>
                             <p className='lg:text-[20px] text-[16px]'>Siddhart Singh</p>
                             <p className='text-[15px]'>Founder & Director</p>
                         </div>
-                        <div className='text-center hover:text-[#65bc7b]'>
+                        <div className='text-center hover:text-[#ff9416]'>
                             <p className='lg:text-[25px] text-[18px] font-semibold '>+91 9785956294</p>
                             <p className='lg:text-[20px] text-[16px]' >Vikram Singh</p>
                             <p className='text-[15px]'>Chief Marketing</p>
                         </div>
-                        <div className='text-center lg:text-[25px] text-[18px] font-semibold hover:text-[#65bc7b]'>
+                        <div className='text-center lg:text-[25px] text-[18px] font-semibold hover:text-[#ff9416]'>
                             <p className='lg:text-[25px] text-[18px] font-semibold'>+91 9509957594</p>
                             <p className='lg:text-[20px] text-[16px]'>Ashutoshh Singh</p>
                             <p className='text-[15px]'>Chief Tehnical Officer</p>

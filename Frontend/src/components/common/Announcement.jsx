@@ -78,18 +78,18 @@ const Announcement = () => {
     <>
       <div className="section">
         <div className="flex justify-center items-center gap-6">
-          <h1 className="text-[35px] text-[#252525] font-semibold text-center py-5">
+          <h1 className="text-[35px] text-[#003366] font-semibold text-center py-5">
             Announcements
           </h1>
 
           {user && user.profile === "Teacher" && (
             <FaEdit
-              className="text-[#252525] text-[30px] cursor-pointer"
+              className="text-[30px] cursor-pointer text-[#d19747]"
               onClick={handleOpenPopup}
             />
           )}
         </div>
-        <div className="container mx-auto bg-[#eeeeee] py-[10px] text-[#252525] w-full rounded-lg overflow-auto h-[300px] max-h-[286px] lg:max-h-[302px] border-2 border-[#65bc7b]">
+        <div className="container mx-auto bg-[#D9E7FF] py-[10px] text-[#252525] w-full rounded-lg overflow-auto h-[300px] max-h-[286px] lg:max-h-[302px] border-2 border-[#d19747]">
           {console.log("jaihind", updateData)}
           {/* {updateData &&
             updateData[0].announcement.map((item, index) => (
@@ -106,7 +106,7 @@ const Announcement = () => {
           {announcements &&
             announcements.map((item, index) => (
               <div key={index} className="mb-6">
-                <h2 className="text-[30px] font-semibold mb-2 text-center text-[#65bc7b]">
+                <h2 className="text-[30px] font-semibold mb-2 text-center text-[#003366]">
                   <div className="flex justify-center items-center gap-4">
                     {item.heading}
                   </div>
@@ -119,21 +119,15 @@ const Announcement = () => {
 
       {/* Popup for adding new announcement */}
       {isPopupOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex justify-center items-center bg-[#272525bc] bg-opacity-50 z-50">
           <div
-            className="bg-white p-4 rounded-lg w-[500px] max-h-[80vh] overflow-auto"
-            style={{
-              backgroundImage: `url(${BgImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
+            className="bg-[#10335eef] p-4 rounded-lg w-[500px] max-h-[80vh] overflow-auto"
           >
-            <h2 className="text-xl font-semibold mb-4 text-[#65bc7b]">
+            <h2 className="text-xl font-semibold mb-4 text-[#d19747]">
               Add Announcement
             </h2>
             <div className="mb-4">
-              <label className="block text-md font-medium text-[#65bc7b]">
+              <label className="block text-md font-medium text-[#d19747]">
                 Heading
               </label>
               <input
@@ -145,7 +139,7 @@ const Announcement = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-md font-medium text-[#65bc7b]">
+              <label className="block text-md font-medium text-[#d19747]">
                 Content
               </label>
               <input
@@ -158,13 +152,13 @@ const Announcement = () => {
             </div>
             <div className="flex justify-end">
               <button
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2"
+                className="bg-[#f0a742] text-white hover:text-[#f0a742] hover:border-2 hover:border-[#f0a742] px-4 py-2 rounded hover:bg-[#faf7f7] mr-2"
                 onClick={handleSaveAnnouncement}
               >
                 Save
               </button>
               <button
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                className="bg-[#f0a742] text-white hover:text-[#f0a742] hover:border-2 hover:border-[#f0a742] px-4 py-2 rounded hover:bg-[#faf7f7] mr-2"
                 onClick={handleClosePopup}
               >
                 Cancel

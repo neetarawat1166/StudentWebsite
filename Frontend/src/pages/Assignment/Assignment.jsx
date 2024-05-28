@@ -56,13 +56,13 @@ const Assignment = () => {
     <>
       <div className='section'>
         <div className='Container mx-auto'>
-          <h1 className='md:text-[35px] text-[25px] font-semibold text-[#65bc7b] text-center py-[10px] md:py-[30px]'>Let's enhance our skills by tackling the assignments ahead ...</h1>
+          <h1 className='md:text-[35px] text-[25px] font-semibold text-[#003366] text-center py-[10px] md:py-[30px]'>Let's enhance our skills by tackling the assignments ahead ...</h1>
           <div>
             <AssignmentList assignments={assignments} />
           </div>
           {user &&   user.profile === 'Teacher' &&   <div className="flex justify-center items-center pb-8"> 
-            <div className='bg-[#eeeeee] rounded-full p-6 cursor-pointer' onClick={handleModalOpen}>
-              <FaPlus className='text-[30px] text-[#65bc7b]'/>
+            <div className='bg-[#4d81d05f] rounded-full p-6 cursor-pointer' onClick={handleModalOpen}>
+              <FaPlus className='text-[30px] text-[#f0ac4d]'/>
             </div>
           </div>}
         </div> 
