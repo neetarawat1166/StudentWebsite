@@ -55,7 +55,7 @@ const testimonialData = [
 
 export default function Testimonial() {
   return (
-    <div className="section NeetaSwiper py-[40px]">
+    <div className="section NeetaSwiper pt-[40px]">
       <div className="cotainer mx-auto">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold pb-2 text-center text-[#003366]">
           Testimonial

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LogoBlack from '../images/LogoBlack.png'
 import FooterImg1 from '../images/FooterImg1.webp'
 import FooterImg2 from '../images/FooterImg2.webp'
@@ -11,7 +11,11 @@ import { FaPinterestP } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
 import UpflairsLogo from '../images/UpflairsLogo.png'
+import { isAuthenticatedContext } from '../context/userContext';
 const Footer = () => {
+  const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
+    isAuthenticatedContext
+  );
   return (
     <footer className="bg-[#003366] text-gray-300 pt-4 px-10">
       <div className="container mx-auto px-4 pt-[50px]">
@@ -19,7 +23,7 @@ const Footer = () => {
           {/* First column (wider) */}
           <div className="w-full sm:w-1/2 md:w-1/2 lg:w-2/5 xl:w-2/5 px-4 pb-4 sm:pb-[15px] md:pb-0">
             <img src={UpflairsLogo} alt="logo" className='sm:mx-0' width="250px" height="auto" />
-            <p className='w-[100%] sm:w-[80%] pt-4 pb-6'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi fugit illum error in vitae? Quisquam aspernatur consequatur dolorum asperiores accusamus!</p>
+            <p className='w-[100%] sm:w-[80%] pt-4 pb-6'>Empowering learners with VR-driven, engaging skill development programs for industry readiness, aiming to transform education delivery and prepare talent for the job market.</p>
             <div className="flex items-center">
               <div className="flex space-x-6 sm:space-x-4">
                 <div className="bg-[#ff9416] rounded-full p-2">
@@ -44,51 +48,54 @@ const Footer = () => {
             <ul className="list-none">
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Web Development</NavLink>
+                <NavLink to="/dashboard" className="text-[#eeeeee] hover:text-[#ff9416]">Dashboard</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">UI/UX Design</NavLink>
+                <NavLink to="/assignment" className="text-[#eeeeee] hover:text-[#ff9416]">Assignment</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Management</NavLink>
+                <NavLink to="/resources" className="text-[#eeeeee] hover:text-[#ff9416]">Resources</NavLink>
               </li>
               <li className="flex items-center py-2">
+                <MdKeyboardArrowRight className="pr-2" size={24} />
+                {user && user.course === "Cloud Computing & DevOps" && ( <NavLink to="/cloudcomputingsyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
+                {user && user.course === "Data Science & Machine Learning with AI" && ( <NavLink to="/datasciencesyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
+                {user && user.course === "Full Stack Web Development" && ( <NavLink to="/fullstacksyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
+                {user && user.course === "Embedded Systems & Robotics with IOT" && ( <NavLink to="/embeddedsystemssyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
+              </li>
+              {/* <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
                 <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Digital Marketing</NavLink>
-              </li>
-              <li className="flex items-center py-2">
-                <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Digital Marketing</NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
 
           {/* Third column */}
           <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 xl:w-1/5 px-4 pb-4 sm:pt-10 md:pb-0 lg:pt-6">
-            <h3 className="text-[25px] font-bold mb-2 text-[#ff9416]">Quick Links</h3>
+            <h3 className="text-[25px] font-bold mb-2 text-[#ff9416]">Connect With Us</h3>
             <ul className="list-none">
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Web Development</NavLink>
+                <NavLink to="/about" className="text-[#eeeeee] hover:text-[#ff9416]">About</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">UI/UX Design</NavLink>
+                <NavLink to="/contact" className="text-[#eeeeee] hover:text-[#ff9416]">Contact</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Management</NavLink>
+                <NavLink to="/query" className="text-[#eeeeee] hover:text-[#ff9416]">Query</NavLink>
+              </li>
+              {/* <li className="flex items-center py-2">
+                <MdKeyboardArrowRight className="pr-2" size={24} />
+                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Digital Marketing</NavLink>
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
                 <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Digital Marketing</NavLink>
-              </li>
-              <li className="flex items-center py-2">
-                <MdKeyboardArrowRight className="pr-2" size={24} />
-                <NavLink to="/" className="text-[#eeeeee] hover:text-[#ff9416]">Digital Marketing</NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
 
