@@ -9,7 +9,7 @@ import Profile from "../components/common/Profile";
 import { isAuthenticatedContext } from "../context/userContext.jsx";
 import axios from "axios";
 import Modal from "./common/Modal.jsx";
-import {IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -46,6 +46,17 @@ const Header = () => {
       console.log(error);
     }
   };
+
+  const [isActive, setIsActive] = useState(false);
+  const toggleActive = () => {
+    setIsActive(!isActive);
+  };
+
+  const [activeTab, setActiveTab] = useState('');
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+  console.log(activeTab)
 
   const handleClickOutside = (event) => {
     if (
@@ -91,8 +102,11 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                  isActive && activeTab === 'home'
+                    ? "border-b-[3px] border-[#ff9416]"
+                    : ""
                 }
+                onClick={() => handleTabClick('home')}
               >
                 Home
               </NavLink>
@@ -103,88 +117,102 @@ const Header = () => {
                   <NavLink
                     to="/dashboard"
                     className={({ isActive }) =>
-                      isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                      isActive && activeTab === 'dashboard'
+                        ? "border-b-[3px] border-[#ff9416]"
+                        : ""
                     }
+                    onClick={() => handleTabClick('dashboard')}
                   >
                     Dashboard
                   </NavLink>
                 </li>
                 <Modal>
-                   <Modal.Open opens="courseMaterial">
-                   <li className="text-lg relative py-4 ">
-                      <NavLink style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                <Modal.Open opens="courseMaterial">
+                    <li className="text-lg relative py-4">
+                      <div
+                        onClick={() => handleTabClick('courseMaterial')}
+                        style={{ display: "flex", alignItems: "center", gap: "4px" }}
+                        className={ 
+                          activeTab === 'courseMaterial'
+                            ? "border-b-[3px] border-[#ff9416]"
+                            : ""
+                        }
+                      >
                         Course Material <IoIosArrowDown />
-                      </NavLink>
+                      </div>
                     </li>
                   </Modal.Open>
-                 <Modal.Window name="courseMaterial">
+                  <Modal.Window name="courseMaterial">
                     <div className="absolute bg-[#D9E7FF] w-full text-center shadow-md p-4 rounded">
                       <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
                         <NavLink to="/assignment" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
                           Assignment
                         </NavLink>
-                    </li>
-                       <li className="text-lg py-2 hover:bg-[#ddb44c8c] hover:rounded-md text-[#003366]">
-                         <NavLink to="/resources" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
+                      </li>
+                      <li className="text-lg py-2 hover:bg-[#ddb44c8c] hover:rounded-md text-[#003366]">
+                        <NavLink to="/resources" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
                           Resources
-                         </NavLink>
+                        </NavLink>
                       </li>
                       <li className="text-lg relative py-2 hover:bg-[#ddb44c8c] hover:rounded-md text-[#003366]">
-                  {user &&
-                    user.course === "Embedded Systems & Robotics with IOT" && (
-                      <NavLink
-                        to="/embeddedsystemssyllabus"
-                        className={({ isActive }) =>
-                          isActive ? "border-b-[3px] border-[#ff9416]" : ""
-                        }
-                      >
-                        Syllabus
-                      </NavLink>
-                    )}
-                  {user && user.course === "Cloud Computing & DevOps" && (
-                    <NavLink
-                      to="/cloudcomputingsyllabus"
-                      className={({ isActive }) =>
-                        isActive ? "border-b-[3px] border-[#ff9416]" : ""
-                      }
-                    >
-                      Syllabus
-                    </NavLink>
-                  )}
-                  {user &&
-                    user.course ===
-                      "Data Science & Machine Learning with AI" && (
-                      <NavLink
-                        to="/datasciencesyllabus"
-                        className={({ isActive }) =>
-                          isActive ? "border-b-[3px] border-[#ff9416]" : ""
-                        }
-                      >
-                        Syllabus
-                      </NavLink>
-                    )}
-                  {user && user.course === "Full Stack Web Development" && (
-                    <NavLink
-                      to="/fullstacksyllabus"
-                      className={({ isActive }) =>
-                        isActive ? "border-b-[3px] border-[#ff9416]" : ""
-                      }
-                    >
-                      Syllabus
-                    </NavLink>
-                  )}
-                </li>
+                        {user &&
+                          user.course === "Embedded Systems & Robotics with IOT" && (
+                            <NavLink
+                              to="/embeddedsystemssyllabus"
+                              className={({ isActive }) =>
+                                isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                              }
+                            >
+                              Syllabus
+                            </NavLink>
+                          )}
+                        {user && user.course === "Cloud Computing & DevOps" && (
+                          <NavLink
+                            to="/cloudcomputingsyllabus"
+                            className={({ isActive }) =>
+                              isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                            }
+                          >
+                            Syllabus
+                          </NavLink>
+                        )}
+                        {user &&
+                          user.course ===
+                          "Data Science & Machine Learning with AI" && (
+                            <NavLink
+                              to="/datasciencesyllabus"
+                              className={({ isActive }) =>
+                                isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                              }
+                            >
+                              Syllabus
+                            </NavLink>
+                          )}
+                        {user && user.course === "Full Stack Web Development" && (
+                          <NavLink
+                            to="/fullstacksyllabus"
+                            className={({ isActive }) =>
+                              isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                            }
+                          >
+                            Syllabus
+                          </NavLink>
+                        )}
+                      </li>
                     </div>
-                    
-                   </Modal.Window>
-                 </Modal>
+
+                  </Modal.Window>
+                </Modal>
                 {user && user.profile === "Teacher" ? (
                   <li className="text-lg relative py-4">
                     <NavLink
                       to="/studentlist"
                       className={({ isActive }) =>
-                        isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                        isActive && activeTab === 'studentlist'
+                          ? "border-b-[3px] border-[#ff9416]"
+                          : ""
                       }
+                      onClick={() => handleTabClick('studentlist')}
                     >
                       Student-List
                     </NavLink>
@@ -198,8 +226,11 @@ const Header = () => {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                  isActive && activeTab === 'about'
+                    ? "border-b-[3px] border-[#ff9416]"
+                    : ""
                 }
+                onClick={() => handleTabClick('about')}
               >
                 About
               </NavLink>
@@ -208,8 +239,11 @@ const Header = () => {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                  isActive && activeTab === 'contact'
+                    ? "border-b-[3px] border-[#ff9416]"
+                    : ""
                 }
+                onClick={() => handleTabClick('contact')}
               >
                 Contact
               </NavLink>
@@ -218,8 +252,11 @@ const Header = () => {
               <NavLink
                 to="/query"
                 className={({ isActive }) =>
-                  isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                  isActive && activeTab === 'query'
+                    ? "border-b-[3px] border-[#ff9416]"
+                    : ""
                 }
+                onClick={() => handleTabClick('query')}
               >
                 Query
               </NavLink>
@@ -266,17 +303,17 @@ const Header = () => {
           </ul>
         </div>
       </div>
+
+
       {/* Sidebar Menu */}
       <div
-        className={`fixed lg:hidden top-0 w-full h-full z-30 bg-[#25252500] transition-all duration-300 ${
-          sidebarOpen ? "visible" : "invisible"
-        }`}
+        className={`fixed lg:hidden top-0 w-full h-full z-30 bg-[#25252500] transition-all duration-300 ${sidebarOpen ? "visible" : "invisible"
+          }`}
       >
         <div
           ref={sidebarRef}
-          className={`relative w-[250px] h-full px-[1rem] py-[6rem] bg-[#003366] transition-transform duration-300 transform ${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`relative w-[250px] h-full px-[1rem] py-[6rem] bg-[#003366] transition-transform duration-300 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <button
             className="absolute top-[1rem] left-[1rem] text-2xl cursor-pointer bg-[#ff9416] text-white p-[3px]"
@@ -289,10 +326,11 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive
-                    ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                    : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                  isActive && activeTab === 'home'
+                    ? "block text-[#ff9416] bg-white mb-4 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                    : "block text-white bg-[#ff9416] mb-4 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
                 }
+                onClick={() => handleTabClick('home')}
               >
                 Home
               </NavLink>
@@ -303,38 +341,92 @@ const Header = () => {
                   <NavLink
                     to="/dashboard"
                     className={({ isActive }) =>
-                      isActive
-                        ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                        : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                      isActive && activeTab === 'dashboard'
+                        ? "block text-[#ff9416] bg-white py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                        : "block text-white bg-[#ff9416] py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
                     }
+                    onClick={() => handleTabClick('dashboard')}
                   >
                     Dashboard
                   </NavLink>
                 </li>
                 <Modal>
-                   <Modal.Open opens="courseMaterial">
-                   <li className="text-lg relative py-4">
-                      <NavLink style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                <Modal.Open opens="courseMaterial">
+                    <li className="text-lg relative py-4">
+                      <div
+                        onClick={() => handleTabClick('courseMaterial')}
+                        style={{ display: "flex", alignItems: "center", gap: "4px" }}
+                        className={ 
+                          activeTab === 'courseMaterial'
+                            ? "block text-[#ff9416] bg-white py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                            : "block text-white bg-[#ff9416] py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                        }
+                      >
                         Course Material <IoIosArrowDown />
-                      </NavLink>
+                      </div>
                     </li>
                   </Modal.Open>
-                 <Modal.Window name="courseMaterial">
+                  <Modal.Window name="courseMaterial">
                     <div className="absolute bg-[#D9E7FF] w-full text-center shadow-md p-4 rounded">
                       <li className="text-lg py-2 text-[#003366]">
                         <NavLink to="/assignment" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
                           Assignment
                         </NavLink>
-                    </li>
-                       <li className="text-lg py-2 text-[#003366]">
-                         <NavLink to="/resources" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
+                      </li>
+                      <li className="text-lg py-2 text-[#003366]">
+                        <NavLink to="/resources" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
                           Resources
-                         </NavLink>
+                        </NavLink>
+                      </li>
+                      <li className="text-lg py-2 text-[#003366]">
+                        {user &&
+                          user.course === "Embedded Systems & Robotics with IOT" && (
+                            <NavLink
+                              to="/embeddedsystemssyllabus"
+                              className={({ isActive }) =>
+                                isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                              }
+                            >
+                              Syllabus
+                            </NavLink>
+                          )}
+                        {user && user.course === "Cloud Computing & DevOps" && (
+                          <NavLink
+                            to="/cloudcomputingsyllabus"
+                            className={({ isActive }) =>
+                              isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                            }
+                          >
+                            Syllabus
+                          </NavLink>
+                        )}
+                        {user &&
+                          user.course ===
+                          "Data Science & Machine Learning with AI" && (
+                            <NavLink
+                              to="/datasciencesyllabus"
+                              className={({ isActive }) =>
+                                isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                              }
+                            >
+                              Syllabus
+                            </NavLink>
+                          )}
+                        {user && user.course === "Full Stack Web Development" && (
+                          <NavLink
+                            to="/fullstacksyllabus"
+                            className={({ isActive }) =>
+                              isActive ? "border-b-[3px] border-[#ff9416]" : ""
+                            }
+                          >
+                            Syllabus
+                          </NavLink>
+                        )}
                       </li>
                     </div>
-                   </Modal.Window>
-                 </Modal>
-                <li>
+                  </Modal.Window>
+                </Modal>
+                {/* <li>
                   <NavLink
                     to="/syllabus"
                     className={({ isActive }) =>
@@ -345,17 +437,18 @@ const Header = () => {
                   >
                     Syllabus
                   </NavLink>
-                </li>
+                </li> */}
               </>
             )}
             <li>
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  isActive
-                    ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                    : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                  isActive && activeTab === 'about'
+                    ? "block text-[#ff9416] bg-white mb-4 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                    : "block text-white bg-[#ff9416] mb-4 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
                 }
+                onClick={() => handleTabClick('about')}
               >
                 About
               </NavLink>
@@ -364,10 +457,11 @@ const Header = () => {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  isActive
-                    ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                    : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                  isActive && activeTab === 'contact'
+                    ? "block text-[#ff9416] bg-white mb-4 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                    : "block text-white bg-[#ff9416] mb-4 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
                 }
+                onClick={() => handleTabClick('contact')}
               >
                 Contact
               </NavLink>
@@ -376,15 +470,16 @@ const Header = () => {
               <NavLink
                 to="/query"
                 className={({ isActive }) =>
-                  isActive
+                  isActive && activeTab === 'query'
                     ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
                     : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
                 }
+                onClick={() => handleTabClick('query')}
               >
                 Any Query?
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to="/feedback"
                 className={({ isActive }) =>
@@ -395,21 +490,19 @@ const Header = () => {
               >
                 Feedback
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
       {/* Profile Sidebar */}
       <div
-        className={`fixed lg:hidden top-0 w-full h-full z-30 bg-[#25252503] transition-all duration-300 ${
-          profileOpen ? "visible" : "invisible"
-        }`}
+        className={`fixed lg:hidden top-0 w-full h-full z-30 bg-[#25252503] transition-all duration-300 ${profileOpen ? "visible" : "invisible"
+          }`}
       >
         <div
           ref={profileRef}
-          className={`relative w-[250px] h-full px-[1rem] py-[6rem] bg-white transition-transform duration-300 transform ${
-            profileOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`relative w-[250px] h-full px-[1rem] py-[6rem] bg-white transition-transform duration-300 transform ${profileOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <button
             className="absolute top-[1rem] left-[1rem] text-2xl cursor-pointer bg-[#65bc7b] text-white p-[3px]"
