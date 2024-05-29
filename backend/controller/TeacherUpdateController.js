@@ -167,9 +167,20 @@
           });
         }
 
-        const id = UpdateModel[0]._id;  
-        console.log( "india data", req.body)
+        // const id = UpdateModel[0]._id;  
+        // console.log( "india data", req.body)
         // UpdateModel = await DataScienceModel()
+
+        const newAnnouncement = {
+          heading: req.body.newHeading,
+          description: req.body.newContent
+        };
+
+        // console.log("announcement", newAnnouncement);
+        // console.log(UpdateModel[0]);
+
+        UpdateModel[0].announcement.push(newAnnouncement);
+        await UpdateModel[0].save();
 
         res.status(200).json({
           success: true,
@@ -198,13 +209,24 @@
           });
         }
 
-        const id = UpdateModel[0]._id;
+        // const id = UpdateModel[0]._id;
 
-        UpdateModel = await IOTModel.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true,
-          useFindAndModify: false,
-        });
+        // UpdateModel = await IOTModel.findByIdAndUpdate(id, req.body, {
+        //   new: true,
+        //   runValidators: true,
+        //   useFindAndModify: false,
+        // });
+
+        const newAnnouncement = {
+          heading: req.body.newHeading,
+          description: req.body.newContent
+        };
+
+        // console.log("announcement", newAnnouncement);
+        // console.log(UpdateModel[0]);
+
+        UpdateModel[0].announcement.push(newAnnouncement);
+        await UpdateModel[0].save();
 
         res.status(200).json({
           success: true,
@@ -241,8 +263,8 @@
           description: req.body.newContent
         };
 
-        console.log("announcement", newAnnouncement);
-        console.log(UpdateModel[0]);
+        // console.log("announcement", newAnnouncement);
+        // console.log(UpdateModel[0]);
 
         UpdateModel[0].announcement.push(newAnnouncement);
         await UpdateModel[0].save();
@@ -276,13 +298,24 @@
           });
         }
 
-        const id = UpdateModel[0]._id;
-        console.log("daraaraaa", req.body)
-        UpdateModel = await DevOpsModel.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true,
-          useFindAndModify: false,
-        });
+        // const id = UpdateModel[0]._id;
+        // console.log("daraaraaa", req.body)
+        // UpdateModel = await DevOpsModel.findByIdAndUpdate(id, req.body, {
+        //   new: true,
+        //   runValidators: true,
+        //   useFindAndModify: false,
+        // });
+
+        const newAnnouncement = {
+          heading: req.body.newHeading,
+          description: req.body.newContent
+        };
+
+        // console.log("announcement", newAnnouncement);
+        // console.log(UpdateModel[0]);
+
+        UpdateModel[0].announcement.push(newAnnouncement);
+        await UpdateModel[0].save();
 
         res.status(200).json({
           success: true,
