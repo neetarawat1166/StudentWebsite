@@ -212,7 +212,7 @@ const ContactForm = () => {
               Submit
             </button>
           </div>
-          
+          <Toaster position="top-center" reverseOrder={false} />
       </div>
     </>
   );
