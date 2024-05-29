@@ -1,7 +1,9 @@
 import express from "express";
 import {
+  Contact,
   Login,
   Logout,
+  Query,
   Signup,
   Students,
   getAnnouncement,
@@ -11,6 +13,12 @@ import { isAuthenticated } from "../middlewares/auth.js";
 const router = express.Router();
 
 router.post("/signup", Signup);
+
+//Contact route
+router.post("/contact",Contact);
+
+//Qurey Route
+router.post("/query",Query)
 
 // Login Route
 router.post("/login", Login);

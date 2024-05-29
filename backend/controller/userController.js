@@ -7,6 +7,8 @@ import { FullStackModel } from "../models/FullStackUpdateModel.js";
 import { DataScienceModel } from "../models/DataScienceUpdateModel.js";
 import { IOTModel } from "../models/IOTUpdateModel.js";
 import { DevOpsModel } from "../models/DevOpsUpdateModel.js";
+import { ContactModel } from "../models/ContactUsModal.js";
+import { QueryModel } from "../models/QueryModal.js";
 
 const JWT_SECURE = "thisisourjsonwebtokenandimfromindia";
 
@@ -198,5 +200,75 @@ export const getAnnouncement = async (req, res) => {
   } catch (error) {
     console.error("Error fetching students:", error);
     res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+
+export const Contact = async (req, res) => {
+  const {  firstname, lastname, email, mobile,course,message } = req.body;
+
+  if (!firstname || !lastname || !email || !message  || !mobile || !course) {
+    return res.status(404).json({
+      success: false,
+      message: "Please fill all the form details",
+    });
+  }
+  try {
+    const userdata = await ContactModel.create({
+      firstname,
+      lastname,
+      email,
+      mobile,
+      course,
+      message 
+    });
+
+    console.log("userdatacreated",userdata);
+
+    res.status(200).json({
+      success: true,
+      message: "Submitted successfully",
+      user: userdata,
+    });
+  } catch (error) {
+    console.error("Error in Submission:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+
+export const Query = async (req, res) => {
+  const {  firstname, lastname, email,query} = req.body;
+
+  if (!firstname || !lastname || !email || !query) {
+    return res.status(404).json({
+      success: false,
+      message: "Please fill all the form details",
+    });
+  }
+  try {
+    const userdata = await QueryModel.create({
+      firstname,
+      lastname,
+      email,
+      query 
+    });
+
+    //console.log("userdatacreated",userdata);
+
+    res.status(200).json({
+      success: true,
+      message: "Submitted successfully",
+      user: userdata,
+    });
+  } catch (error) {
+    console.error("Error in Submission:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
   }
 };

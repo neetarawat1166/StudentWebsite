@@ -37,13 +37,16 @@ const Attendance = ({ attended, total }) => {
   return (
     <>
       <div className="section">
-        <h1 className="text-[35px] text-[#252525] font-semibold text-center py-5">
+        <h1 className="text-[35px] text-[#003366] font-semibold text-center py-5">
           Attendance
         </h1>
-        <div className="container border-2 border-[#65bc7b] mx-auto bg-[#eeeeee] py-[10px] text-center text-[#252525] w-full rounded-lg shadow-md relative">
+        <div className="container border-2 border-[#d19747] mx-auto bg-[#D9E7FF] py-[10px] text-center text-[#252525] w-full rounded-lg shadow-md relative">
           <div className="flex justify-center items-center gap-4">
-            <h1 className="text-[18px] sm:text-[30px] md:text-[23px] lg:text-[30px] font-semibold text-[#65bc7b]">
-              Full Stack Web Development
+            <h1 className="text-[18px] sm:text-[30px] md:text-[23px] lg:text-[30px] font-semibold text-[#d19747]">
+              {user && user.course==="Full Stack Web Development" ? "Full Stack Web Development" : ""}
+              {user && user.course==="Embedded Systems & Robotics with IOT" ? "Embedded Systems & Robotics with IOT" : ""}
+              {user && user.course==="Cloud Computing & DevOps" ? "Cloud Computing & DevOps" : ""}
+              {user && user.course==="Data Science & Machine Learning with AI" ? "Data Science & Machine Learning with AI" : ""}
             </h1>
             {/* <IoLogoWebComponent className="text-[18px] sm:text-[30px] md:text-[23px] lg:text-[30px] font-semibold" /> */}
           </div>
@@ -72,7 +75,7 @@ const Attendance = ({ attended, total }) => {
 
         
       {/* Modal for editing topic */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
           <div className="bg-white p-4 rounded-lg" style={{ backgroundImage: `url(${BgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
             <h2 className="text-xl font-semibold mb-4 text-[#65bc7b]">Edit Attendance</h2>
@@ -93,7 +96,7 @@ const Attendance = ({ attended, total }) => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
       </div>
     </>
   );

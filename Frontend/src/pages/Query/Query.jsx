@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Formdata from "../../components/common/Formdata";
 import FormImg from "../../components/common/FormImg";
 import img from '../../images/query.png'
+import axios from "axios";
 
 const Query = () => {
+
   return (
     <>
       <section className="py-[50px] ">

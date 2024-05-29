@@ -119,12 +119,6 @@ const Signup = () => {
       <div className="section bg-[#eeeeee] py-[50px]">
         <div
           className="container mx-auto lg:w-[40%] md:w-[60%] w-[80%] py-[30px] rounded-md bg-gradient-to-br from-blue-100 to-[#003366] border border-[#003366] shadow-xl shadow-black"
-          // style={{
-          //   backgroundImage: `url(${img1})`,
-          //   backgroundRepeat: "no-repeat",
-          //   backgroundSize: "cover",
-          //   backgroundPosition: "center",
-          // }}
         >
           <h1 className="md:text-[30px] text-[20px] font-bold text-center mb-8 text-[#003366]">
             Signup Form

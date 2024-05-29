@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { FaEdit } from "react-icons/fa";
 import img1 from "../../images/announcement.png";
+import img from '../../images/NoAnnouncement.png'
 import BgImage from "../../images/wavii2.jpg";
 import { isAuthenticatedContext } from "../../context/userContext";
 import axios from "axios";
@@ -84,8 +85,8 @@ const Announcement = () => {
           )}
         </div>
         <div className="container mx-auto bg-[#D9E7FF] py-[10px] text-[#252525] w-full rounded-lg overflow-auto h-[300px] max-h-[286px] lg:max-h-[302px] border-2 border-[#d19747]">
-          {console.log("jaihind", updateData)}
-          {announcements &&
+          {/* {console.log("jaihind", updateData)} */}
+          {/* {announcements &&
             announcements.map((item, index) => (
               <div key={index} className="mb-6">
                 <h2 className="text-[25px] font-semibold mb-2 text-center text-[#003366]">
@@ -95,7 +96,34 @@ const Announcement = () => {
                 </h2>
                 <p className="text-center">{item.description}</p>
               </div>
-            ))}
+            ))} */}
+            {announcements.length === 0 ? (
+           <>
+            <h2 className="text-[30px] font-semibold text-center text-[#d19747]">
+              No Announcements yet...
+            </h2>
+            <div className="justify-center flex items-center p-4">
+            {user && user.profile === "Teacher" ? (
+              <img src={img} alt="" className="sm:w-[20%] w-[30%] h-auto" />
+            ) : (
+              <img src={img} alt="" className="w-[30%] h-auto" />
+            )}
+             
+            </div>
+           
+           </>
+          ) : (
+            announcements && announcements.map((item, index) => (
+              <div key={index} className="mb-6 w-full">
+                <h2 className="text-[25px] font-semibold mb-2 text-center text-[#003366]">
+                  <div className="flex justify-center items-center gap-4">
+                    {item.heading}
+                  </div>
+                </h2>
+                <p className="text-center">{item.description}</p>
+              </div>
+            ))
+          )}
         </div>
       </div>
 

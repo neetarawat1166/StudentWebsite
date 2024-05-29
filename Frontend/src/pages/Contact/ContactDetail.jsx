@@ -5,7 +5,7 @@ import des3 from '../../images/ctades3.png'
 const ContactDetail = () => {
   return (
     <>   
-        <div className='section bg-cover bg-no-repeat h-full relative py-[50px] md:py-[80px] z-50' style={{backgroundImage:`url(${ctaBG})`, backgroundPosition:"center"}}>
+        <div className='section bg-cover bg-no-repeat mt-2 h-full relative py-[50px] md:py-[80px] z-50' style={{backgroundImage:`url(${ctaBG})`, backgroundPosition:"center"}}>
                 <div className='absolute top-0 left-0 w-full h-full bg-[#141415b7]'></div>
             
                 <div className=' hidden lg:block absolute top-[30px] lg:left-[20px] xl:left-[160px] animate-spin duration-1000 linear delay-0 infinite normal none running'>

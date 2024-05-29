@@ -19,7 +19,7 @@ const CircleProgress = ({ percentage }) => {
           strokeWidth="4"
         />
         <circle
-          className="stroke-[#65bc7b] fill-transparent"
+          className="stroke-[#003366] fill-transparent"
           cx={radius + padding / 2}
           cy={radius + padding / 2}
           r={radius}
