@@ -9,6 +9,7 @@ import { IOTModel } from "../models/IOTUpdateModel.js";
 import { DevOpsModel } from "../models/DevOpsUpdateModel.js";
 import { ContactModel } from "../models/ContactUsModal.js";
 import { QueryModel } from "../models/QueryModal.js";
+import { FeedbackModel } from "../models/FeeddbackModel.js";
 
 const JWT_SECURE = "thisisourjsonwebtokenandimfromindia";
 
@@ -255,6 +256,56 @@ export const Query = async (req, res) => {
       lastname,
       email,
       query 
+    });
+
+    //console.log("userdatacreated",userdata);
+
+    res.status(200).json({
+      success: true,
+      message: "Submitted successfully",
+      user: userdata,
+    });
+  } catch (error) {
+    console.error("Error in Submission:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+
+export const Feedback = async (req, res) => {
+  const {  course,email,topic,selectedSubtopics,rating,comment} = req.body;
+  // console.log("-------------",course)
+  // console.log("-------------",email)
+  // console.log("-------------",selectedSubtopics)
+  // console.log("-------------",rating)
+  if (!selectedSubtopics || !rating || !comment) {
+    return res.status(404).json({
+      success: false,
+      message: "Please fill all the form details",
+    });
+  }
+  
+  const Existedemail = await FeedbackModel.findOne({email});
+  const Existedtopic = await FeedbackModel.findOne({topic});
+  if(Existedemail && Existedtopic){
+    return res.status(404).json({
+      success: false,
+      message: "You have already filled",
+    });
+  }
+  
+
+  try {
+    const userdata = await FeedbackModel.create({
+      email,
+      course,
+      topic,
+      selectedSubtopics,
+      rating,
+      comment
     });
 
     //console.log("userdatacreated",userdata);

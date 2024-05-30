@@ -1,6 +1,7 @@
 import express from "express";
 import {
   Contact,
+  Feedback,
   Login,
   Logout,
   Query,
@@ -19,6 +20,9 @@ router.post("/contact",Contact);
 
 //Qurey Route
 router.post("/query",Query)
+
+//Feedback route
+router.post("/feedback",Feedback);
 
 // Login Route
 router.post("/login", Login);
