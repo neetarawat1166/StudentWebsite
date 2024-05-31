@@ -24,7 +24,7 @@
 // export default AboutCon;
 
 import React from "react";
-import img from "../../../images/AboutConImg.jpg";
+import img from "../../../images/AboutConImg.png";
 
 const AboutCon = () => {
   return (
