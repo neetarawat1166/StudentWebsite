@@ -13,21 +13,47 @@ const StudentList = () => {
     }
   },[user])
 
-  const {studentList}  =useContext(isAuthenticatedContext)
+  const {studentList} = useContext(isAuthenticatedContext)
   console.log(studentList)
-  // setStudents(studentList)
-  // console.log(students)
 
   if (!user) {
     return <div>Loading...</div>;
   }
 
-  const presentbtn = (id) => {
-    console.log(id)
+  const [usersID, setUserID] = useState([]);
+
+  const presentbtn = async (id) => {
+    // axios.put()
+
+    setUserID(prevId => [...prevId, id]);
+
+    // const userData = studentList.find(india => india._id == id);
+
+    // const updatedData = { ...userData, attendance: userData.attendance + 1};
+    // const response = await axios.put('http://localhost:5000/api/v1/attendance', updatedData, {
+    //   withCredentials: true,
+    // });
+
+  }
+  const showStudent = async () => {
+    let userData ;
+    usersID.forEach(id => {
+      // console.log(id)
+      userData = studentList.find(india => india._id == id);
+    });
+
+    console.log(userData)
+
+
+    const updatedData = { ...userData, attendance: userData.attendance + 1};
+    const response = await axios.put('http://localhost:5000/api/v1/attendance', updatedData, {
+      withCredentials: true,
+    });
   }
 
+
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8"> 
       <h1 className="text-4xl font-semibold mb-6 text-center text-[#003366]">Total Classes Done : <span className="text-[#ff9416]">0</span>/30</h1>
       {/* <h1 className="text-4xl font-semibold mb-6 text-center text-[#003366]">Student's List</h1> */}
 
@@ -47,7 +73,7 @@ const StudentList = () => {
                 <td className="border-2 border-[#003366] px-4 py-2">{student.name}</td>
                 <td className="border-2 border-[#003366] px-4 py-2">
                   <div className="flex justify-center gap-10">
-                        {student.name}
+                        {index}
                         <button className="bg-[#003366] p-1 rounded-lg text-white hover:bg-[#ff9416]" onClick={() => presentbtn(student._id)}>Present</button>
                   </div>
                 </td>
@@ -56,7 +82,7 @@ const StudentList = () => {
           </tbody>
         </table>
         <div className="flex items-center justify-center mt-10 ">
-           <button className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]">Complete Attendance</button>
+           <button className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]" onClick={showStudent}>Complete Attendance</button>
         </div>
       </div>
     </div>

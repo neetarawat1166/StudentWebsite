@@ -6,6 +6,7 @@ import {
   Logout,
   Query,
   Signup,
+  StudentAttendance,
   Students,
   getAnnouncement,
   getUser,
@@ -36,6 +37,8 @@ router.post("/students", Students);
 router.post("/dataadd", Students);
 
 router.get("/announcement/:course", getAnnouncement);
+
+router.put("/attendance", StudentAttendance);
 
 //getstudents
 
