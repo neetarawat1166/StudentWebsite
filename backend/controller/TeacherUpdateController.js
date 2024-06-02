@@ -10,6 +10,7 @@
   
     if (user.course == "Data Science & Machine Learning with AI") {
       try {
+
         // Find the post by ID
         let UpdateModel = await DataScienceModel.find();
         // console.log("updateMod", UpdateModel)
@@ -333,3 +334,55 @@
       }
     }
   }
+
+
+  export const AddAssignment = async (req, res) => {
+    const user = req.user;
+    console.log(req.body);
+  
+    let UpdateModel;
+  
+    switch (user.course) {
+      case "Data Science & Machine Learning with AI":
+        UpdateModel = await DataScienceModel.find();
+        break;
+      case "Embedded Systems & Robotics with IOT":
+        UpdateModel = await IOTModel.find();
+        break;
+      case "Full Stack Web Development":
+        UpdateModel = await FullStackModel.find();
+        break;
+      case "Cloud Computing & DevOps":
+        UpdateModel = await DevOpsModel.find();
+        break;
+      default:
+        return res.status(403).json({
+          success: false,
+          message: "Invalid course.",
+        });
+    }
+  
+    if (!UpdateModel || UpdateModel.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Data not found.",
+      });
+    }
+  
+    const newAssignment = {
+      title: req.body.title,
+      task: req.body.task,
+      assignDate: req.body.assignDate,
+      dueDate: req.body.dueDate,
+    };
+  
+    UpdateModel[0].assignment.push(newAssignment);
+    await UpdateModel[0].save();
+  
+    res.status(200).json({
+      success: true,
+      message: "Assignment Added",
+      newAssignment,
+    });
+  };
+  

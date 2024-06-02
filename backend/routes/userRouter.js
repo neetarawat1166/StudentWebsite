@@ -9,6 +9,7 @@ import {
   StudentAttendance,
   Students,
   getAnnouncement,
+  getAssignment,
   getUser,
 } from "../controller/userController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
@@ -38,7 +39,9 @@ router.post("/dataadd", Students);
 
 router.get("/announcement/:course", getAnnouncement);
 
-router.put("/attendance", StudentAttendance);
+router.get("/assignment/:course", getAssignment);
+
+router.put("/attendance", isAuthenticated, StudentAttendance);
 
 //getstudents
 
