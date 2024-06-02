@@ -12,7 +12,8 @@
       try {
         // Find the post by ID
         let UpdateModel = await DataScienceModel.find();
-        // console.log(UpdateModel)
+        // console.log("updateMod", UpdateModel)
+        // console.log("REQBODY", req.body)
         if (!UpdateModel) {
           return res.status(404).json({
             success: false,
@@ -148,7 +149,7 @@
         });
       }
     }
-  };
+};
 
 
   export const AddAnnouncement = async (req, res) => {

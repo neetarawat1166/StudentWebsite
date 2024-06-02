@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { isAuthenticatedContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import toast, {Toaster} from 'react-hot-toast'
 
 const StudentList = () => {
   // const [students, setStudents] = useState();
@@ -27,32 +28,35 @@ const StudentList = () => {
 
     setUserID(prevId => [...prevId, id]);
 
-    // const userData = studentList.find(india => india._id == id);
-
-    // const updatedData = { ...userData, attendance: userData.attendance + 1};
-    // const response = await axios.put('http://localhost:5000/api/v1/attendance', updatedData, {
-    //   withCredentials: true,
-    // });
-
   }
-  const showStudent = async () => {
-    let userData ;
-    usersID.forEach(id => {
-      // console.log(id)
-      userData = studentList.find(india => india._id == id);
-    });
-
-    console.log(userData)
-
-
-    const updatedData = { ...userData, attendance: userData.attendance + 1};
-    const response = await axios.put('http://localhost:5000/api/v1/attendance', updatedData, {
-      withCredentials: true,
-    });
-  }
+  console.log(usersID)
+  const CompleteAttendance = async () => {
+    try {
+      let AttendedStudents = studentList.map(student => {
+        if (usersID.includes(student._id)) {
+          return { ...student, attendance: student.attendance + 1};
+        }
+        return student;
+      });
+    
+  
+      const response = await axios.put('http://localhost:5000/api/v1/attendance', AttendedStudents, {
+        withCredentials: true,
+      });
+      
+      if(response.status == 200){
+        toast.success(response.data.message);
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(error.data.message);
+    }
+  };
+  
 
 
   return (
+    <>
     <div className="container mx-auto py-8"> 
       <h1 className="text-4xl font-semibold mb-6 text-center text-[#003366]">Total Classes Done : <span className="text-[#ff9416]">0</span>/30</h1>
       {/* <h1 className="text-4xl font-semibold mb-6 text-center text-[#003366]">Student's List</h1> */}
@@ -82,10 +86,12 @@ const StudentList = () => {
           </tbody>
         </table>
         <div className="flex items-center justify-center mt-10 ">
-           <button className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]" onClick={showStudent}>Complete Attendance</button>
+           <button className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]" onClick={CompleteAttendance}>Complete Attendance</button>
         </div>
       </div>
     </div>
+    <Toaster/>
+    </>
   );
 };
 

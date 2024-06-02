@@ -327,25 +327,27 @@ export const Feedback = async (req, res) => {
 
 // Student Attendance
 export const StudentAttendance = async (req, res) => {
-  console.log("indindni", req.body);
-  res.send("Running")
-  const StudentsIDArray = req.body;
+  try {
+    const AttendedStudents = req.body;
+    // console.log("Updated Student:- ", AttendedStudents)
 
-  // try {
-  //   StudentsIDArray.forEach(id => {
-  //     const UpdateModel = await UserModel.findByIdAndUpdate(id, req.body, {
-  //       new: true,
-  //       runValidators: true,
-  //       useFindAndModify: false,
-  //     });
-  //   });
-  //   // res.send("Student Attendance", UpdateModel);
-  //   res.status(200).json({
-  //     success: true,
-  //     message: "Data Save",
-  //     UpdateModel
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
-}
+    for (const student of AttendedStudents) {
+      await UserModel.findByIdAndUpdate(student._id, { attendance: student.attendance }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Attendance updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
