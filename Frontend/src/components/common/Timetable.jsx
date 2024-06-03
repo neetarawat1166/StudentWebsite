@@ -35,6 +35,7 @@ const Timetable = (props) => {
   const handleSaveTopic = async () => {
     try {
       const updatedData = { ...updateData[0], topic: editedTopic };
+      // console.log("indiaupda", updatedData)
       const response = await axios.put('http://localhost:5000/api/v1/updateData', updatedData, {
         withCredentials: true,
       });

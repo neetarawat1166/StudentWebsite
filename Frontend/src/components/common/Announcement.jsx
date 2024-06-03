@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import img1 from "../../images/announcement.png";
 import img from '../../images/NoAnnouncement.png'
@@ -15,12 +15,13 @@ const Announcement = () => {
     setUpdateData,
     updateData,
   } = useContext(isAuthenticatedContext);
-  // console.log("hiii update data announcement",updateData)
 
   const [announcements, setAnnouncements] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newHeading, setNewHeading] = useState("");
   const [newContent, setNewContent] = useState("");
+
+  const announcementsContainerRef = useRef(null);
 
   const getAnnoucements = async () => {
     try {
@@ -28,13 +29,19 @@ const Announcement = () => {
         `http://localhost:5000/api/v1/announcement/${user.course}`,
         { withCredentials: true }
       );
-      setAnnouncements(response.data.announcement);
+      setAnnouncements(response.data.announcement.reverse());
     } catch (error) {}
   };
 
   useEffect(() => {
     getAnnoucements();
   }, []);
+
+  useEffect(() => {
+    if (announcementsContainerRef.current) {
+      announcementsContainerRef.current.scrollTop = 0;
+    }
+  }, [announcements]);
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -48,9 +55,7 @@ const Announcement = () => {
 
   const handleSaveAnnouncement = async () => {
     try {
-      // const updatedData = { ...updateData[0], announcement: {newHeading,newContent}};
       const updatedData = { newHeading, newContent };
-      console.log(updatedData);
       const response = await axios.post(
         "http://localhost:5000/api/v1/addannouncement",
         updatedData,
@@ -59,80 +64,64 @@ const Announcement = () => {
         }
       );
 
-      console.log("Data updated successfully", response);
       setIsPopupOpen(false);
       getAnnoucements();
     } catch (error) {
       console.error("Error updating data", error);
     }
   };
-  console.log(updateData);
-  // console.log(updateData[0].announcement)
 
   return (
     <>
       <div className="section">
         <div className="flex justify-center items-center gap-6">
-          <h1 className="text-[35px] text-[#003366] font-semibold text-center py-5">
+          <h1 className="text-4xl font-semibold text-[#003366] text-center py-5">
             Announcements
           </h1>
-
           {user && user.profile === "Teacher" && (
             <FaEdit
-              className="text-[30px] cursor-pointer text-[#d19747]"
+              className="text-3xl cursor-pointer text-[#d19747]"
               onClick={handleOpenPopup}
             />
           )}
         </div>
-        <div className="container mx-auto bg-[#D9E7FF] py-[10px] text-[#252525] w-full rounded-lg overflow-auto h-[300px] max-h-[286px] lg:max-h-[302px] border-2 border-[#d19747]">
-          {/* {console.log("jaihind", updateData)} */}
-          {/* {announcements &&
-            announcements.map((item, index) => (
-              <div key={index} className="mb-6">
-                <h2 className="text-[25px] font-semibold mb-2 text-center text-[#003366]">
-                  <div className="flex justify-center items-center gap-4">
-                    {item.heading}
-                  </div>
-                </h2>
-                <p className="text-center">{item.description}</p>
-              </div>
-            ))} */}
-            {announcements.length === 0 ? (
-           <>
-            <h2 className="text-[30px] font-semibold text-center text-[#d19747]">
-              No Announcements yet...
-            </h2>
-            <div className="justify-center flex items-center p-4">
-            {user && user.profile === "Teacher" ? (
-              <img src={img} alt="" className="sm:w-[20%] w-[30%] h-auto" />
-            ) : (
+        <div className="container mx-auto bg-[#D9E7FF] py-4 px-6 w-full py-9 rounded-lg border-2 border-[#d19747] overflow-auto max-h-[300px]">
+          {announcements.length === 0 ? (
+            <div className="flex flex-col items-center justify-center space-y-4">
+              <h2 className="text-2xl font-semibold text-[#d19747]">
+                No Announcements yet...
+              </h2>
               <img src={img} alt="" className="w-[30%] h-auto" />
-            )}
-             
             </div>
-           
-           </>
           ) : (
-            announcements && announcements.map((item, index) => (
-              <div key={index} className="mb-6 w-full">
-                <h2 className="text-[25px] font-semibold mb-2 text-center text-[#003366]">
-                  <div className="flex justify-center items-center gap-4">
-                    {item.heading}
+            <div ref={announcementsContainerRef} className="w-[90%] mx-auto">
+              {announcements.map((item, index) => (
+                <div key={index} className={`bg-white shadow-lg rounded-lg overflow-hidden mb-4 ${index === 0 ? 'overflow-visible border-2 border-yellow-400 bg-yellow-200 relative flex items-cente flex-row' : ''}`}>
+                  <div className="p-6">
+                    <h2 className="text-2xl font-semibold mb-2 text-[#003366]">
+                      {item.heading}
+                    </h2>
+                    <p className="text-lg">{item.description}</p>
                   </div>
-                </h2>
-                <p className="text-center">{item.description}</p>
-              </div>
-            ))
+                    {index === 0 && (
+                      <span className="flex absolute top-0 end-0 -mt-2 -me-2">
+                        <span className="animate-ping absolute inline-flex size-full rounded-full bg-[#d19747] opacity-75 dark:bg-[#d19747]"></span>
+                        <span className="relative inline-flex text-[14px] font-bold bg-[#d19747] text-white rounded-full py-1 px-2">
+                          Latest
+                        </span>
+                      </span>
+                    )}
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
 
       {/* Popup for adding new announcement */}
       {isPopupOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-[#272525bc] bg-opacity-50 z-50">
-          <div
-            className="bg-[#10335eef] p-4 rounded-lg w-[500px] max-h-[80vh] overflow-auto"
-          >
+        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg w-96">
             <h2 className="text-xl font-semibold mb-4 text-[#d19747]">
               Add Announcement
             </h2>
@@ -162,13 +151,13 @@ const Announcement = () => {
             </div>
             <div className="flex justify-end">
               <button
-                className="bg-[#f0a742] text-white hover:text-[#f0a742] hover:border-2 hover:border-[#f0a742] px-4 py-2 rounded hover:bg-[#faf7f7] mr-2"
+                className="bg-[#f0a742] text-white px-4 py-2 rounded mr-2 hover:bg-[#faf7f7] hover:text-[#f0a742]"
                 onClick={handleSaveAnnouncement}
               >
                 Save
               </button>
               <button
-                className="bg-[#f0a742] text-white hover:text-[#f0a742] hover:border-2 hover:border-[#f0a742] px-4 py-2 rounded hover:bg-[#faf7f7] mr-2"
+                className="bg-[#f0a742] text-white px-4 py-2 rounded mr-2 hover:bg-[#faf7f7] hover:text-[#f0a742]"
                 onClick={handleClosePopup}
               >
                 Cancel
@@ -182,4 +171,3 @@ const Announcement = () => {
 };
 
 export default Announcement;
-

@@ -115,25 +115,25 @@ export const Students = async (req, res) => {
         },
       ],
     });
-    console.log(course);
+   // console.log(course);
 
     let UpdateData = "";
 
     if (course == "Data Science & Machine Learning with AI") {
       UpdateData = await DataScienceModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
     if (course == "Full Stack Web Development") {
       UpdateData = await FullStackModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
     if (course == "Embedded Systems & Robotics with IOT") {
       UpdateData = await IOTModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
     if (course == "Cloud Computing & DevOps") {
       UpdateData = await DevOpsModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
 
     res.status(200).json({
@@ -171,25 +171,25 @@ export const getAnnouncement = async (req, res) => {
         },
       ],
     });
-    console.log(course);
+    // console.log(course);
 
     let UpdateData = "";
 
     if (course == "Data Science & Machine Learning with AI") {
       UpdateData = await DataScienceModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
     if (course == "Full Stack Web Development") {
       UpdateData = await FullStackModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
     if (course == "Embedded Systems & Robotics with IOT") {
       UpdateData = await IOTModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
     if (course == "Cloud Computing & DevOps") {
       UpdateData = await DevOpsModel.find();
-      console.log(UpdateData);
+      // console.log(UpdateData);
     }
 
     const announcement = UpdateData[0].announcement;
@@ -197,6 +197,53 @@ export const getAnnouncement = async (req, res) => {
     res.status(200).json({
       success: true,
       announcement,
+    });
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+
+export const getAssignment = async (req, res) => {
+  try {
+    const { course } = req.params;
+
+    // Query with both conditions
+    const students = await UserModel.find({
+      $and: [
+        {
+          course: course,
+          profile: "Student",
+        },
+      ],
+    });
+    // console.log(course);
+
+    let UpdateData = "";
+
+    if (course == "Data Science & Machine Learning with AI") {
+      UpdateData = await DataScienceModel.find();
+      // console.log(UpdateData);
+    }
+    if (course == "Full Stack Web Development") {
+      UpdateData = await FullStackModel.find();
+      // console.log(UpdateData);
+    }
+    if (course == "Embedded Systems & Robotics with IOT") {
+      UpdateData = await IOTModel.find();
+      // console.log(UpdateData);
+    }
+    if (course == "Cloud Computing & DevOps") {
+      UpdateData = await DevOpsModel.find();
+      // console.log(UpdateData);
+    }
+
+    const assignment = UpdateData[0].assignment;
+
+    res.status(200).json({
+      success: true,
+      assignment,
     });
   } catch (error) {
     console.error("Error fetching students:", error);
@@ -317,6 +364,88 @@ export const Feedback = async (req, res) => {
     });
   } catch (error) {
     console.error("Error in Submission:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+
+// Student Attendance
+export const StudentAttendance = async (req, res) => {
+
+  const user = req.user;
+
+  try {
+    const AttendedStudents = req.body;
+    // console.log("Updated Student:- ", AttendedStudents)
+
+    for (const student of AttendedStudents) {
+      await UserModel.findByIdAndUpdate(student._id, { attendance: student.attendance }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    }
+
+    if (user.course == "Data Science & Machine Learning with AI") {
+      const data = await DataScienceModel.find();
+      const id = data[0]._id;
+      const day = data[0].days;
+      console.log(id)
+
+      const daysUpdate = await DataScienceModel.findByIdAndUpdate(id, { days: day + 1 }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+
+      // console.log(daysUpdate);
+    }
+    if (user.course == "Full Stack Web Development") {
+      const data = await FullStackModel.find();
+      const id = data[0]._id;
+      const day = data[0].days;
+      console.log(id)
+
+      const daysUpdate = await FullStackModel.findByIdAndUpdate(id, { days: day + 1 }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    }
+    if (user.course == "Embedded Systems & Robotics with IOT") {
+      const data = await IOTModel.find();
+      const id = data[0]._id;
+      const day = data[0].days;
+      console.log(id)
+
+      const daysUpdate = await IOTModel.findByIdAndUpdate(id, { days: day + 1 }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    }
+    if (user.course == "Cloud Computing & DevOps") {
+      const data = await DevOpsModel.find();
+      const id = data[0]._id;
+      const day = data[0].days;
+      console.log(id)
+
+      const daysUpdate = await DevOpsModel.findByIdAndUpdate(id, { days: day + 1 }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Attendance updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: "Internal server error",

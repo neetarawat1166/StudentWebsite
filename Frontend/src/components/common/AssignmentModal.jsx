@@ -5,13 +5,10 @@ import BgImage from '../../images/wavii2.jpg';
 
 const AssignmentModal = ({ isOpen, onClose, addAssignment }) => {
   const today = new Date();
-  const [minDate] = useState(() => {
-    // Format the date as "YYYY-MM-DD" for setting the min attribute
-    const formattedDate = today.toISOString().split('T')[0];
-    return formattedDate;
-  });
-  const formRef = useRef(null); // Ref for accessing the form element
-  const [errorMessage, setErrorMessage] = useState(""); // State to hold the error message
+  const [minDate] = useState(() => today.toISOString().split('T')[0]);
+  const formRef = useRef(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     if (isOpen) {
       setErrorMessage("");
@@ -23,50 +20,32 @@ const AssignmentModal = ({ isOpen, onClose, addAssignment }) => {
     const formData = new FormData(formRef.current);
     const assignmentHeading = formData.get('assignmentHeading');
     const assignmentDescription = formData.get('assignmentDescription');
-    const dueDate = new Date(formData.get('dueDate')); // Convert due date to Date object
+    const dueDate = new Date(formData.get('dueDate'));
 
     if (!assignmentHeading || !assignmentDescription || !dueDate) {
-      // Display an error toast if any of the fields are empty
+      return toast.error("Please fill all the fields");
+    }
+    console.log("india duedate", dueDate);
+    if(dueDate == "Invalid Date"){
       return toast.error("Please fill all the fields");
     }
 
-    // Check if due date is before today
-    console.log(dueDate)
-    console.log(today)
-    if (dueDate < today && (dueDate.getDate() !== today.getDate() && dueDate.getMonth() !== today.getMonth() && dueDate.getFullYear() !== today.getFullYear())) {
+    if (dueDate < today) {
       setErrorMessage("Due date cannot be in the past");
       return;
     }
 
-    // Format due date to "MM/DD/YYYY"
-    const formattedDueDate = dueDate.toLocaleDateString('en-US', {
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric'
-    });
-
-    // Handle form submission logic here
-    const newAssignment = {
-      title: assignmentHeading,
-      task: assignmentDescription,
-      assignDate: today.toLocaleDateString(),
-      dueDate: formattedDueDate, // Assign formatted due date
-    };
+    const formattedDueDate = `${dueDate.getDate().toString().padStart(2, '0')}/${(dueDate.getMonth() + 1).toString().padStart(2, '0')}/${dueDate.getFullYear()}`;
+    const newAssignment = { title: assignmentHeading, task: assignmentDescription, dueDate: formattedDueDate };
 
     addAssignment(newAssignment);
-
-    // Close the modal after submitting the form
     onClose();
-
-    // Reset form values
     formRef.current.reset();
   };
 
   const handleModalClose = () => {
-    // Close the modal and reset form values
     onClose();
     formRef.current.reset();
-    // Clear error message when modal is closed
     setErrorMessage("");
   };
 
@@ -91,10 +70,7 @@ const AssignmentModal = ({ isOpen, onClose, addAssignment }) => {
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
           <button type="submit" className="bg-[#65bc7b] text-white text-[18px] font-semibold px-4 py-2 mx-auto block rounded-md hover:bg-[#252525]">Submit</button>
         </form>
-        <Toaster 
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
     </div>
   );
