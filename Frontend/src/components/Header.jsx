@@ -126,13 +126,30 @@ const Header = () => {
                     Dashboard
                   </NavLink>
                 </li>
+                {user && user.profile === "Teacher" ? (
+                  <li className="text-lg relative py-4">
+                    <NavLink
+                      to="/studentlist"
+                      className={({ isActive }) =>
+                        isActive && activeTab === 'studentlist'
+                          ? "border-b-[3px] border-[#ff9416]"
+                          : ""
+                      }
+                      onClick={() => handleTabClick('studentlist')}
+                    >
+                      Student-List
+                    </NavLink>
+                  </li>
+                ) : (
+                  ""
+                )}
                 <Modal>
-                <Modal.Open opens="courseMaterial">
-                    <li className="text-lg relative py-4">
+                  <Modal.Open opens="courseMaterial">
+                    <li className="text-lg relative py-4 hover:cursor-pointer">
                       <div
                         onClick={() => handleTabClick('courseMaterial')}
                         style={{ display: "flex", alignItems: "center", gap: "4px" }}
-                        className={ 
+                        className={
                           activeTab === 'courseMaterial'
                             ? "border-b-[3px] border-[#ff9416]"
                             : ""
@@ -203,64 +220,68 @@ const Header = () => {
 
                   </Modal.Window>
                 </Modal>
-                {user && user.profile === "Teacher" ? (
-                  <li className="text-lg relative py-4">
+              </>
+            )}
+            <Modal>
+              <Modal.Open opens="wearehere">
+                <li className="text-lg relative py-4 hover:cursor-pointer">
+                  <div
+                    onClick={() => handleTabClick('wearehere')}
+                    style={{ display: "flex", alignItems: "center", gap: "4px" }}
+                    className={
+                      activeTab === 'wearehere'
+                        ? "border-b-[3px] border-[#ff9416]"
+                        : ""
+                    }
+                  >
+                    We are here! <IoIosArrowDown />
+                  </div>
+                </li>
+              </Modal.Open>
+              <Modal.Window name="wearehere">
+                <div className="absolute bg-[#D9E7FF] w-full text-center shadow-md p-4 rounded">
+                  <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
                     <NavLink
-                      to="/studentlist"
+                      to="/about"
                       className={({ isActive }) =>
-                        isActive && activeTab === 'studentlist'
+                        isActive && activeTab === 'about'
                           ? "border-b-[3px] border-[#ff9416]"
                           : ""
                       }
-                      onClick={() => handleTabClick('studentlist')}
+                      onClick={() => handleTabClick('about')}
                     >
-                      Student-List
+                      About
                     </NavLink>
                   </li>
-                ) : (
-                  ""
-                )}
-              </>
-            )}
-            <li className="text-lg relative py-4">
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive && activeTab === 'about'
-                    ? "border-b-[3px] border-[#ff9416]"
-                    : ""
-                }
-                onClick={() => handleTabClick('about')}
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="text-lg relative py-4">
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive && activeTab === 'contact'
-                    ? "border-b-[3px] border-[#ff9416]"
-                    : ""
-                }
-                onClick={() => handleTabClick('contact')}
-              >
-                Contact
-              </NavLink>
-            </li>
-            <li className="text-lg relative py-4">
-              <NavLink
-                to="/query"
-                className={({ isActive }) =>
-                  isActive && activeTab === 'query'
-                    ? "border-b-[3px] border-[#ff9416]"
-                    : ""
-                }
-                onClick={() => handleTabClick('query')}
-              >
-                Query
-              </NavLink>
-            </li>
+                  <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
+                    <NavLink
+                      to="/contact"
+                      className={({ isActive }) =>
+                        isActive && activeTab === 'contact'
+                          ? "border-b-[3px] border-[#ff9416]"
+                          : ""
+                      }
+                      onClick={() => handleTabClick('contact')}
+                    >
+                      Contact
+                    </NavLink>
+                  </li>
+                  <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
+                    <NavLink
+                      to="/query"
+                      className={({ isActive }) =>
+                        isActive && activeTab === 'query'
+                          ? "border-b-[3px] border-[#ff9416]"
+                          : ""
+                      }
+                      onClick={() => handleTabClick('query')}
+                    >
+                      Query
+                    </NavLink>
+                  </li>
+                </div>
+              </Modal.Window>
+            </Modal>
           </ul>
         </div>
       </div>
@@ -342,21 +363,38 @@ const Header = () => {
                     to="/dashboard"
                     className={({ isActive }) =>
                       isActive && activeTab === 'dashboard'
-                        ? "block text-[#ff9416] bg-white py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                        : "block text-white bg-[#ff9416] py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                        ? "block text-[#ff9416] bg-white py-2 px-4 mb-3 w-full rounded-md font-bold border border-[#ff9416]"
+                        : "block text-white bg-[#ff9416] py-2 px-4 mb-3 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
                     }
                     onClick={() => handleTabClick('dashboard')}
                   >
                     Dashboard
                   </NavLink>
                 </li>
+                {user && user.profile === "Teacher" ? (
+                  <li>
+                    <NavLink
+                      to="/studentlist"
+                      className={({ isActive }) =>
+                        isActive && activeTab === 'studentlist'
+                          ? "block text-[#ff9416] bg-white py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                          : "block text-white bg-[#ff9416] py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                      }
+                      onClick={() => handleTabClick('studentlist')}
+                    >
+                      Student-List
+                    </NavLink>
+                  </li>
+                ) : (
+                  ""
+                )}
                 <Modal>
-                <Modal.Open opens="courseMaterial">
+                  <Modal.Open opens="courseMaterial">
                     <li className="text-lg relative py-4">
                       <div
                         onClick={() => handleTabClick('courseMaterial')}
                         style={{ display: "flex", alignItems: "center", gap: "4px" }}
-                        className={ 
+                        className={
                           activeTab === 'courseMaterial'
                             ? "block text-[#ff9416] bg-white py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
                             : "block text-white bg-[#ff9416] py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
@@ -426,59 +464,53 @@ const Header = () => {
                     </div>
                   </Modal.Window>
                 </Modal>
-                {/* <li>
-                  <NavLink
-                    to="/syllabus"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                        : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
-                    }
-                  >
-                    Syllabus
-                  </NavLink>
-                </li> */}
               </>
             )}
-            <li>
+            <Modal>
+              <Modal.Open opens="wearehere">
+                <li className="text-lg relative">
+                  <div
+                    onClick={() => handleTabClick('wearehere')}
+                    style={{ display: "flex", alignItems: "center", gap: "4px" }}
+                    className={
+                      activeTab === 'wearehere'
+                        ? "block text-[#ff9416] bg-white py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
+                        : "block text-white bg-[#ff9416] py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
+                    }
+                  >
+                    We are here! <IoIosArrowDown />
+                  </div>
+                </li>
+              </Modal.Open>
+              <Modal.Window name="wearehere">
+                <div className="absolute bg-[#D9E7FF] w-full text-center shadow-md p-4 rounded">
+                <li className="text-lg py-2 text-[#003366]">
               <NavLink
                 to="/about"
-                className={({ isActive }) =>
-                  isActive && activeTab === 'about'
-                    ? "block text-[#ff9416] bg-white mb-4 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                    : "block text-white bg-[#ff9416] mb-4 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
-                }
-                onClick={() => handleTabClick('about')}
+                className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
               >
                 About
               </NavLink>
             </li>
-            <li>
+            <li className="text-lg py-2 text-[#003366]">
               <NavLink
                 to="/contact"
-                className={({ isActive }) =>
-                  isActive && activeTab === 'contact'
-                    ? "block text-[#ff9416] bg-white mb-4 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                    : "block text-white bg-[#ff9416] mb-4 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
-                }
-                onClick={() => handleTabClick('contact')}
+                className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
               >
                 Contact
               </NavLink>
             </li>
-            <li>
+            <li className="text-lg py-2 text-[#003366]">
               <NavLink
                 to="/query"
-                className={({ isActive }) =>
-                  isActive && activeTab === 'query'
-                    ? "block text-[#ff9416] bg-white mb-3 py-2 px-4 w-full rounded-md font-bold border border-[#ff9416]"
-                    : "block text-white bg-[#ff9416] mb-3 py-2 px-4 w-full rounded-md font-medium hover:bg-[#252525] border border-white"
-                }
-                onClick={() => handleTabClick('query')}
+                className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
               >
                 Any Query?
               </NavLink>
             </li>
+                </div>
+              </Modal.Window>
+            </Modal>
             {/* <li>
               <NavLink
                 to="/feedback"

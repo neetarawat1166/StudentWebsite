@@ -32,27 +32,27 @@ const LearnGrowSection = () => {
           </div>
         </div>
         <div className="lg:w-1/2 justify-center items-center md:pl-4 lg:pl-4 xl:pl-4">
-        <span className='inline-block bg-[#003366] rounded-lg p-2 text-white'>WHO WE ARE</span>
-          <h2 className='text-4xl font-semibold pb-2 pt-[5%]'>Fostering Growth with Education and Paving the Way for Achievement!</h2>
-          <p className='w-[95%] lg:w[75%] text-lg pt-4 pb-1'>At Upflairs, we're passionate about transforming learning into opportunities for personal growth. With a range of dynamic educational programs and services, we create pathways to success that match each student's aspirations. From engaging workshops to personalized guidance, we're here to nurture your development every step of the way. Led by experienced mentors, our team is dedicated to helping you achieve mastery in your chosen field.</p>
+        <span className='inline-block bg-[#003366] rounded-lg p-2 mt-[5%] md:mt-0 text-white'>WHO WE ARE</span>
+          <h2 className='text-[30px] sm:text-[35px] md:text-[40px] font-semibold pb-2 pt-[2%] md:pt-[5%]'>Fostering Growth with Education and Paving the Way for Achievement!</h2>
+          <p className='w-[95%] lg:w[75%] text-[17px] sm:text-[17px] md:text-[17px] md:pt-4 pb-1'>At Upflairs, we're passionate about transforming learning into opportunities for personal growth. With a range of dynamic educational programs and services, we create pathways to success that match each student's aspirations. From engaging workshops to personalized guidance, we're here to nurture your development every step of the way. Led by experienced mentors, our team is dedicated to helping you achieve mastery in your chosen field.</p>
           <div className="flex lg:flex-row pt-4 md:w-[80%] lg:w-[80%]  pb-8">
             <div className="lg:w-1/2">
               {/* <h3 className="text-xl text-[#ff9416] font-semibold pb-3">Flexible Classes 1</h3> */}
               <ul>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2 md:text-[17px]' />
                   <span>Innovation</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2 md:text-[17px]' />
                   <span>Empowerment</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2 md:text-[17px]' />
                   <span>Personalization</span>
                 </li>
                 <li className="flex items-center pb-1">
-                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
+                  <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2 md:text-[17px]' />
                   <span>Growth</span>
                 </li>
               </ul>
@@ -62,7 +62,7 @@ const LearnGrowSection = () => {
               <ul>
                 <li className="flex items-center pb-1">
                   <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
-                  <span>LImmersion</span>
+                  <span>Immersion</span>
                 </li>
                 <li className="flex items-center pb-1">
                   <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
