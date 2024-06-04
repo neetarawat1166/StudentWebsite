@@ -63,7 +63,7 @@ const LearnGrowSection = () => {
                 <li className="flex items-center pb-1">
                   <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
                   <span>Immersion</span>
-                </li>
+               . </li>
                 <li className="flex items-center pb-1">
                   <IoMdCheckboxOutline icon="checkbox-outline" className='text-[#ff9416] text-lg mr-2' />
                   <span>Guidance</span>

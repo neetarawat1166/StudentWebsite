@@ -406,17 +406,17 @@ const Header = () => {
                   </Modal.Open>
                   <Modal.Window name="courseMaterial">
                     <div className="absolute bg-[#D9E7FF] w-full text-center shadow-md p-4 rounded">
-                      <li className="text-lg py-2 text-[#003366]">
+                      <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
                         <NavLink to="/assignment" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
                           Assignment
                         </NavLink>
                       </li>
-                      <li className="text-lg py-2 text-[#003366]">
+                      <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
                         <NavLink to="/resources" className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}>
                           Resources
                         </NavLink>
                       </li>
-                      <li className="text-lg py-2 text-[#003366]">
+                      <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
                         {user &&
                           user.course === "Embedded Systems & Robotics with IOT" && (
                             <NavLink
@@ -484,7 +484,7 @@ const Header = () => {
               </Modal.Open>
               <Modal.Window name="wearehere">
                 <div className="absolute bg-[#D9E7FF] w-full text-center shadow-md p-4 rounded">
-                <li className="text-lg py-2 text-[#003366]">
+                <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
               <NavLink
                 to="/about"
                 className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
@@ -492,7 +492,7 @@ const Header = () => {
                 About
               </NavLink>
             </li>
-            <li className="text-lg py-2 text-[#003366]">
+            <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
               <NavLink
                 to="/contact"
                 className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
@@ -500,7 +500,7 @@ const Header = () => {
                 Contact
               </NavLink>
             </li>
-            <li className="text-lg py-2 text-[#003366]">
+            <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
               <NavLink
                 to="/query"
                 className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
