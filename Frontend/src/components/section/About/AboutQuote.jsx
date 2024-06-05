@@ -6,6 +6,13 @@ import '../../style/KirtikaStyle/KirtikaCSS.css'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import backCover from '../../../images/AboutBg.jpg'
+
+const quotes = [
+  "Our journey is fueled by passion, guided by integrity, and inspired by innovation.",
+  "Empowering the future, one learner at a time, through technology and innovation.",
+  "Transforming the educational landscape with innovative solutions for a brighter tomorrow."
+];
+
 const AboutQuote = () => {
   return (
     <div className='section pb-[50px] AboutQuoteParent' style={{ backgroundImage: `url(${backCover})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center top', height: 'auto' }}>
@@ -21,9 +28,9 @@ const AboutQuote = () => {
             768: { slidesPerView: 1 },
           }}
         >
-          <SwiperSlide><AboutQuoteCard/></SwiperSlide>
-          <SwiperSlide><AboutQuoteCard/></SwiperSlide>
-          <SwiperSlide><AboutQuoteCard/></SwiperSlide>
+          {quotes.map((quote, index) => (
+            <SwiperSlide key={index}><AboutQuoteCard quote={quote} /></SwiperSlide>
+          ))}
         </Swiper>
         <div className='md:w-[60%] flex justify-center items-center mx-auto'>
           <img src="" alt="" />

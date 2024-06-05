@@ -141,14 +141,17 @@ const Syllabus = ({ topics, courseHeading }) => {
                     ))}
                   </div>
                 </div>
-                <div className="w-full md:w-[20%] text-center flex flex-col md:flex-row items-center justify-start">
+                {user && user.profile === "Student" ? ( <div className="w-full md:w-[20%] text-center flex flex-col md:flex-row items-center justify-start">
                   <button
                     className="bg-[#003366] text-white font-semibold p-4 text-lg rounded-xl"
                     onClick={() => handleFeedbackClick(topic)}
                   >
                     Feedback
                   </button>
-                </div>
+                </div> ) : ( 
+                  <div className="w-full md:w-[20%] text-center flex flex-col md:flex-row items-center justify-start"> </div>
+                 ) }
+
               </div>
             ))}
           </div>

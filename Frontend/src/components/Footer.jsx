@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
 import LogoBlack from '../images/LogoBlack.png'
-import FooterImg1 from '../images/FooterImg1.webp'
-import FooterImg2 from '../images/FooterImg2.webp'
-import FooterImg3 from '../images/FooterImg3.jpeg'
-import FooterImg4 from '../images/FooterImg4.jpeg'
+import FooterImg1 from '../images/FooterImg1.jpg'
+import FooterImg2 from '../images/FooterImg2.jpg'
+import FooterImg3 from '../images/FooterImg3.jpg'
+import FooterImg4 from '../images/FooterImg4.jpg'
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaPinterestP } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
+// import des3 from '../images/ctades3.png'
 import UpflairsLogo from '../images/UpflairsLogo.png'
 import { isAuthenticatedContext } from '../context/userContext';
 const Footer = () => {
@@ -22,22 +24,25 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center">
           {/* First column (wider) */}
           <div className="w-full sm:w-1/2 md:w-1/2 lg:w-2/5 xl:w-2/5 px-4 pb-4 sm:pb-[15px] md:pb-0">
+          {/* <div className=' hidden lg:block absolute top-[30px] right-[55px] animate-spin duration-1000 linear delay-0 infinite normal none running'>
+                    <img src={des3} alt="CTA" />
+                </div> */}
             <img src={UpflairsLogo} alt="logo" className='sm:mx-0' width="250px" height="auto" />
             <p className='w-[100%] sm:w-[80%] pt-4 pb-6'>Empowering learners with VR-driven, engaging skill development programs for industry readiness, aiming to transform education delivery and prepare talent for the job market.</p>
             <div className="flex items-center">
               <div className="flex space-x-6 sm:space-x-4">
                 <div className="bg-[#ff9416] rounded-full p-2">
-                  <FaInstagram className="text-white" size={24} />
+                <NavLink to="https://www.instagram.com/upflairs_pvt_ltd?igsh=MWx6c2JheGloa210MA=="><FaInstagram className="text-white cursor-pointer" size={24} /></NavLink>
                 </div>
                 <div className="bg-[#ff9416] rounded-full p-2">
-                  <FaFacebookF className="text-white" size={24} />
+                <NavLink to="https://www.facebook.com/p/Upflairs-Pvt-Ltd-100071105106234/"><FaFacebookF className="text-white cursor-pointer" size={24} /></NavLink>
                 </div>
                 <div className="bg-[#ff9416] rounded-full p-2">
-                  <FaXTwitter className="text-white" size={24} />
+                <NavLink to="https://www.linkedin.com/company/upflairs/"><FaLinkedinIn className="text-white cursor-pointer" size={24} /></NavLink>
                 </div>
-                <div className="bg-[#ff9416] rounded-full p-2">
+                {/* <div className="bg-[#ff9416] rounded-full p-2">
                   <FaPinterestP className="text-white" size={24} />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -60,6 +65,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center py-2">
                 <MdKeyboardArrowRight className="pr-2" size={24} />
+                 <NavLink to="/cloudcomputingsyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>
                 {user && user.course === "Cloud Computing & DevOps" && ( <NavLink to="/cloudcomputingsyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
                 {user && user.course === "Data Science & Machine Learning with AI" && ( <NavLink to="/datasciencesyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
                 {user && user.course === "Full Stack Web Development" && ( <NavLink to="/fullstacksyllabus" className="text-[#eeeeee] hover:text-[#ff9416]">Syllabus</NavLink>)}
@@ -119,7 +125,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full text-center">
-          <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#ff9416]'>Upflairs</span> || All Rights Reserved</p>
+          <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#ff9416]'>Upflairs Pvt Ltd.</span> || All Rights Reserved</p>
         </div>
       </div>
     </footer>

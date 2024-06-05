@@ -266,7 +266,7 @@ const Header = () => {
                       Contact
                     </NavLink>
                   </li>
-                  <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
+                  {user && user.profile === "Student" ? (   <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
                     <NavLink
                       to="/query"
                       className={({ isActive }) =>
@@ -278,7 +278,7 @@ const Header = () => {
                     >
                       Query
                     </NavLink>
-                  </li>
+                  </li> ):( "" ) }
                 </div>
               </Modal.Window>
             </Modal>
@@ -500,14 +500,14 @@ const Header = () => {
                 Contact
               </NavLink>
             </li>
-            <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
+            {user && user.profile === "Student" ? (  <li className="text-lg hover:bg-[#ddb44c8c] hover:rounded-md py-2 text-[#003366]">
               <NavLink
                 to="/query"
                 className={({ isActive }) => (isActive ? "border-b-[3px] border-[#ff9416]" : "")}
               >
                 Any Query?
               </NavLink>
-            </li>
+            </li> ) : ( "" )}
                 </div>
               </Modal.Window>
             </Modal>

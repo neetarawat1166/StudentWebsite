@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Formdata from "../../components/common/Formdata";
 import FormImg from "../../components/common/FormImg";
 import img from '../../images/query.png'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { isAuthenticatedContext } from "../../context/userContext";
 
 const Query = () => {
-
+  const { user, updateData, setUpdateData } = useContext(isAuthenticatedContext);
+  // console.log("--------",user)
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user && user.profile === "Teacher") {
+      navigate("/");
+    }
+  }, [user, navigate]);
   return (
     <>
       <section className="py-[50px] ">
