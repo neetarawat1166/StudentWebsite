@@ -30,7 +30,9 @@ const StudentList = () => {
     try {
       let AttendedStudents = studentList.map((student) => {
         if (usersID.includes(student._id)) {
-          return { ...student, attendance: student.attendance + 1 };
+          // Reset attendance to 0 after reaching 30
+          const newAttendance = (student.attendance + 1) % 31;
+          return { ...student, attendance: newAttendance };
         }
         return student;
       });
@@ -43,18 +45,24 @@ const StudentList = () => {
         toast.success(response.data.message);
         setStudentList(AttendedStudents);
         
-        setUpdateData([{ days: updateData[0].days + 1 }]);
+        // Update the day count and reset to 0 if it reaches 30
+        const newDaysCount = (updateData[0].days + 1) % 31;
+        setUpdateData([{ days: newDaysCount }]);
+        
+        setUserID([]); // Clear the selected students
       }
     } catch (error) {
       console.error(error);
-      toast.error(error.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
   return (
     <>
       <div className="container mx-auto py-8">
-        <h1 className="text-4xl font-semibold mb-6 text-center text-[#003366]">Total Classes Done : <span className="text-[#ff9416]">{updateData && updateData[0].days}</span>/30</h1>
+        <h1 className="text-4xl font-semibold mb-6 text-center text-[#003366]">
+          Total Classes Done : <span className="text-[#ff9416]">{updateData && updateData[0].days}</span>/30
+        </h1>
         <div className="w-full p-6 overflow-x-auto">
           <table className="table-auto mx-auto w-full border-2 border-[#003366]">
             <thead>
@@ -71,7 +79,12 @@ const StudentList = () => {
                   <td className="border-2 border-[#003366] px-4 py-2">{student.name}</td>
                   <td className="border-2 border-[#003366] px-4 py-2">
                     <div className="flex justify-center gap-10">
-                      <button className="bg-[#003366] p-1 rounded-lg text-white hover:bg-[#ff9416]" onClick={() => presentbtn(student._id)}>Present</button>
+                      <button
+                        className={`p-1 rounded-lg text-white ${usersID.includes(student._id) ? 'bg-orange-500' : 'bg-[#003366] hover:bg-[#ff9416]'}`}
+                        onClick={() => presentbtn(student._id)}
+                      >
+                        Present
+                      </button>
                       <span><b>{student.attendance}</b> / 30 Days</span>
                     </div>
                   </td>
@@ -80,7 +93,12 @@ const StudentList = () => {
             </tbody>
           </table>
           <div className="flex items-center justify-center mt-10">
-            <button className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]" onClick={CompleteAttendance}>Complete Attendance</button>
+            <button
+              className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]"
+              onClick={CompleteAttendance}
+            >
+              Complete Attendance
+            </button>
           </div>
         </div>
       </div>

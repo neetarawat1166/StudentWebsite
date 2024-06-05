@@ -43,7 +43,7 @@ const router = createBrowserRouter(
       <Route path='/datasciencesyllabus' element={<ProtectedRoute element={<DataScienceSyllabus/>} />} />
       <Route path='/cloudcomputingsyllabus' element={<ProtectedRoute element={<CloudComputingSyllabus/>} />} />
       <Route path='/studentlist' element={<ProtectedRoute element={<StudentList/>} />} />
-      <Route path='/query' element={<Query/>}/>
+      <Route path='/query' element={<ProtectedRoute element={<Query/>} />}/>
     </Route>
   )
 );

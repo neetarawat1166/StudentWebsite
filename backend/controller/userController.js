@@ -178,6 +178,7 @@ export const getAnnouncement = async (req, res) => {
     if (course == "Data Science & Machine Learning with AI") {
       UpdateData = await DataScienceModel.find();
       // console.log(UpdateData);
+
     }
     if (course == "Full Stack Web Development") {
       UpdateData = await FullStackModel.find();
@@ -193,6 +194,7 @@ export const getAnnouncement = async (req, res) => {
     }
 
     const announcement = UpdateData[0].announcement;
+   // console.log("announcement",announcement);
 
     res.status(200).json({
       success: true,

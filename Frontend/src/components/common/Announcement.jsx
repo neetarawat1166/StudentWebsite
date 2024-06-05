@@ -85,7 +85,7 @@ const Announcement = () => {
             />
           )}
         </div>
-        <div className="container mx-auto bg-[#D9E7FF] py-4 px-6 w-full py-9 rounded-lg border-2 border-[#d19747] overflow-auto max-h-[300px]">
+        <div className="container mx-auto bg-[#D9E7FF]  px-6 w-full py-9 rounded-lg border-2 border-[#d19747] overflow-auto max-h-[300px]">
           {announcements.length === 0 ? (
             <div className="flex flex-col items-center justify-center space-y-4">
               <h2 className="text-2xl font-semibold text-[#d19747]">
@@ -96,7 +96,7 @@ const Announcement = () => {
           ) : (
             <div ref={announcementsContainerRef} className="w-[90%] mx-auto">
               {announcements.map((item, index) => (
-                <div key={index} className={`bg-white shadow-lg rounded-lg overflow-hidden mb-4 ${index === 0 ? 'overflow-visible border-2 border-yellow-400 bg-yellow-200 relative flex items-cente flex-row' : ''}`}>
+                <div key={index} className={`bg-white shadow-lg rounded-lg overflow-hidden mb-4 ${index === 0 ? 'overflow-visible border-2 border-yellow-400 bg-[#d88c2247] relative flex items-cente flex-row' : ''}`}>
                   <div className="p-6">
                     <h2 className="text-2xl font-semibold mb-2 text-[#003366]">
                       {item.heading}
