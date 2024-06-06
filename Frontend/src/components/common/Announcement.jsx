@@ -3,6 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import img1 from "../../images/announcement.png";
 import img from '../../images/NoAnnouncement.png'
 import BgImage from "../../images/wavii2.jpg";
+import toast, { Toaster } from "react-hot-toast";
 import { isAuthenticatedContext } from "../../context/userContext";
 import axios from "axios";
 
@@ -22,6 +23,7 @@ const Announcement = () => {
   const [newContent, setNewContent] = useState("");
 
   const announcementsContainerRef = useRef(null);
+  const popupRef = useRef(null); // Reference to the popup
 
   const getAnnoucements = async () => {
     try {
@@ -43,6 +45,25 @@ const Announcement = () => {
     }
   }, [announcements]);
 
+  // Handle click outside the popup
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        handleClosePopup();
+      }
+    };
+
+    if (isPopupOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isPopupOpen]);
+
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
   };
@@ -54,6 +75,10 @@ const Announcement = () => {
   };
 
   const handleSaveAnnouncement = async () => {
+    if (!newHeading || !newContent) {
+      toast.error("Please fill all the fields!");
+      return;
+    }
     try {
       const updatedData = { newHeading, newContent };
       const response = await axios.post(
@@ -65,6 +90,8 @@ const Announcement = () => {
       );
 
       setIsPopupOpen(false);
+      setNewContent("");
+      setNewHeading("");
       getAnnoucements();
     } catch (error) {
       console.error("Error updating data", error);
@@ -91,7 +118,7 @@ const Announcement = () => {
               <h2 className="text-2xl font-semibold text-[#d19747]">
                 No Announcements yet...
               </h2>
-              <img src={img} alt="" className="w-[30%] h-auto" />
+              <img src={img} alt="" className="w-[10%] h-auto" />
             </div>
           ) : (
             <div ref={announcementsContainerRef} className="w-[90%] mx-auto">
@@ -121,8 +148,8 @@ const Announcement = () => {
       {/* Popup for adding new announcement */}
       {isPopupOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg w-96">
-            <h2 className="text-xl font-semibold mb-4 text-[#d19747]">
+          <div ref={popupRef} className="bg-[#10335eef] p-6 rounded-lg w-96">
+            <h2 className="text-2xl font-semibold mb-4 text-[#d19747]">
               Add Announcement
             </h2>
             <div className="mb-4">
@@ -151,19 +178,20 @@ const Announcement = () => {
             </div>
             <div className="flex justify-end">
               <button
-                className="bg-[#f0a742] text-white px-4 py-2 rounded mr-2 hover:bg-[#faf7f7] hover:text-[#f0a742]"
+                className="bg-[#f0a742] text-white border-2 border-transparent hover:border-2 hover:border-[#f0a742] px-4 py-2 rounded mr-2 hover:bg-[#faf7f7] hover:text-[#f0a742]"
                 onClick={handleSaveAnnouncement}
               >
                 Save
               </button>
               <button
-                className="bg-[#f0a742] text-white px-4 py-2 rounded mr-2 hover:bg-[#faf7f7] hover:text-[#f0a742]"
+                className="bg-[#f0a742] text-white  px-4 py-2 rounded mr-2 hover:bg-[#faf7f7] hover:text-[#f0a742]"
                 onClick={handleClosePopup}
               >
                 Cancel
               </button>
             </div>
           </div>
+          <Toaster position="top-center" reverseOrder={false} />
         </div>
       )}
     </>
