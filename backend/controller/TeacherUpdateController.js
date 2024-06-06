@@ -1,4 +1,5 @@
-  import { DataScienceModel } from "../models/DataScienceUpdateModel.js";
+  import { uploadFile } from "../middlewares/uploader.js";
+import { DataScienceModel } from "../models/DataScienceUpdateModel.js";
   import { DevOpsModel } from "../models/DevOpsUpdateModel.js";
   import { FullStackModel } from "../models/FullStackUpdateModel.js";
   import { IOTModel } from "../models/IOTUpdateModel.js";
@@ -384,5 +385,69 @@
       message: "Assignment Added",
       newAssignment,
     });
+  };
+  
+
+
+
+  export const fileController = async (req, res) => {
+    try {
+      const user = req.user;
+      let UpdateModel;
+  
+      switch (user.course) {
+        case "Data Science & Machine Learning with AI":
+          UpdateModel = DataScienceModel;
+          break;
+        case "Embedded Systems & Robotics with IOT":
+          UpdateModel = IOTModel;
+          break;
+        case "Full Stack Web Development":
+          UpdateModel = FullStackModel;
+          break;
+        case "Cloud Computing & DevOps":
+          UpdateModel = DevOpsModel;
+          break;
+        default:
+          return res.status(403).json({
+            success: false,
+            message: "Invalid course.",
+          });
+      }
+  
+      if (!req.file) {
+        return res.status(400).send({
+          success: false,
+          message: "No file uploaded.",
+        });
+      }
+  
+      const upload = await uploadFile(req.file.path);
+      if (!upload || !upload.secure_url) {
+        throw new Error("File upload failed.");
+      }
+  
+      const updatedRecord = await UpdateModel.updateOne(
+        {},
+        { $push: { resourses: upload.secure_url } }
+      );
+  
+      if (!updatedRecord) {
+        throw new Error("Record not found.");
+      }
+  
+      res.send({
+        success: true,
+        message: "File uploaded successfully",
+        record: updatedRecord,
+      });
+    } catch (error) {
+      console.log("Error in fileController:", error.message);
+      res.status(500).send({
+        success: false,
+        message: "File upload failed",
+        error: error.message,
+      });
+    }
   };
   

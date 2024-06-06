@@ -2,7 +2,8 @@ import React from 'react'
 import img from '../../images/RanjitSir.jpg';
 import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 import '../../components/style/KirtikaStyle/KirtikaCSS.css'
 
 const DataScienceTeacherProfile = () => {
@@ -22,9 +23,10 @@ const DataScienceTeacherProfile = () => {
               <h4 className='font-[700] text-[20px] mt-2 text-[#003366]'>His Experience</h4>
               <p className='text-[15px]'>Ranjit Holds an experience of 2+ years and is highly expert in the field of data science</p>
               <div className='flex gap-4 py-4'>
-                <FaLinkedin className='text-[40px] text-[#d19747]' />
-                <SiGmail className='text-[40px] text-[#d19747]' />
-                <FaSquareXTwitter className='text-[40px] text-[#d19747]' />
+                <NavLink to='https://linkedin.com/in/ranjit-singh-423a051a6'><FaLinkedin className='text-[40px] text-[#d19747]' /></NavLink>
+                <NavLink to='https://ranjit.upflairs@gmail.com'><SiGmail className='text-[40px] text-[#d19747]' /></NavLink>
+                {/* <FaSquareXTwitter className='text-[40px] text-[#d19747]' /> */}
+                <NavLink to='https://www.github.com/Ranjit-Singh-786 '><FaGithub className='text-[40px] text-[#d19747]'/></NavLink>
               </div>
             </div>
             {/* Social Media Icons Section */}

@@ -56,7 +56,6 @@ const Header = () => {
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
-  console.log(activeTab)
 
   const handleClickOutside = (event) => {
     if (

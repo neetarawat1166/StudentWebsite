@@ -5,7 +5,6 @@ import { FullStackModel } from "../models/FullStackUpdateModel";
 export const CheckData = async (req, res) => {
     try {
       const { course } = req.body;
-      // Query with both conditions
       const students = await UserModel.find({$and: [{
         course: course,
         profile: "Student"
@@ -13,7 +12,7 @@ export const CheckData = async (req, res) => {
   
       res.status(200).json({
         success: true,
-        students, // Assuming you want to send the students data back
+        students,
       });
     } catch (error) {
       console.error("Error fetching students:", error);

@@ -2,7 +2,8 @@ import React from 'react'
 import img from '../../images/AnkurSir.jpg';
 import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 import '../../components/style/KirtikaStyle/KirtikaCSS.css'
 
 const FullStackTeacherProfile = () => {
@@ -24,7 +25,8 @@ const FullStackTeacherProfile = () => {
               <div className='flex gap-4 py-4'>
                 <FaLinkedin className='text-[40px] text-[#d19747]' />
                 <SiGmail className='text-[40px] text-[#d19747]' />
-                <FaSquareXTwitter className='text-[40px] text-[#d19747]' />
+                {/* <FaSquareXTwitter className='text-[40px] text-[#d19747]' /> */}
+               <NavLink to=''> <FaGithub className='text-[40px] text-[#d19747]'/></NavLink>
               </div>
             </div>
             {/* Social Media Icons Section */}

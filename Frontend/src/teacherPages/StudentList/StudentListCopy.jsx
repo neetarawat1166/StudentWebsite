@@ -3,7 +3,6 @@ import axios from "axios";
 import { isAuthenticatedContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
-import { isToday } from './dateUtils';
 
 const StudentList = () => {
   const { user, updateData, setUpdateData } = useContext(isAuthenticatedContext);
@@ -24,11 +23,7 @@ const StudentList = () => {
   const [usersID, setUserID] = useState([]);
 
   const presentbtn = (id) => {
-    if (!usersID.includes(id)) {
-      setUserID((prevId) => [...prevId, id]);
-    } else {
-      setUserID((prevId) => prevId.filter((prevId) => prevId !== id));
-    }
+    setUserID((prevId) => [...prevId, id]);
   };
 
   const CompleteAttendance = async () => {
@@ -36,7 +31,7 @@ const StudentList = () => {
       let AttendedStudents = studentList.map((student) => {
         if (usersID.includes(student._id)) {
           const newAttendance = (student.attendance + 1) % 31;
-          return { ...student, attendance: newAttendance, updatedAt: new Date().toISOString() };
+          return { ...student, attendance: newAttendance };
         }
         return student;
       });
@@ -48,6 +43,7 @@ const StudentList = () => {
       if (response.status === 200) {
         toast.success(response.data.message);
         setStudentList(AttendedStudents);
+        
         
         const newDaysCount = (updateData[0].days + 1) % 31;
         setUpdateData([{ days: newDaysCount }]);
@@ -83,13 +79,8 @@ const StudentList = () => {
                   <td className="border-2 border-[#003366] px-4 py-2">
                     <div className="flex justify-center gap-10">
                       <button
-                        className={`p-1 rounded-lg text-white ${
-                          usersID.includes(student._id)
-                            ? 'bg-orange-500'
-                            : 'bg-[#003366] hover:bg-[#ff9416]'
-                        }`}
+                        className={`p-1 rounded-lg text-white ${usersID.includes(student._id) ? 'bg-orange-500' : 'bg-[#003366] hover:bg-[#ff9416]'}`}
                         onClick={() => presentbtn(student._id)}
-                        disabled={isToday(student.updatedAt)}
                       >
                         Present
                       </button>

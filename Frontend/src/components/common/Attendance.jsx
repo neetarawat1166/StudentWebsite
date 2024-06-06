@@ -10,10 +10,10 @@ const Attendance = ({ attended, total }) => {
   const { isAuthenticat, setUser, user, setisAuthenticat } = useContext(
     isAuthenticatedContext
   );
+  console.log(user.attendance)
   
 
-  const [newAttendance, setEditedAttendance] = useState('29'); // Initial topic is HTML
-  // const { studentList, setStudentList } = useContext(isAuthenticatedContext);
+  const [newAttendance, setEditedAttendance] = useState(user.attendance);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOpen = () => {
@@ -25,15 +25,13 @@ const Attendance = ({ attended, total }) => {
   };
 
   const handleSaveTopic = () => {
-    // You can implement the logic to save the edited topic here
-    // For demonstration, let's just update the state with the edited topic
     setIsModalOpen(false);
     props.onTopicEdit(newAttendance);
   };
 
 
-  // Calculate the percentage
-  const percentage = ((newAttendance / total) * 100).toFixed(2);
+  
+  const percentage = ((user.attendance / total) * 100).toFixed(2);
 
   return (
     <>
@@ -72,32 +70,6 @@ const Attendance = ({ attended, total }) => {
             </div>
           </div>
         </div>
-
-
-        
-      {/* Modal for editing topic */}
-      {/* {isModalOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="bg-white p-4 rounded-lg" style={{ backgroundImage: `url(${BgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-            <h2 className="text-xl font-semibold mb-4 text-[#65bc7b]">Edit Attendance</h2>
-            <input
-              type="text"
-              value={newAttendance}
-              onChange={(e) => setEditedAttendance(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2 mb-4"
-              placeholder="Enter new Attendance"
-            />
-            <div className="flex justify-center">
-              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2" onClick={handleSaveTopic}>
-                Save
-              </button>
-              <button className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600" onClick={handleModalClose}>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )} */}
       </div>
     </>
   );

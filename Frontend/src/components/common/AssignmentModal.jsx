@@ -30,10 +30,10 @@ const AssignmentModal = ({ isOpen, onClose, addAssignment }) => {
       return toast.error("Please fill all the fields");
     }
 
-    if (dueDate < today) {
-      setErrorMessage("Due date cannot be in the past");
-      return;
-    }
+    // if (dueDate < today) {
+    //   setErrorMessage("Due date cannot be in the past");
+    //   return;
+    // }
 
     const formattedDueDate = `${dueDate.getDate().toString().padStart(2, '0')}/${(dueDate.getMonth() + 1).toString().padStart(2, '0')}/${dueDate.getFullYear()}`;
     const newAssignment = { title: assignmentHeading, task: assignmentDescription, dueDate: formattedDueDate };
