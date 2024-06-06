@@ -24,6 +24,7 @@ const StudentList = () => {
   }
 
   const [usersID, setUserID] = useState([]);
+  const [completeAttendanceClicked, setCompleteAttendanceClicked] = useState(false); // State to track if Complete Attendance button is clicked
   
   console.log(usersID)
   const presentbtn = (id) => {
@@ -59,6 +60,7 @@ const StudentList = () => {
         setUpdateData([{ days: newDaysCount }]);
         
         setUserID([]);
+        setCompleteAttendanceClicked(true); // Set state to true to disable the button
       }
     } catch (error) {
       console.error(error);
@@ -114,6 +116,7 @@ const StudentList = () => {
             <button
               className="p-2 text-[20px] bg-[#003366] rounded-lg text-white cursor-pointer hover:bg-[#ff9416]"
               onClick={CompleteAttendance}
+              disabled={completeAttendanceClicked} // Disable the button if it's clicked
             >
               Complete Attendance
             </button>

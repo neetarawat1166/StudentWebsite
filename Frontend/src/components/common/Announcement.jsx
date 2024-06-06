@@ -112,7 +112,7 @@ const Announcement = () => {
             />
           )}
         </div>
-        <div className="container mx-auto bg-[#D9E7FF]  px-6 w-full mt-3 py-9 rounded-lg border-2 border-[#d19747] overflow-auto max-h-[302px]">
+        <div className="container mx-auto bg-[#D9E7FF]  px-6 w-full py-9 rounded-lg border-2 border-[#d19747] overflow-auto max-h-[300px]">
           {announcements.length === 0 ? (
             <div className="flex flex-col items-center justify-center space-y-4">
               <h2 className="text-2xl font-semibold text-[#d19747]">
