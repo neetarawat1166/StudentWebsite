@@ -60,6 +60,24 @@ const Resources = () => {
                   </li>
                 ))}
               </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             ) : (
               <p className="text-[#ff9416]">
                 No resources available for this topic...

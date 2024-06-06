@@ -217,7 +217,7 @@ const Signup = () => {
               </div>
             )}
             <input
-              type="number"
+              type="tel"
               value={userData.mobile}
               onChange={ValueUpdate}
               name="mobile"

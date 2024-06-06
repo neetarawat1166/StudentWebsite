@@ -27,7 +27,7 @@ const Footer = () => {
           {/* <div className=' hidden lg:block absolute top-[30px] right-[55px] animate-spin duration-1000 linear delay-0 infinite normal none running'>
                     <img src={des3} alt="CTA" />
                 </div> */}
-            <img src={UpflairsLogo} alt="logo" className='sm:mx-0' width="250px" height="auto" />
+            <NavLink to=''><img src={UpflairsLogo} alt="logo" className='sm:mx-0' width="250px" height="auto" /></NavLink>
             <p className='w-[100%] sm:w-[80%] pt-4 pb-6'>Empowering learners with VR-driven, engaging skill development programs for industry readiness, aiming to transform education delivery and prepare talent for the job market.</p>
             <div className="flex items-center">
               <div className="flex space-x-6 sm:space-x-4">
@@ -125,7 +125,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full text-center">
-          <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#ff9416]'>Upflairs Pvt Ltd.</span> || All Rights Reserved</p>
+          <p className='pt-[50px] pb-3'>Copyright © 2023 <span className='text-[#ff9416]'><NavLink to='https://upflairs.com/'>Upflairs Pvt Ltd.</NavLink></span> || All Rights Reserved</p>
         </div>
       </div>
     </footer>

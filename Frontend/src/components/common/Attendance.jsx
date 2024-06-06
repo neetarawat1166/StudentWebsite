@@ -13,6 +13,7 @@ const Attendance = ({ attended, total }) => {
   
 
   const [newAttendance, setEditedAttendance] = useState('29'); // Initial topic is HTML
+  // const { studentList, setStudentList } = useContext(isAuthenticatedContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOpen = () => {
@@ -40,7 +41,7 @@ const Attendance = ({ attended, total }) => {
         <h1 className="text-[35px] text-[#003366] font-semibold text-center py-5">
           Attendance
         </h1>
-        <div className="container border-2 border-[#d19747] mx-auto bg-[#D9E7FF] py-[10px] text-center text-[#252525] w-full rounded-lg shadow-md relative">
+        <div className="container border-2 border-[#d19747] mx-auto bg-[#D9E7FF] py-[10px] text-center text-[#252525] max-h-[300px] w-full rounded-lg shadow-md relative">
           <div className="flex justify-center items-center gap-4">
             <h1 className="text-[18px] sm:text-[30px] md:text-[23px] lg:text-[30px] font-semibold text-[#d19747]">
               {user && user.course==="Full Stack Web Development" ? "Full Stack Web Development" : ""}

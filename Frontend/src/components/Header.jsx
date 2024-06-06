@@ -90,11 +90,12 @@ const Header = () => {
           onClick={toggleSidebar}
         />
         <div className="text-black">
+          <NavLink to=''>
           <img
             src={UpflairsLogo}
             className="md:w-[180px] w-[110px] pr-3"
             alt="logo"
-          />
+          /></NavLink>
         </div>
         <div className="hidden lg:block relative">
           <ul className="flex gap-[2rem] text-white">
@@ -133,7 +134,7 @@ const Header = () => {
                       className={({ isActive }) =>
                         isActive && activeTab === 'studentlist'
                           ? "border-b-[3px] border-[#ff9416]"
-                          : ""
+                          : ""  
                       }
                       onClick={() => handleTabClick('studentlist')}
                     >

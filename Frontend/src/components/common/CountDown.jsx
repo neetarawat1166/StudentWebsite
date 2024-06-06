@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 const CountDown = () => {
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
-    const targetValue1 = 100; // Change this to your desired target value for number 1
-    const targetValue2 = 200; // Change this to your desired target value for number 2
-    const speed = 1; // Change this to adjust the speed of increase
+    const targetValue1 = 5000; 
+    const targetValue2 = 2000; 
+    const speed = 1; 
 
     useEffect(() => {
         const interval1 = setInterval(() => {

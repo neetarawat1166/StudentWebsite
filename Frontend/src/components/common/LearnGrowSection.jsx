@@ -79,7 +79,7 @@ const LearnGrowSection = () => {
               </ul>
             </div>
           </div>
-          <NavLink to={'/about'}><button className='bg-[#003366] text-lg text-white py-4 px-4 font-semibold  rounded-lg'>More About Us</button></NavLink>
+          <NavLink to={'/about'}><button className='bg-[#003366] text-lg text-white py-4 px-4 font-semibold hover:bg-[#ff9416] rounded-lg'>More About Us</button></NavLink>
         </div>
       </div>
     </div>

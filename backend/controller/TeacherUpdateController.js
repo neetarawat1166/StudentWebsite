@@ -194,7 +194,7 @@
         console.error("Unable to update data:", error);
         res.status(500).json({
           success: false,
-          message: "Internal server error.",
+          message: "Internal server error.",  
         });
       }
     }
