@@ -17,17 +17,14 @@ const announcementSchema = new mongoose.Schema({
 const assignmentSchema = new mongoose.Schema({
     title: {
         type: String,
-        // default: "Welcome DevOps Assignment Title",
         required: true
     },
     task: {
         type: String,
-        // default: "Welcome DevOps Assignment task",
         required: true
     },
     assignDate: {
         type: String,
-        // default: new Date().toLocaleDateString(),
         required: true
     },
     dueDate: {
@@ -56,6 +53,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    resourses: {
+        type: Array,
+        required: true
     }
 });
 

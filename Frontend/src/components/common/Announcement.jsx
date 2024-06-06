@@ -75,7 +75,7 @@ const Announcement = () => {
     <>
       <div className="section">
         <div className="flex justify-center items-center gap-6">
-          <h1 className="text-4xl font-semibold text-[#003366] text-center py-5">
+          <h1 className="text-[35px] text-[#003366] font-semibold text-center py-5">
             Announcements
           </h1>
           {user && user.profile === "Teacher" && (

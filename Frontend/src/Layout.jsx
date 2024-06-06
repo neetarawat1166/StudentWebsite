@@ -31,26 +31,26 @@ const Layout = () => {
     };
     fetchuser();
 
-    const fetchStudents = async () => {
-      if (user) {                       //changes done here (&& user.profile =="Teacher")...................
-        let course = user.course;
-        // console.log("hii course",course)
-        if (course) {
-          try {
-            const response = await axios.post("http://localhost:5000/api/v1/students", { course });
-            console.log("india", response)
-            if (user && user.profile =="Teacher") {
-              setStudentList(response.data.students); 
+      const fetchStudents = async () => {
+        if (user) {                       //changes done here (&& user.profile =="Teacher")...................
+          let course = user.course;
+          // console.log("hii course",course)
+          if (course) {
+            try {
+              const response = await axios.post("http://localhost:5000/api/v1/students", { course });
+              console.log("india", response)
+              if (user && user.profile =="Teacher") {
+                setStudentList(response.data.students); 
+              }
+              setUpdateData(response.data.UpdateData)
+            } catch (error) {
+              console.error("Error fetching students:", error);
             }
-            setUpdateData(response.data.UpdateData)
-          } catch (error) {
-            console.error("Error fetching students:", error);
           }
         }
-      }
-    };
-
-    fetchStudents();
+      };
+  
+      fetchStudents();
   }, [isAuthenticat]);
 
   return (
