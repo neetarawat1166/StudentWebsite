@@ -533,11 +533,11 @@ const Header = () => {
       >
         <div
           ref={profileRef}
-          className={`relative w-[250px] h-full px-[1rem] py-[6rem] bg-white transition-transform duration-300 transform ${profileOpen ? "translate-x-0" : "-translate-x-full"
+          className={`relative w-[250px] h-full px-[1rem] py-[6rem] bg-[#d9e7ff] border border-[#003366] transition-transform duration-300 transform ${profileOpen ? "translate-x-0" : "-translate-x-full"
             }`}
         >
           <button
-            className="absolute top-[1rem] left-[1rem] text-2xl cursor-pointer bg-[#65bc7b] text-white p-[3px]"
+            className="absolute top-[1rem] left-[1rem] text-2xl cursor-pointer bg-[#ff9416] text-white p-[3px]"
             onClick={toggleProfile}
           >
             <IoMdClose />
