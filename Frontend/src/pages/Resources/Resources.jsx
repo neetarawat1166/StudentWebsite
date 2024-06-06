@@ -41,8 +41,8 @@ const Resources = () => {
       );
       if (response.data.success) {
         setUploadLoading(false);
-        setFile(null);
         fileInputRef.current.value = "";
+        setFile(null);
         toast.success(response.data.message);
       } else {
         toast.error("File upload failed");
@@ -50,8 +50,8 @@ const Resources = () => {
       }
     } catch (error) {
       setUploadLoading(false);
-      setFile(null);
       fileInputRef.current.value = "";
+      setFile(null);
       toast.error("Error uploading file");
     }
   };
