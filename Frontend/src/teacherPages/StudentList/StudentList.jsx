@@ -14,15 +14,18 @@ const StudentList = () => {
       navigate("/");
     }
   }, [user, navigate]);
+  
+  console.log(isToday)
 
   const { studentList, setStudentList } = useContext(isAuthenticatedContext);
 
   if (!user) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   const [usersID, setUserID] = useState([]);
-
+  
+  console.log(usersID)
   const presentbtn = (id) => {
     if (!usersID.includes(id)) {
       setUserID((prevId) => [...prevId, id]);
@@ -32,6 +35,9 @@ const StudentList = () => {
   };
 
   const CompleteAttendance = async () => {
+    if(usersID.length == 0){
+      return toast.error("Please Select Students");
+    }
     try {
       let AttendedStudents = studentList.map((student) => {
         if (usersID.includes(student._id)) {
@@ -78,6 +84,9 @@ const StudentList = () => {
             <tbody>
               {studentList && studentList.map((student, index) => (
                 <tr className="text-center" key={student._id}>
+                  {
+                    student.attendance == 0 ? true : false
+                  }
                   <td className="border-2 border-[#003366] px-4 py-2">{index + 1}</td>
                   <td className="border-2 border-[#003366] px-4 py-2">{student.name}</td>
                   <td className="border-2 border-[#003366] px-4 py-2">
@@ -86,11 +95,12 @@ const StudentList = () => {
                         className={`p-1 rounded-lg text-white ${
                           usersID.includes(student._id)
                             ? 'bg-orange-500'
-                            : 'bg-[#003366] hover:bg-[#ff9416]'
-                        }`}
+                            : `${isToday(student) ? "bg-[#357dc5]" : "bg-[#003366] hover:bg-[#ff9416]"}`
+                        } ${isToday(student) ? "cursor-not-allowed" : ""}`}
                         onClick={() => presentbtn(student._id)}
-                        disabled={isToday(student.updatedAt)}
+                        disabled={isToday(student)}
                       >
+                        {console.log(isToday(student))}
                         Present
                       </button>
                       <span><b>{student.attendance}</b> / 30 Days</span>
