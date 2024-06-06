@@ -18,7 +18,7 @@ const Banner = () => {
           <h1 className="text-[30px] sm:text-[45px] md:text[50px] font-bold text-[#003366] pb-4">Empower education while simplifying management and enhancing learning.</h1>
             <p className="text-[17px] sm:text-[17px] md:text-[20px] font-semibold pb-4 sm:pb-8">Discover Upflairs Student Management Hub, your companion for academic triumphs. Engage with intuitive dashboards, seamless assignment management, and a wealth of educational resources curated to enhance your learning journey. Whether you're tracking progress, accessing educational materials, or exploring our comprehensive library, our student portal is your tailored educational partner. Join us today and embark on a seamless educational experience designed to nurture your growth and achievements.</p>
            {!user && <NavLink to="/login"><button className='text-[20px] font-semibold bg-[#003366] py-3 px-4 border-2 rounded-lg text-white hover:bg-white hover:border-[#003366] hover:text-[#003366]'>Explore More!</button></NavLink> }
-            {user && <NavLink to="/dashboard"><button className='text-[20px] font-semibold bg-[#003366] py-3 px-4 border-2 rounded-lg text-white hover:bg-[#ff9416] hover:border-[#003366] hover:text-[#003366]'>Explore More!</button></NavLink>}
+            {user && <NavLink to="/dashboard"><button className='text-[20px] font-semibold bg-[#003366] py-3 px-4 border-2 rounded-lg text-white hover:bg-[#ff9416] hover:border-[#ff9416] hover:text-white'>Explore More!</button></NavLink>}
         </div>
         <div className="lg:w-1/3"> {/* Second column, 1/4 width on large screens */}
           <img src={BannerImg} alt="Your Image" className="w-full" />
