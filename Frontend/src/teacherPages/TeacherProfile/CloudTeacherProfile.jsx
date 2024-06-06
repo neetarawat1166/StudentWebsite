@@ -24,7 +24,7 @@ const CloudTeacherProfile = () => {
               <p className='text-[15px]'>Akash Holds 8+ Years of experience in the field of devops</p>
               <div className='flex gap-4 py-4'>
                 <NavLink to='https://www.linkedin.com/in/gaur95'><FaLinkedin className='text-[40px] text-[#d19747]' /></NavLink>
-                <NavLink to='https://Akash.upflairs@gmail.com'><SiGmail className='text-[40px] text-[#d19747]' /></NavLink>
+                <NavLink to={`mailto:${'Akash.upflairs@gmail.com'}`}><SiGmail className='text-[40px] text-[#d19747]' /></NavLink>
                 {/* <FaSquareXTwitter className='text-[40px] text-[#d19747]' /> */}
                 <NavLink to='https://www.github.com/gaur95'><FaGithub className='text-[40px] text-[#d19747]'/></NavLink>
               </div>

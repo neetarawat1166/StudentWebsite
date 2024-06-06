@@ -24,7 +24,7 @@ const DataScienceTeacherProfile = () => {
               <p className='text-[15px]'>Ranjit Holds an experience of 2+ years and is highly expert in the field of data science</p>
               <div className='flex gap-4 py-4'>
                 <NavLink to='https://linkedin.com/in/ranjit-singh-423a051a6'><FaLinkedin className='text-[40px] text-[#d19747]' /></NavLink>
-                <NavLink to='https://ranjit.upflairs@gmail.com'><SiGmail className='text-[40px] text-[#d19747]' /></NavLink>
+                <NavLink to={`mailto:${'ranjit.upflairs@gmail.com'}`}><SiGmail className='text-[40px] text-[#d19747]' /></NavLink>
                 {/* <FaSquareXTwitter className='text-[40px] text-[#d19747]' /> */}
                 <NavLink to='https://www.github.com/Ranjit-Singh-786 '><FaGithub className='text-[40px] text-[#d19747]'/></NavLink>
               </div>
