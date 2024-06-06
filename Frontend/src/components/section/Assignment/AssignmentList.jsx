@@ -23,7 +23,7 @@ const AssignmentList = ({ assignments }) => {
             <div>
               <h2 className="font-bold mb-4 text-center md:text-[30px] text-[20px] text-[#003366]">Assignments for today ({today}):</h2>
               {assignmentsForToday.map((assignment, index) => (
-                <div key={index} className="bg-[#7881e981] border-2 border-[#d2ae40] rounded-lg p-4 mb-4">
+                <div key={index} className="bg-[#d9e7ff] border-2 border-[#d2ae40] rounded-lg p-4 mb-4">
                   <div className='flex justify-start gap-4'>
                     <h3 className="text-lg font-semibold mb-2">{assignment.title}</h3>
                     <FaBookOpenReader className=' hidden sm:block text-[25px] text-black' />

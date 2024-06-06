@@ -60,7 +60,7 @@ const Assignment = () => {
           </div>
           {user && user.profile === 'Teacher' && (
             <div className="flex justify-center items-center pb-8">
-              <div className='bg-[#4d81d05f] rounded-full p-6 cursor-pointer' onClick={handleModalOpen}>
+              <div className='bg-[#d9e7ff] rounded-full p-6 cursor-pointer' onClick={handleModalOpen}>
                 <FaPlus className='text-[30px] text-[#f0ac4d]'/>
               </div>
             </div>
